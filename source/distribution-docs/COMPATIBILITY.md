@@ -28,21 +28,17 @@ advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Verification boundary
 
-The v0.2.2 change cleans up the public listing and includes an explicit privacy
-policy. The package identifier, skills, defaults, logo, and runtime behavior
-remain unchanged. Public directory eligibility and warning resolution require
-the actual portal checks; local verification does not establish them.
+v0.2.2 is the first supported release and the public starting point. It includes
+the shared skills, host adapters, glass-potato logo, and explicit privacy policy.
+Public directory eligibility requires the actual portal checks; local
+verification does not establish approval.
 
-The v0.2.1 change replaces the listing and composer icons with the selected glass
-potato PNG and declares all-country availability. Its skills, defaults, and runtime
-instructions retain the v0.2.0 behavior. See `verification/` for release checks.
-
-For v0.2.0, 67 automated tests passed. Native CLI installation, a versioned
-marketplace update/rollback fixture, and managed v0.1-to-v0.2 rollback were
-verified against actual installed bytes. Fresh native app-server discovery found
-all 54 skills with zero parse errors. A fresh Codex model selected the Codex
-adapter and loaded the complete workflow. Three simulated host scenarios selected
-Codex, Dots, and Codex-for-a-Dot-started-worker as expected.
+For this baseline, 68 automated tests passed. Fresh native app-server discovery
+found all 54 skills with zero parse errors. Earlier development checks also
+exercised the Codex workflow, host-adapter selection, native installation, and
+update and rollback behavior. Those lifecycle receipts are internal development
+evidence, not a list of earlier supported releases or available downgrade tags.
+See `verification/` for the recorded checks.
 
 Live Dots execution has not been verified. Desktop visual interaction was blocked
 by the computer-use tool; its native plugin loader was verified separately.

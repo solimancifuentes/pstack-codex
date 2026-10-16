@@ -1,74 +1,63 @@
-# Update and rollback
+# Releases, updates, and rollback
 
-User overrides remain outside the package. Record the current plugin version
-and marketplace ref before updating. Keep worktree changes and credentials
-outside the installed cache.
+## Starting point
 
-## GitHub marketplace
+`v0.2.2` is the first supported release. It is the only release and version tag
+currently available. There is no earlier public version to update from or roll
+back to.
 
-This repository is a custom marketplace. It does not need a listing in OpenAI's
-public Plugins Directory for these commands to work.
+If you already use v0.2.2, keep your installation. No update, migration, or
+rollback is needed. For a new installation, follow the [README](README.md).
 
-```sh
-codex plugin marketplace upgrade pstack-codex
-codex plugin add pstack-codex@pstack-codex --json
-codex plugin list --available --json
-```
+This repository is a custom GitHub marketplace. Installation does not require
+a listing in OpenAI's public Plugins Directory.
 
-Marketplace upgrade refreshes the catalog at the ref you registered. The README
-pins `v0.2.2`, so upgrading that marketplace does not select a newer release.
-Use the ref-selection commands below to choose another tag. A marketplace
-registered with `--ref main` follows that moving branch instead.
+## Future updates
 
-Confirm the installed version and
-path from the plugin result; a catalog refresh alone does not prove installed
-bytes changed. If the client retains a stale package, remove and add this plugin
-through native commands, then verify the resulting version. Keep your external
-profile file. Never edit installed cache files as an update method.
+When a new release is published:
 
-To select an exact release or return to a prior tag:
+1. Read its release notes and installation instructions.
+2. Record your installed plugin version and marketplace ref.
+3. Select the new published tag explicitly, then verify the installed version
+   and run a representative workflow in a new chat.
 
-```sh
-codex plugin marketplace remove pstack-codex
-codex plugin marketplace add solimancifuentes/pstack-codex --ref v0.2.2
-codex plugin remove pstack-codex@pstack-codex --json
-codex plugin add pstack-codex@pstack-codex --json
-```
+The README pins `v0.2.2`. Running
+`codex plugin marketplace upgrade pstack-codex` refreshes the registered ref;
+it does not advance a pinned tag to a newer release. A marketplace registered
+with `--ref main` follows that moving branch instead.
 
-Replace `v0.2.2` with the intended existing tag. Marketplace removal changes the
-source registration; plugin removal changes installed registration and cache.
-Use the exact marketplace name to avoid changing unrelated plugins. Restart or
-refresh Desktop and start a new chat. Check native skill discovery and run a
-representative workflow after the selected version is installed.
+Use `codex plugin list --json` to inspect the installed version and marketplace.
+Future release notes will give the commands needed to change the selected tag.
+Use the marketplace identity reported by your installation, and keep one enabled
+copy of pstack.
 
-## Existing personal managed installation
+User preferences remain outside the package at
+`~/.codex/pstack-codex/preferences.json`. Preserve that file when changing a
+release. Keep credentials and project work outside the installed cache.
 
-An earlier local installation may use `pstack-codex@personal` and the separate
-`pstack-codex` manager. Its owned registration, source releases, migration
-backups, and preferences are distinct from this GitHub marketplace. Do not enable
-two copies of this plugin for ordinary use.
+## Future rollback
 
-That manager supports `status`, `verify`, `install --release ... --dry-run`,
-`install --release ... --yes`, and `rollback --to RELEASE_ID --dry-run/--yes`.
-Its `rollback --to before-install --yes` restores recorded standalone originals.
-New ordinary installs do not consolidate standalone skills; the optional
-`--migrate-standalone` flag requires the audited originals during the first
-managed install. Interrupted operations use `recover --dry-run`, then
-`recover --yes` after reviewing the operation.
+Rollback becomes relevant after another release exists. At that point, a user
+running a newer release can return to a retained, supported tag such as
+`v0.2.2`, following the instructions supplied with that release.
 
-Shared v0.2+ releases preserve arbitrary live profile overrides. Legacy v0.1
-releases embedded their build profile. A legacy rollback with incompatible
-current overrides stops without overwriting the profile. Review that conflict
-or select a shared release; do not replace preferences merely to force rollback.
+There is no supported downgrade target before v0.2.2. Internal development
+snapshots and lifecycle-test receipts are not public rollback releases.
 
-## Maintainer upstream workflow
+Verify the selected package and a representative workflow after any future
+rollback. Do not edit installed cache files or overwrite preferences to make a
+version change succeed.
 
-Fetch only the original repository, record its exact commit, review every
-changed adapter context, and run source integrity, package, runtime, and native
-installation checks. A changed source hash is a review gate, not a value to
-replace blindly. Bump the port's SemVer, build one shared payload, export its
-marketplace and plugin-only ZIP, and publish a tagged release after verification.
+## Maintainer releases
 
-Public-directory skill changes require a new package upload and the applicable
-review/publication process. GitHub releases do not silently update a published
-directory package. Keep previous tags for rollback and document tested coverage.
+Review changes from the original pstack repository at an exact commit, then
+verify the adapted package and its actual installation. Bump the port's version,
+build the shared payload, and publish its tag and ZIP after the checks pass.
+
+For the next release, verify an update from v0.2.2 and a rollback to v0.2.2
+before publication. Retain the v0.2.2 tag and release as that baseline. Keep
+subsequent supported tags and publish their tested update and rollback paths.
+
+GitHub releases and OpenAI's public Plugins Directory are separate distribution
+paths. A future directory publication requires its own package review; a GitHub
+release does not update a directory package.
