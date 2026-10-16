@@ -18,7 +18,7 @@ port = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(port)
 
 
-def variant_release(release, destination, version, legacy=False):
+def variant_release(release, destination, version, legacy=False, description=None):
     """Create a valid alternate release fixture, retaining all source integrity checks."""
     destination = Path(destination)
     shutil.copytree(release, destination)
@@ -27,6 +27,8 @@ def variant_release(release, destination, version, legacy=False):
         path = destination / relative
         metadata = port.read_json(path)
         metadata["version"] = version
+        if description is not None:
+            metadata["description"] = description
         port.write_json(path, metadata)
     manifest["port_version"] = version
     if legacy:
@@ -279,6 +281,40 @@ class LifecycleTests(LifecycleFixture, unittest.TestCase):
         self.assertEqual(path.read_bytes(), customized)
         self.assertTrue(self.installation.verify()["installed"])
 
+    def test_shared_initial_version_preserves_profile_after_private_release(self):
+        private = variant_release(self.release, self.user_home / "private", version="0.2.2")
+        initial = variant_release(self.release, self.user_home / "initial", version="0.1.0")
+        self.installation.install(private, migrate_standalone=True)
+        preferences = self.installation.root / "preferences.json"
+        customized = b'{ "roles":{"reviewer":{"model":"user-choice","future-option":true}}, "personal-note":"retain exact bytes" }\n'
+        preferences.write_bytes(customized)
+        migration = self.installation.state()["migration"]
+        self.installation.install(initial)
+        self.assertEqual(port.verify_payload(initial)["profile_mode"], "external")
+        self.assertEqual(preferences.read_bytes(), customized)
+        self.assertEqual(self.installation.state()["migration"], migration)
+        verification = self.installation.verify()
+        self.assertTrue(verification["installed"])
+        self.assertEqual(port.read_json(Path(verification["cache"]) / "plugin.json")["version"], "0.1.0")
+        self.assertTrue(self.installation.install(initial)["already_installed"])
+        self.assertEqual(preferences.read_bytes(), customized)
+
+    def test_same_version_shared_release_rollback_preserves_profile_and_cache(self):
+        self.installation.install(self.release)
+        preferences = self.installation.root / "preferences.json"
+        customized = b'{"schema_version":1,"unknown":{"preserve":true},"panels":{"arena":4}}\n'
+        preferences.write_bytes(customized)
+        candidate = variant_release(self.release, self.user_home / "candidate", version=port.VERSION,
+                                    description="A distinct same-version fixture payload")
+        self.assertNotEqual(candidate.name, self.release.name)
+        self.installation.install(candidate)
+        self.assertEqual(preferences.read_bytes(), customized)
+        self.assertEqual(self.installation.verify()["release"], candidate.name)
+        self.installation.rollback(self.release.name)
+        self.assertEqual(preferences.read_bytes(), customized)
+        self.assertEqual(self.installation.verify()["release"], self.release.name)
+        self.installation.verify_cache(port.verify_payload(self.release), self.installation.state()["marketplace_name"])
+
     def test_late_migration_request_fails_without_mutation(self):
         self.installation.install(self.release)
         before = port.tree(self.user_home)
@@ -387,7 +423,7 @@ class RecoveryTests(LifecycleFixture, unittest.TestCase):
         self.assertTrue(resumed.verify()["installed"])
 
     def test_interrupted_version_change_recovers_previous_profile_and_migration(self):
-        legacy = variant_release(self.release, self.user_home / "legacy", version="0.1.0", legacy=True)
+        legacy = variant_release(self.release, self.user_home / "legacy", version="0.0.0", legacy=True)
         self.installation.install(legacy, migrate_standalone=True)
         previous = self.installation.state()
         preferences = self.installation.root / "preferences.json"
@@ -409,12 +445,12 @@ class RecoveryTests(LifecycleFixture, unittest.TestCase):
         self.assertTrue(resumed.verify()["installed"])
 
     def test_recovery_rejects_tamper_in_previous_version_cache(self):
-        legacy = variant_release(self.release, self.user_home / "legacy", version="0.1.0", legacy=True)
+        legacy = variant_release(self.release, self.user_home / "legacy", version="0.0.0", legacy=True)
         self.installation.install(legacy)
         self.crash_at("native-installed")
         with self.assertRaises(SimulatedCrash):
             self.installation.install(self.release)
-        old_cache = self.installation.cache(self.installation.state()["marketplace_name"], "0.1.0")
+        old_cache = self.installation.cache(self.installation.state()["marketplace_name"], "0.0.0")
         (old_cache / "skills/bro/SKILL.md").write_text("unowned change in previous version cache")
         before = port.tree(self.user_home)
         with self.assertRaisesRegex(port.PortError, "cache changed|cache differs"):
@@ -485,7 +521,7 @@ class RecoveryTests(LifecycleFixture, unittest.TestCase):
         preferences = self.installation.root / "preferences.json"
         customized = b'{"schema_version":1,"roles":{"judge":{"model":"user-choice"}},"panels":{"arena":4},"personal-note":"retain"}\n'
         preferences.write_bytes(customized)
-        candidate = variant_release(self.release, self.user_home / "candidate", version="0.2.1")
+        candidate = variant_release(self.release, self.user_home / "candidate", version="0.1.1")
         self.installation.install(candidate)
         self.assertEqual(preferences.read_bytes(), customized)
         self.assertEqual(self.installation.state()["migration"], original_migration)

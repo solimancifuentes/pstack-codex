@@ -3,6 +3,7 @@ test_export_is_deterministic (test_distribution.DistributionTests.test_export_is
 test_export_preserves_release_and_copies_the_verified_payload (test_distribution.DistributionTests.test_export_preserves_release_and_copies_the_verified_payload) ... ok
 test_export_rejects_copied_manager_changed_after_selected_release (test_distribution.DistributionTests.test_export_rejects_copied_manager_changed_after_selected_release) ... ok
 test_export_rejects_defaults_changed_after_selected_release (test_distribution.DistributionTests.test_export_rejects_defaults_changed_after_selected_release) ... ok
+test_export_rejects_privacy_terms_changed_after_selected_release (test_distribution.DistributionTests.test_export_rejects_privacy_terms_changed_after_selected_release) ... ok
 test_export_rejects_runtime_changed_after_selected_release (test_distribution.DistributionTests.test_export_rejects_runtime_changed_after_selected_release) ... ok
 test_fetched_snapshot_export_rebuilds_archived_source_and_adapters (test_distribution.DistributionTests.test_fetched_snapshot_export_rebuilds_archived_source_and_adapters) ... ok
 test_marketplace_points_to_one_portable_shared_plugin (test_distribution.DistributionTests.test_marketplace_points_to_one_portable_shared_plugin) ... ok
@@ -27,6 +28,8 @@ test_native_install_failure_restores_prior_layout (test_port.LifecycleTests.test
 test_new_user_gets_shared_defaults_without_migration (test_port.LifecycleTests.test_new_user_gets_shared_defaults_without_migration) ... ok
 test_ordinary_install_preserves_customized_standalone_skills (test_port.LifecycleTests.test_ordinary_install_preserves_customized_standalone_skills) ... ok
 test_rollback_refuses_new_standalone_conflict (test_port.LifecycleTests.test_rollback_refuses_new_standalone_conflict) ... ok
+test_same_version_shared_release_rollback_preserves_profile_and_cache (test_port.LifecycleTests.test_same_version_shared_release_rollback_preserves_profile_and_cache) ... ok
+test_shared_initial_version_preserves_profile_after_private_release (test_port.LifecycleTests.test_shared_initial_version_preserves_profile_after_private_release) ... ok
 test_check_reports_no_change_without_building_or_installing (test_port.MainUpdateTests.test_check_reports_no_change_without_building_or_installing) ... ok
 test_update_dry_run_reports_no_active_or_cache_change (test_port.MainUpdateTests.test_update_dry_run_reports_no_active_or_cache_change) ... ok
 test_update_noop_reports_no_change_and_preserves_state (test_port.MainUpdateTests.test_update_noop_reports_no_change_and_preserves_state) ... ok
@@ -67,6 +70,6 @@ test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITe
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 67 tests in 37.959s
+Ran 70 tests in 42.192s
 
 OK

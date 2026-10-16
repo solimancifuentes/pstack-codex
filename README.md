@@ -16,17 +16,17 @@ The port contains **54 skills, 24 engineering principles, and 23 playbooks**. Co
 
 You can install from GitHub now. This repository is a custom Codex marketplace; pstack is not currently listed in OpenAI's public Plugins directory.
 
-`v0.2.2` is the starting release. If you're already using it, no update or rollback is needed.
+`v0.1.0` is the starting release. If you're already using it, no update or rollback is needed.
 
 With a recent [Codex CLI](https://learn.chatgpt.com/docs/codex/cli):
 
 ```sh
-codex plugin marketplace add solimancifuentes/pstack-codex --ref v0.2.2
+codex plugin marketplace add solimancifuentes/pstack-codex --ref v0.1.0
 codex plugin add pstack-codex@pstack-codex
 codex plugin list --marketplace pstack-codex --json
 ```
 
-The tag pins the reviewed port release. Check that the result shows version `0.2.2`, then start a new chat. If your CLI does not recognize `codex plugin`, update it before continuing.
+The tag pins the reviewed port release. Check that the result shows version `0.1.0`, then start a new chat. If your CLI does not recognize `codex plugin`, update it before continuing.
 
 In Codex Desktop, restart the app after the CLI installation. You can also run only the first command to register the catalog, restart the app, then open Plugins, select the pstack custom marketplace, and install pstack there. Adding our catalog does not require a public-directory listing.
 
@@ -228,7 +228,7 @@ The same package includes a Dots adapter. Local workflows need a connected compu
 
 The port is based on Lauren's pstack at [`850d7f2e9f5e55dff7eb00a0a479337fe79eb22f`](https://github.com/cursor/plugins/tree/850d7f2e9f5e55dff7eb00a0a479337fe79eb22f/pstack). [`source/source.lock.json`](source/source.lock.json) records the exact upstream files included in the adaptation.
 
-`v0.2.2` is the first supported release, with no earlier public version to update from or roll back to. [UPDATES.md](UPDATES.md) explains how future releases will handle updates and rollback. Maintainer updates review upstream changes and publish tested port versions. Install those releases rather than copying unadapted Cursor instructions into Codex.
+`v0.1.0` is the first supported release, with no earlier public version to update from or roll back to. [UPDATES.md](UPDATES.md) explains how future releases will handle updates and rollback. Maintainer updates review upstream changes and publish tested port versions. Install those releases rather than copying unadapted Cursor instructions into Codex.
 
 The reproducible maintainer source, upstream snapshot, adapters, and tests are in [`source/`](source/). Build with `python3 source/pstack.py build` and run checks with `python3 -m unittest discover -s source/tests -v`.
 

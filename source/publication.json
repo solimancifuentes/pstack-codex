@@ -29,6 +29,6 @@
     "logo": "./assets/pstack.png",
     "composerIcon": "./assets/pstack.png"
   },
-  "release_notes": "Simplify the public listing to pstack and describe engineering workflows without platform comparisons. Expand the privacy policy with data categories, purposes, recipients, retention, and deletion controls. Preserve the plugin identifier, all 54 skills, the approved glass-potato logo, and external preferences.",
+  "release_notes": "Initial release of the independent Codex adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, 23 playbooks, separate host adapters, the glass-potato logo, and the original MIT attribution. Preferences remain outside the shared package.",
   "countries": []
 }

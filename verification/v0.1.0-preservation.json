@@ -1,0 +1,9 @@
+{
+  "port_version": "0.1.0",
+  "preferences": "PASS byte-for-byte",
+  "unrelated_global_config": "PASS semantic comparison; redundant pstack registration removed",
+  "global_instructions": "PASS byte-for-byte",
+  "standalone_skill_lock": "PASS byte-for-byte",
+  "personal_marketplace": "PASS byte-for-byte",
+  "pending_operation": false
+}

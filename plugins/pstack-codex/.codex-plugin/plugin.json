@@ -27,5 +27,5 @@
   "name": "pstack-codex",
   "requires_local_executor": true,
   "skills": "./skills/",
-  "version": "0.2.2"
+  "version": "0.1.0"
 }

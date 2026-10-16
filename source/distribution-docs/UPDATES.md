@@ -2,11 +2,11 @@
 
 ## Starting point
 
-`v0.2.2` is the first supported release. It is the only release and version tag
+`v0.1.0` is the first supported release. It is the only release and version tag
 currently available. There is no earlier public version to update from or roll
 back to.
 
-If you already use v0.2.2, keep your installation. No update, migration, or
+If you already use v0.1.0, keep your installation. No update, migration, or
 rollback is needed. For a new installation, follow the [README](README.md).
 
 This repository is a custom GitHub marketplace. Installation does not require
@@ -21,7 +21,7 @@ When a new release is published:
 3. Select the new published tag explicitly, then verify the installed version
    and run a representative workflow in a new chat.
 
-The README pins `v0.2.2`. Running
+The README pins `v0.1.0`. Running
 `codex plugin marketplace upgrade pstack-codex` refreshes the registered ref;
 it does not advance a pinned tag to a newer release. A marketplace registered
 with `--ref main` follows that moving branch instead.
@@ -39,9 +39,9 @@ release. Keep credentials and project work outside the installed cache.
 
 Rollback becomes relevant after another release exists. At that point, a user
 running a newer release can return to a retained, supported tag such as
-`v0.2.2`, following the instructions supplied with that release.
+`v0.1.0`, following the instructions supplied with that release.
 
-There is no supported downgrade target before v0.2.2. Internal development
+There is no supported downgrade target before v0.1.0. Internal development
 snapshots and lifecycle-test receipts are not public rollback releases.
 
 Verify the selected package and a representative workflow after any future
@@ -54,8 +54,8 @@ Review changes from the original pstack repository at an exact commit, then
 verify the adapted package and its actual installation. Bump the port's version,
 build the shared payload, and publish its tag and ZIP after the checks pass.
 
-For the next release, verify an update from v0.2.2 and a rollback to v0.2.2
-before publication. Retain the v0.2.2 tag and release as that baseline. Keep
+For the next release, verify an update from v0.1.0 and a rollback to v0.1.0
+before publication. Retain the v0.1.0 tag and release as that baseline. Keep
 subsequent supported tags and publish their tested update and rollback paths.
 
 GitHub releases and OpenAI's public Plugins Directory are separate distribution

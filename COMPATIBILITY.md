@@ -28,12 +28,12 @@ advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Verification boundary
 
-v0.2.2 is the first supported release and the public starting point. It includes
+v0.1.0 is the first supported release and the public starting point. It includes
 the shared skills, host adapters, glass-potato logo, and explicit privacy policy.
 Public directory eligibility requires the actual portal checks; local
 verification does not establish approval.
 
-For this baseline, 68 automated tests passed. Fresh native app-server discovery
+For this baseline, 70 automated tests passed. Fresh native app-server discovery
 found all 54 skills with zero parse errors. Earlier development checks also
 exercised the Codex workflow, host-adapter selection, native installation, and
 update and rollback behavior. Those lifecycle receipts are internal development

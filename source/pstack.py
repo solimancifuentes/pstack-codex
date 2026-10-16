@@ -23,7 +23,7 @@ import urllib.parse
 import zipfile
 
 PLUGIN = "pstack-codex"
-VERSION = "0.2.2"
+VERSION = "0.1.0"
 REPOSITORY = "https://github.com/cursor/plugins"
 CONSOLIDATE = ("bro", "correct", "principle-model-the-domain", "tdd", "technical-writing", "unslop")
 
@@ -588,7 +588,7 @@ class Installation:
         preferences = self.root / "preferences.json"
         embedded_profile = manifest.get("profile_mode") != "external"
         if embedded_profile and preferences.is_file() and read_json(preferences) != manifest["preferences"]:
-            raise PortError("This legacy release embeds different preferences. The current profile was preserved. Select a shared v0.2+ release or review a compatible legacy package before rollback")
+            raise PortError("This legacy release embeds different preferences. The current profile was preserved. Select a release with an external runtime profile or review a compatible legacy package before rollback")
         plan = {"release": manifest["release"], "previous": state.get("active"),
                 "marketplace": str(self.marketplace), "entry": self.entry(),
                 "consolidate": [name for name in CONSOLIDATE if migrate_standalone and
