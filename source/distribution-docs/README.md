@@ -1,4 +1,4 @@
-# pstack for Codex and Dots
+# pstack
 
 <img src="plugins/pstack-codex/assets/pstack.png" alt="pstack glass potato logo" width="160" height="160">
 
@@ -16,7 +16,7 @@ codex plugin marketplace add solimancifuentes/pstack-codex --ref main
 codex plugin add pstack-codex@pstack-codex
 ```
 
-To pin a release, use `--ref v0.2.1` instead of `--ref main`. Start a new session
+To pin a release, use `--ref v0.2.2` instead of `--ref main`. Start a new session
 after installation. Invoke `$pstack-codex:poteto-mode` and describe the task,
 scope, constraints, and observable finish condition. Invoke
 `$pstack-codex:setup-pstack` to inspect defaults and any local overrides.
@@ -24,9 +24,11 @@ scope, constraints, and observable finish condition. Invoke
 ## Install through Desktop
 
 Add the marketplace using the command above, restart or refresh the Desktop
-app, open Plugins, select the pstack marketplace, and install pstack for Codex
-and Dots. A custom marketplace is separate from OpenAI's reviewed public
-directory. Repository publication does not imply a public-directory approval.
+app, open Plugins, select the pstack marketplace, and install pstack. A custom marketplace is separate from
+OpenAI's reviewed public directory. Repository publication does not imply a public-directory approval. The current submission draft reports that further
+skills-only submissions are not being accepted. This release improves metadata
+and privacy documentation; it does not establish directory eligibility or
+clearance of the automated warnings.
 
 For local development, register the checked-out repository instead:
 
@@ -83,4 +85,5 @@ Build with `python3 source/pstack.py build`; test with
 The original source and license are retained. [NOTICE](NOTICE) distinguishes
 original authorship from the Codex and Dots modifications.
 
-Support: [SUPPORT.md](SUPPORT.md). Contact: contact@solimancifuentes.com.
+Support: [SUPPORT.md](SUPPORT.md). Privacy: [PRIVACY.md](PRIVACY.md).
+Contact: contact@solimancifuentes.com.

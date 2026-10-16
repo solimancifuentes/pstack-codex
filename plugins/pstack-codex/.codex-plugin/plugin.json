@@ -1,11 +1,11 @@
 {
-  "description": "Shared pstack workflows with Codex and Dots runtime adapters.",
+  "description": "Engineering workflows for planning, implementation, review, and verification.",
   "interface": {
     "capabilities": [
       "Engineering workflows",
       "Code review",
       "Verification",
-      "Codex and Dots adapters"
+      "Configurable workflows"
     ],
     "category": "Developer Tools",
     "composerIcon": "./assets/pstack.png",
@@ -15,9 +15,9 @@
       "Use $pstack-codex:setup-pstack to inspect my setup."
     ],
     "developerName": "Soliman Cifuentes",
-    "displayName": "pstack for Codex and Dots",
+    "displayName": "pstack",
     "logo": "./assets/pstack.png",
-    "longDescription": "An independent MIT-licensed port of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, review, writing, testing, and verification. A shared workflow selects a Codex or Dots runtime adapter from actual host capabilities. Dots orchestration requires supported tools and a configured local or cloud execution environment. Local skills require a connected computer. Optional helpers have explicit dependency setup. The package does not supply Cursor cloud APIs, Claude/Grok panels, Grok Bot webhooks, or Benny automation. Runtime support and verification limits are documented in the repository.",
+    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
     "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
     "shortDescription": "Plan, build, review, verify",
     "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
@@ -27,5 +27,5 @@
   "name": "pstack-codex",
   "requires_local_executor": true,
   "skills": "./skills/",
-  "version": "0.2.1"
+  "version": "0.2.2"
 }

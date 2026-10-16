@@ -6,16 +6,16 @@
     "url": "https://github.com/solimancifuentes"
   },
   "interface": {
-    "displayName": "pstack for Codex and Dots",
+    "displayName": "pstack",
     "shortDescription": "Plan, build, review, verify",
-    "longDescription": "An independent MIT-licensed port of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, review, writing, testing, and verification. A shared workflow selects a Codex or Dots runtime adapter from actual host capabilities. Dots orchestration requires supported tools and a configured local or cloud execution environment. Local skills require a connected computer. Optional helpers have explicit dependency setup. The package does not supply Cursor cloud APIs, Claude/Grok panels, Grok Bot webhooks, or Benny automation. Runtime support and verification limits are documented in the repository.",
+    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
     "developerName": "Soliman Cifuentes",
     "category": "Developer Tools",
     "capabilities": [
       "Engineering workflows",
       "Code review",
       "Verification",
-      "Codex and Dots adapters"
+      "Configurable workflows"
     ],
     "defaultPrompt": [
       "Use $pstack-codex:poteto-mode to plan and verify this change.",
@@ -29,6 +29,6 @@
     "logo": "./assets/pstack.png",
     "composerIcon": "./assets/pstack.png"
   },
-  "release_notes": "Use the selected white glass-potato logo for listing and composer icons. Preserve all 54 skills and external preferences. Declare availability in all supported countries.",
+  "release_notes": "Simplify the public listing to pstack and describe engineering workflows without platform comparisons. Expand the privacy policy with data categories, purposes, recipients, retention, and deletion controls. Preserve the plugin identifier, all 54 skills, the approved glass-potato logo, and external preferences.",
   "countries": []
 }

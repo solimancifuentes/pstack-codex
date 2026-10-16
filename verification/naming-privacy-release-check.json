@@ -1,0 +1,24 @@
+{
+  "release": "850d7f2e9f5e-1cf785750847",
+  "version": "0.2.2",
+  "payload_files": 203,
+  "payload_changes": {
+    "added": [
+      "PRIVACY.md"
+    ],
+    "removed": [],
+    "changed": [
+      ".codex-plugin/plugin.json",
+      "plugin.json"
+    ]
+  },
+  "display_name": "pstack",
+  "stable_package_id": "pstack-codex",
+  "skills_runtime_defaults_logo_upstream_unchanged": true,
+  "privacy_copy_matches_draft": true,
+  "policy_sha256": "20bc22e48e19237a7e44d1de2df2ba54fbdd65a156b266396ec7ba1813d7a8f1",
+  "public_copy_platform_names_removed": true,
+  "qualified_skill_prompts_and_internal_id_preserved": true,
+  "portal_warning_clearance": "NOT VERIFIED; user handles upload and submission",
+  "skills_only_eligibility": "Still blocked in existing portal draft; this release does not resolve admission"
+}

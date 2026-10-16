@@ -1,0 +1,331 @@
+{
+  "version": "0.2.2",
+  "enabled_count": 54,
+  "parse_errors": 0,
+  "skills": [
+    {
+      "name": "pstack-codex:architect",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/architect/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:arena",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/arena/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:automate-me",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/automate-me/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:benchmark-checklist",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/benchmark-checklist/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:blast-radius",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/blast-radius/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:bro",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/bro/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:correct",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/correct/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:create-verification-skill",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/create-verification-skill/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:figure-it-out",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/figure-it-out/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:how",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/how/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:in-your-own-words",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/in-your-own-words/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:interrogate",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/interrogate/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:ketchup",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/ketchup/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:maintain-verification-skill",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/maintain-verification-skill/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:make-bot-ui",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/make-bot-ui/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:no-comments",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/no-comments/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:poteto-help",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/poteto-help/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:poteto-mode",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/poteto-mode/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-attack-the-premise",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-attack-the-premise/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-boundary-discipline",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-boundary-discipline/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-build-the-lever",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-build-the-lever/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-encode-lessons-in-structure",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-encode-lessons-in-structure/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-exhaust-the-design-space",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-exhaust-the-design-space/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-experience-first",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-experience-first/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-explain-the-number",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-explain-the-number/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-fix-root-causes",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-fix-root-causes/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-foundational-thinking",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-foundational-thinking/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-guard-the-context-window",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-guard-the-context-window/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-laziness-protocol",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-laziness-protocol/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-make-operations-idempotent",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-make-operations-idempotent/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-migrate-callers-then-delete-legacy-apis",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-minimize-reader-load",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-minimize-reader-load/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-model-the-domain",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-model-the-domain/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-never-block-on-the-human",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-never-block-on-the-human/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-outcome-oriented-execution",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-outcome-oriented-execution/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-prove-it-works",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-prove-it-works/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-redesign-from-first-principles",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-redesign-from-first-principles/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-separate-before-serializing-shared-state",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-separate-before-serializing-shared-state/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-sequence-verifiable-units",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-sequence-verifiable-units/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-subtract-before-you-add",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-subtract-before-you-add/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-test-behavior-not-implementation",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-test-behavior-not-implementation/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:principle-type-system-discipline",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/principle-type-system-discipline/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:recall",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/recall/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:reflect",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/reflect/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:setup-pstack",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/setup-pstack/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:sharpen",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/sharpen/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:show-me-your-work",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/show-me-your-work/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:swarm",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/swarm/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:tdd",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/tdd/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:teach",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/teach/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:technical-writing",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/technical-writing/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:typescript-best-practices",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/typescript-best-practices/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:unslop",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/unslop/SKILL.md"
+    },
+    {
+      "name": "pstack-codex:why",
+      "enabled": true,
+      "pluginId": "pstack-codex@personal",
+      "path": "<plugin-root>/skills/why/SKILL.md"
+    }
+  ]
+}

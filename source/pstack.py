@@ -23,7 +23,7 @@ import urllib.parse
 import zipfile
 
 PLUGIN = "pstack-codex"
-VERSION = "0.2.1"
+VERSION = "0.2.2"
 REPOSITORY = "https://github.com/cursor/plugins"
 CONSOLIDATE = ("bro", "correct", "principle-model-the-domain", "tdd", "technical-writing", "unslop")
 
@@ -258,7 +258,7 @@ def build(project, source=None, commit=None, output=None, profile=None):
         publication = read_json(project / "publication.json")
         metadata = {"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
                     "name": PLUGIN, "version": VERSION,
-                    "description": "Shared pstack workflows with Codex and Dots runtime adapters.",
+                    "description": "Engineering workflows for planning, implementation, review, and verification.",
                     "author": publication["author"],
                     "repository": publication["repository"], "license": "MIT",
                     "extensions": {"com.openai": {
@@ -275,6 +275,7 @@ def build(project, source=None, commit=None, output=None, profile=None):
             "skills": "./skills/", "requires_local_executor": True,
             "interface": publication["interface"]})
         shutil.copy2(project / "NOTICE", plugin / "NOTICE")
+        shutil.copy2(project / "distribution-docs/PRIVACY.md", plugin / "PRIVACY.md")
         (plugin / "tools").mkdir(exist_ok=True)
         shutil.copy2(project / "runtime/runtime.py", plugin / "tools/runtime.py")
         helpers = {path.relative_to(plugin).as_posix(): sha(path.read_bytes())

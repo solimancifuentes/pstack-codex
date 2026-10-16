@@ -182,6 +182,21 @@ class DistributionTests(unittest.TestCase):
             self.assertEqual(port.tree(project), before)
             self.assertEqual(port.tree(self.release), self.original_release)
 
+    def test_export_rejects_privacy_terms_changed_after_selected_release(self):
+        with tempfile.TemporaryDirectory(dir=self.root) as temporary:
+            root = Path(temporary)
+            project = root / "project"
+            shutil.copytree(self.repository / "source", project)
+            policy = project / "distribution-docs/PRIVACY.md"
+            policy.write_text(policy.read_text() + "\nUnreviewed retention commitment.\n")
+            before = port.tree(project)
+            destination = root / "should-not-be-published"
+            with self.assertRaisesRegex(port.PortError, "does not reproduce"):
+                distribution.export_release(project, self.release, destination)
+            self.assertFalse(destination.exists())
+            self.assertEqual(port.tree(project), before)
+            self.assertEqual(port.tree(self.release), self.original_release)
+
     def test_fetched_snapshot_export_rebuilds_archived_source_and_adapters(self):
         with tempfile.TemporaryDirectory(dir=self.root) as temporary:
             root = Path(temporary)

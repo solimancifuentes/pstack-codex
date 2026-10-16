@@ -22,12 +22,12 @@ To select an exact release or return to a prior tag:
 
 ```sh
 codex plugin marketplace remove pstack-codex
-codex plugin marketplace add solimancifuentes/pstack-codex --ref v0.2.1
+codex plugin marketplace add solimancifuentes/pstack-codex --ref v0.2.2
 codex plugin remove pstack-codex@pstack-codex --json
 codex plugin add pstack-codex@pstack-codex --json
 ```
 
-Replace `v0.2.1` with the intended existing tag. Marketplace removal changes the
+Replace `v0.2.2` with the intended existing tag. Marketplace removal changes the
 source registration; plugin removal changes installed registration and cache.
 Use the exact marketplace name to avoid changing unrelated plugins. Restart or
 refresh Desktop and start a new chat. Check native skill discovery and run a

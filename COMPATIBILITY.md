@@ -28,6 +28,11 @@ advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Verification boundary
 
+The v0.2.2 change cleans up the public listing and includes an explicit privacy
+policy. The package identifier, skills, defaults, logo, and runtime behavior
+remain unchanged. Public directory eligibility and warning resolution require
+the actual portal checks; local verification does not establish them.
+
 The v0.2.1 change replaces the listing and composer icons with the selected glass
 potato PNG and declares all-country availability. Its skills, defaults, and runtime
 instructions retain the v0.2.0 behavior. See `verification/` for release checks.
