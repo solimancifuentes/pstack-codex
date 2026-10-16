@@ -23,7 +23,7 @@ import urllib.parse
 import zipfile
 
 PLUGIN = "pstack-codex"
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 REPOSITORY = "https://github.com/cursor/plugins"
 CONSOLIDATE = ("bro", "correct", "principle-model-the-domain", "tdd", "technical-writing", "unslop")
 
@@ -265,7 +265,8 @@ def build(project, source=None, commit=None, output=None, profile=None):
                         "requires_local_executor": True,
                         "onboardingSkill": "./skills/setup-pstack/SKILL.md",
                         "interface": publication["interface"],
-                        "publication": {"release_notes": publication["release_notes"]},
+                        "publication": {"release_notes": publication["release_notes"],
+                                        **({"countries": publication["countries"]} if "countries" in publication else {})},
                         "review": {"commerce": False}
                     }}}
         write_json(plugin / "plugin.json", metadata)

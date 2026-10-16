@@ -28,6 +28,10 @@ advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Verification boundary
 
+The v0.2.1 change replaces the listing and composer icons with the selected glass
+potato PNG and declares all-country availability. Its skills, defaults, and runtime
+instructions retain the v0.2.0 behavior. See `verification/` for release checks.
+
 For v0.2.0, 67 automated tests passed. Native CLI installation, a versioned
 marketplace update/rollback fixture, and managed v0.1-to-v0.2 rollback were
 verified against actual installed bytes. Fresh native app-server discovery found

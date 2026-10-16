@@ -332,8 +332,8 @@
       "target": "runtime/dots.md"
     },
     {
-      "source": "assets/pstack.svg",
-      "target": "assets/pstack.svg"
+      "source": "assets/pstack.png",
+      "target": "assets/pstack.png"
     }
   ]
 }

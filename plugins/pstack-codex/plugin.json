@@ -16,7 +16,7 @@
           "Codex and Dots adapters"
         ],
         "category": "Developer Tools",
-        "composerIcon": "./assets/pstack.svg",
+        "composerIcon": "./assets/pstack.png",
         "defaultPrompt": [
           "Use $pstack-codex:poteto-mode to plan and verify this change.",
           "Use $pstack-codex:how to explain this code.",
@@ -24,7 +24,7 @@
         ],
         "developerName": "Soliman Cifuentes",
         "displayName": "pstack for Codex and Dots",
-        "logo": "./assets/pstack.svg",
+        "logo": "./assets/pstack.png",
         "longDescription": "An independent MIT-licensed port of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, review, writing, testing, and verification. A shared workflow selects a Codex or Dots runtime adapter from actual host capabilities. Dots orchestration requires supported tools and a configured local or cloud execution environment. Local skills require a connected computer. Optional helpers have explicit dependency setup. The package does not supply Cursor cloud APIs, Claude/Grok panels, Grok Bot webhooks, or Benny automation. Runtime support and verification limits are documented in the repository.",
         "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
         "shortDescription": "Plan, build, review, verify",
@@ -34,7 +34,8 @@
       },
       "onboardingSkill": "./skills/setup-pstack/SKILL.md",
       "publication": {
-        "release_notes": "Shared pstack package with separate Codex and Dots adapters, optional local profile/helper runtime, portable marketplace distribution, and versioned update and rollback verification."
+        "countries": [],
+        "release_notes": "Use the selected white glass-potato logo for listing and composer icons. Preserve all 54 skills and external preferences. Declare availability in all supported countries."
       },
       "requires_local_executor": true,
       "review": {
@@ -45,5 +46,5 @@
   "license": "MIT",
   "name": "pstack-codex",
   "repository": "https://github.com/solimancifuentes/pstack-codex",
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

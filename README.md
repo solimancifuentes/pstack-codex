@@ -1,5 +1,7 @@
 # pstack for Codex and Dots
 
+<img src="plugins/pstack-codex/assets/pstack.png" alt="pstack glass potato logo" width="160" height="160">
+
 An independent MIT-licensed port of [Lauren Tan's pstack](https://github.com/cursor/plugins/tree/850d7f2e9f5e55dff7eb00a0a479337fe79eb22f/pstack), maintained by Soliman Cifuentes.
 
 The package contains 54 skills, 24 engineering principles, and 23 playbooks.
@@ -14,7 +16,7 @@ codex plugin marketplace add solimancifuentes/pstack-codex --ref main
 codex plugin add pstack-codex@pstack-codex
 ```
 
-To pin a release, use `--ref v0.2.0` instead of `--ref main`. Start a new session
+To pin a release, use `--ref v0.2.1` instead of `--ref main`. Start a new session
 after installation. Invoke `$pstack-codex:poteto-mode` and describe the task,
 scope, constraints, and observable finish condition. Invoke
 `$pstack-codex:setup-pstack` to inspect defaults and any local overrides.

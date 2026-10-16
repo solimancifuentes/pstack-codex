@@ -26,8 +26,9 @@
     "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
     "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/TERMS.md",
-    "logo": "./assets/pstack.svg",
-    "composerIcon": "./assets/pstack.svg"
+    "logo": "./assets/pstack.png",
+    "composerIcon": "./assets/pstack.png"
   },
-  "release_notes": "Shared pstack package with separate Codex and Dots adapters, optional local profile/helper runtime, portable marketplace distribution, and versioned update and rollback verification."
+  "release_notes": "Use the selected white glass-potato logo for listing and composer icons. Preserve all 54 skills and external preferences. Declare availability in all supported countries.",
+  "countries": []
 }

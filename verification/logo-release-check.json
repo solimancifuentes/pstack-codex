@@ -1,0 +1,19 @@
+{
+  "release": "850d7f2e9f5e-4e8eb9bd120f",
+  "version": "0.2.1",
+  "logo_sha256": "a6de18b19e235d2dde120cbf4ab10bc6493efd467aa7e826e2315b739ea8aed3",
+  "payload_changes": {
+    "added": [
+      "assets/pstack.png"
+    ],
+    "removed": [
+      "assets/pstack.svg"
+    ],
+    "changed": [
+      ".codex-plugin/plugin.json",
+      "plugin.json"
+    ]
+  },
+  "skills_defaults_runtime_upstream_unchanged": true,
+  "countries": []
+}

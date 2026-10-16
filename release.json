@@ -1,7 +1,7 @@
 {
   "adapters": {
     "CODEX.md": "f8aecf9d0a51e6ffcec02fb8faafbec80297e27d60d107b567f0eb5c3b769fda",
-    "assets/pstack.svg": "67099b2ea15467e3f2e33cf6f2de1b6c3976d66d951b211fcb37b56ec74a4daa",
+    "assets/pstack.png": "a6de18b19e235d2dde120cbf4ab10bc6493efd467aa7e826e2315b739ea8aed3",
     "files/agents/comment-sicko.md": "1bcf263edddd46aaeb97572f7ac5199e0ed468951e93d168429d30c839d3f67d",
     "files/agents/poteto-agent.md": "25817eba9a358c69efa1bb6ea961df4bc12eb3972139cc84e7b585a68a460d9a",
     "files/skills/architect/SKILL.md": "795383811ccce0d3dedffbdc5059bfc1bc4c65a66f7e2fd4afc979afec0bb758",
@@ -57,24 +57,24 @@
     "runtime/codex.md": "f9023f2f9369ed3ae32d6f1527dabac7030fd4f2760d118ee789ce367afdafba",
     "runtime/dots.md": "1e989fb1b8178bbdf3d3fe05b1408cd592f02abf94764c910be64c41284052d8",
     "runtime/shared.md": "50ef7c8f78a6e7d49c6cb53484929e60dee9da5f2a1ad5c829341e35c8f35f24",
-    "spec.json": "fbeb60076e4f155534629cc42f2b2aebae2322a99c18dd6b8703ec6602dcb8b3"
+    "spec.json": "0e64be64367046d97887467f1bccb2b77993ed2f9a6e393980b4e5a3cecc853f"
   },
   "helper_patch": {
     "reason": "Dependency setup is explicit and mutable runtime stays outside plugin cache",
     "sha256": "ccd2ed08fd9da9d0d942e5f2491cfc74bb92d8a08fa51755e0da1ac8de287361",
     "source": "skills/poteto-mode/scripts/bootstrap.ts"
   },
-  "manager_sha256": "b9666880d1a01956251374e474beec6b8a9626e4488aa5b773e3c92f5e80dcc1",
+  "manager_sha256": "165925647f3d7e8b4559a7e66afb60eba1ec34a79a2badfb85f79c94b5631a8a",
   "payload": {
-    ".codex-plugin/plugin.json": "8b0af61bccc108911572e82bcc99f2239b6c4712935e64505c0adc2d3bc8e208",
+    ".codex-plugin/plugin.json": "c7d3abef363e03b09f2ea940d1ca371258281e6eb49be08df345f3e6f88a67b8",
     "CODEX.md": "f8aecf9d0a51e6ffcec02fb8faafbec80297e27d60d107b567f0eb5c3b769fda",
     "LICENSE": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
     "NOTICE": "f7779e4a3f6f0bc10d98f248d677981b19f7d31e41cf36137fb7e3eac7eb512e",
     "agents/comment-sicko.md": "1bcf263edddd46aaeb97572f7ac5199e0ed468951e93d168429d30c839d3f67d",
     "agents/poteto-agent.md": "25817eba9a358c69efa1bb6ea961df4bc12eb3972139cc84e7b585a68a460d9a",
-    "assets/pstack.svg": "67099b2ea15467e3f2e33cf6f2de1b6c3976d66d951b211fcb37b56ec74a4daa",
+    "assets/pstack.png": "a6de18b19e235d2dde120cbf4ab10bc6493efd467aa7e826e2315b739ea8aed3",
     "defaults.json": "4dd9129297d699f3a5d0f6b7a5095532b69a436f0d3365b5df8220e7c6c0d82c",
-    "plugin.json": "3ecb37eb672fe38df8b35e47e7259c79a7ba99012123e6dde84e450a77a0927e",
+    "plugin.json": "8ed3db3d700dc638a5a8aec03c981e99b72385a8941712b5311f155d022c669f",
     "provenance.json": "d47c95ec0bdc82fac2f7b1eb9449bacbad09cb4b1f5f4279e0800e160c1aed66",
     "runtime/codex.md": "f9023f2f9369ed3ae32d6f1527dabac7030fd4f2760d118ee789ce367afdafba",
     "runtime/dots.md": "1e989fb1b8178bbdf3d3fe05b1408cd592f02abf94764c910be64c41284052d8",
@@ -269,7 +269,7 @@
     "tools/helper-sources.json": "72c08921bc75ccf1b153ae12899f850d62a73eb780daa6f689e7d4887add1082",
     "tools/runtime.py": "531b3ede8b35ae3222d76c8330e6c3ceb7a29233b9b49cc436b04e6f0c24a65f"
   },
-  "port_version": "0.2.0",
+  "port_version": "0.2.1",
   "preferences": {
     "always_apply": [
       "unslop"
@@ -291,7 +291,7 @@
     "speed": "inherit-parent"
   },
   "profile_mode": "external",
-  "release": "850d7f2e9f5e-31191f71559a",
+  "release": "850d7f2e9f5e-4e8eb9bd120f",
   "repository": "https://github.com/cursor/plugins",
   "schema_version": 1,
   "skills": [
