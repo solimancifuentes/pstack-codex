@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "model": "inherit-parent",
+  "reasoning_effort": "inherit-parent",
+  "speed": "inherit-parent",
+  "always_apply": [
+    "unslop"
+  ],
+  "implicit_invocation": {
+    "unslop": true
+  },
+  "prefer_existing_browser_and_cli_tools": true,
+  "external_messages": "only when explicitly authorized by the user",
+  "runtime_capabilities": {
+    "cursor_cloud_agents": false,
+    "cursor_loop": false,
+    "cross_provider_panels": false,
+    "benny_automation": false,
+    "grok_bot_webhooks": false
+  },
+  "note": "Preserve user and repository instructions. No additional global autonomy grant is created.",
+  "roles": {},
+  "panels": {
+    "arena": 2,
+    "architect": 2,
+    "interrogate": 2
+  }
+}

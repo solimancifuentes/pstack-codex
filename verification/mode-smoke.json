@@ -1,0 +1,23 @@
+{
+  "error_count": 0,
+  "result": {
+    "adapter": "codex",
+    "playbook": "Investigation",
+    "is_live_dots_run": false,
+    "runtime_selection": "CODEX.md selects from the actual executing host's instructions and available tool schemas. This session executes in Codex, so runtime/codex.md applies even if a Dot launched it. Native Dot execution uses runtime/dots.md. Profiles cannot enable absent host capabilities.",
+    "guide_files_read": [
+      "skills/poteto-mode/SKILL.md",
+      "skills/poteto-mode/WORKFLOW.md",
+      "CODEX.md",
+      "runtime/shared.md",
+      "runtime/codex.md",
+      "skills/poteto-mode/playbooks/investigation.md",
+      "skills/how/SKILL.md",
+      "skills/unslop/SKILL.md",
+      "skills/principle-prove-it-works/SKILL.md"
+    ],
+    "unavailable_desktop_tools": "Codex list_threads, read_thread, attach_artifact, and dedicated worktree or chat-ownership tools are not exposed in this session.",
+    "verification": "Prove It Works guided direct inspection of installed files and exposed tool schemas. No delegates, file writes, tasks, jobs, or external actions were performed."
+  },
+  "evidence_scope": "Actual fresh Codex session; Dot scenario results are simulated contracts only"
+}

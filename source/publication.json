@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/solimancifuentes/pstack-codex",
+  "author": {
+    "name": "Soliman Cifuentes",
+    "email": "contact@solimancifuentes.com",
+    "url": "https://github.com/solimancifuentes"
+  },
+  "interface": {
+    "displayName": "pstack for Codex and Dots",
+    "shortDescription": "Plan, build, review, verify",
+    "longDescription": "An independent MIT-licensed port of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, review, writing, testing, and verification. A shared workflow selects a Codex or Dots runtime adapter from actual host capabilities. Dots orchestration requires supported tools and a configured local or cloud execution environment. Local skills require a connected computer. Optional helpers have explicit dependency setup. The package does not supply Cursor cloud APIs, Claude/Grok panels, Grok Bot webhooks, or Benny automation. Runtime support and verification limits are documented in the repository.",
+    "developerName": "Soliman Cifuentes",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Engineering workflows",
+      "Code review",
+      "Verification",
+      "Codex and Dots adapters"
+    ],
+    "defaultPrompt": [
+      "Use $pstack-codex:poteto-mode to plan and verify this change.",
+      "Use $pstack-codex:how to explain this code.",
+      "Use $pstack-codex:setup-pstack to inspect my setup."
+    ],
+    "websiteURL": "https://github.com/solimancifuentes/pstack-codex",
+    "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
+    "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/TERMS.md",
+    "logo": "./assets/pstack.svg",
+    "composerIcon": "./assets/pstack.svg"
+  },
+  "release_notes": "Shared pstack package with separate Codex and Dots adapters, optional local profile/helper runtime, portable marketplace distribution, and versioned update and rollback verification."
+}

@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "codex/config.toml": true,
+    "codex/AGENTS.md": true,
+    "agents/.skill-lock.json": true,
+    "agents/plugins/marketplace.json": true,
+    "codex/pstack-codex/preferences.json": true
+  },
+  "passed": true
+}

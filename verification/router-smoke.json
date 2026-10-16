@@ -1,0 +1,61 @@
+{
+  "error_count": 0,
+  "result": [
+    {
+      "id": "cli",
+      "selected_adapter": "codex",
+      "available_approach": [
+        "Use the scenario's shell and native collaboration only through their actual schemas and concurrency limits.",
+        "Use current conversation context, supplied records, Git, PRs, and task artifacts as evidence.",
+        "Read package files where locally available. Package metadata declares requires_local_executor:true.",
+        "Return a verified PR URL directly when attachment tooling is absent."
+      ],
+      "unsupported_assumptions": [
+        "Codex Desktop history tools are required.",
+        "attach_artifact is required when the tool is absent.",
+        "Installing the package provisions workers, schedules, remote files, or additional tools.",
+        "Benny automation or a verified credential boundary is included. Inherited tool access does not establish exclusion of Slack or other credentials."
+      ],
+      "live_host_test": false
+    },
+    {
+      "id": "dot-coordinator",
+      "selected_adapter": "dots",
+      "available_approach": [
+        "Coordinate through native background tasks, task followups, and the cloud computer only as their actual schemas, configuration, and authorization permit.",
+        "Native Dot task coordination may use user-visible tasks. The Codex restriction on creating substitute chats is not a blanket ban on this coordination.",
+        "Pass readable attachments, a prepared package, or a consolidated brief when workers do not share files. The package's local-only file availability and requires_local_executor:true do not establish cloud availability.",
+        "A Codex task launched by this coordinator selects the Codex adapter and returns receipts through its actual task result channel."
+      ],
+      "unsupported_assumptions": [
+        "The package defines Dots API names or schemas.",
+        "A cloud computer can read installed Mac package paths or the Mac's optional profile.",
+        "The adapter proves Dots discovery or provides a service integration.",
+        "Background tasks guarantee durable execution, credential exclusion, or tool isolation.",
+        "Benny is installed. Its source is dormant and supplies no Slack trigger, tracker action, credential, or automation.",
+        "A supported Slack event proves Benny's worker credential boundary. That boundary requires separately scoped configuration and verification.",
+        "A background task or task followup is a saved schedule or event webhook."
+      ],
+      "live_host_test": false
+    },
+    {
+      "id": "dot-started-codex",
+      "selected_adapter": "codex",
+      "available_approach": [
+        "Use the Codex task's own shell, collaboration schemas, environment, and concurrency limits.",
+        "Use package files only if present and readable in that task. Local installation and requires_local_executor:true do not transfer files to the worker.",
+        "Use accessible defaults or relevant selected preferences supplied in the brief when the local profile is unavailable.",
+        "Return verification receipts and a resume point to the parent Dot's actual task result channel. The Dot may retain the ongoing coordination responsibility."
+      ],
+      "unsupported_assumptions": [
+        "Being launched by a Dot changes the executing Codex task to the Dots adapter.",
+        "The worker inherits the Dot's event scheduler, background capabilities, or connectors.",
+        "The worker inherits the local Mac profile, files, credentials, tools, or uncommitted state.",
+        "Parent delegation guarantees credential isolation or excludes Slack credentials.",
+        "The package implements Benny or establishes its required credential boundary."
+      ],
+      "live_host_test": false
+    }
+  ],
+  "evidence_scope": "Actual fresh Codex session; Dot scenario results are simulated contracts only"
+}
