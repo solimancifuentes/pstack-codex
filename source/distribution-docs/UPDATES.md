@@ -4,7 +4,10 @@ User overrides remain outside the package. Record the current plugin version
 and marketplace ref before updating. Keep worktree changes and credentials
 outside the installed cache.
 
-## Git marketplace
+## GitHub marketplace
+
+This repository is a custom marketplace. It does not need a listing in OpenAI's
+public Plugins Directory for these commands to work.
 
 ```sh
 codex plugin marketplace upgrade pstack-codex
@@ -12,7 +15,12 @@ codex plugin add pstack-codex@pstack-codex --json
 codex plugin list --available --json
 ```
 
-Marketplace upgrade refreshes the catalog. Confirm the installed version and
+Marketplace upgrade refreshes the catalog at the ref you registered. The README
+pins `v0.2.2`, so upgrading that marketplace does not select a newer release.
+Use the ref-selection commands below to choose another tag. A marketplace
+registered with `--ref main` follows that moving branch instead.
+
+Confirm the installed version and
 path from the plugin result; a catalog refresh alone does not prove installed
 bytes changed. If the client retains a stale package, remove and add this plugin
 through native commands, then verify the resulting version. Keep your external
@@ -37,7 +45,7 @@ representative workflow after the selected version is installed.
 
 An earlier local installation may use `pstack-codex@personal` and the separate
 `pstack-codex` manager. Its owned registration, source releases, migration
-backups, and preferences are distinct from the public marketplace. Do not enable
+backups, and preferences are distinct from this GitHub marketplace. Do not enable
 two copies of this plugin for ordinary use.
 
 That manager supports `status`, `verify`, `install --release ... --dry-run`,
