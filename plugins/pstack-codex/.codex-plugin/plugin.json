@@ -17,7 +17,7 @@
     "developerName": "Soliman Cifuentes",
     "displayName": "pstack",
     "logo": "./assets/pstack.png",
-    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
+    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 55 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
     "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
     "shortDescription": "Plan, build, review, verify",
     "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
@@ -27,5 +27,5 @@
   "name": "pstack-codex",
   "requires_local_executor": true,
   "skills": "./skills/",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

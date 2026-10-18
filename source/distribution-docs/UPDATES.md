@@ -12,6 +12,17 @@ rollback is needed. For a new installation, follow the [README](README.md).
 This repository is a custom GitHub marketplace. Installation does not require
 a listing in OpenAI's public Plugins Directory.
 
+## Prepared update to port 0.2.0
+
+The development checkout includes upstream pstack 0.15.27 and 55 skills. It adds
+`create-formal-verification-skill` and revised engineering guidance. The Codex
+and Dots runtime adapters, external preferences, and explicit invocation rules
+remain in place. See the [update record](verification/upstream-0.15.27.md).
+
+Port 0.2.0 is unpublished. The installation commands below still select v0.1.0.
+Do not use an uncreated version tag. Actual installation, update, rollback, and
+representative workflow checks are required before publishing a new port release.
+
 ## Future updates
 
 When a new release is published:

@@ -1,0 +1,30 @@
+{
+  "verdict": "PASS",
+  "findings": [],
+  "reviewers": [
+    {
+      "name": "review_a",
+      "model": "parent model inherited; exact model unavailable",
+      "verdict": "PASS"
+    },
+    {
+      "name": "review_b",
+      "model": "parent model inherited; exact model unavailable",
+      "verdict": "PASS"
+    }
+  ],
+  "assurance": "Independent same-provider passes; no cross-provider review claimed",
+  "comment_review": {
+    "proposed_deletions": 1,
+    "applied_deletions": 1,
+    "retained": "Script shebang",
+    "remaining_flags": []
+  },
+  "release_gates": [
+    "Native installation and discovery",
+    "Actual update from and rollback to v0.1.0",
+    "Representative workflow",
+    "Desktop behavior",
+    "Live Dots execution"
+  ]
+}

@@ -23,7 +23,7 @@ import urllib.parse
 import zipfile
 
 PLUGIN = "pstack-codex"
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 REPOSITORY = "https://github.com/cursor/plugins"
 CONSOLIDATE = ("bro", "correct", "principle-model-the-domain", "tdd", "technical-writing", "unslop")
 

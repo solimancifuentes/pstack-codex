@@ -82,7 +82,7 @@ class BuildTests(unittest.TestCase):
     def test_deterministic_build_and_full_coverage(self):
         second = port.build(PROJECT, output=Path(self.scratch.name))
         self.assertEqual(second["release"], self.build["release"])
-        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 54)
+        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 55)
         manifest = port.read_json(self.release / "release.json")
         implicit = {row["name"] for row in manifest["skills"] if row["allow_implicit_invocation"]}
         self.assertEqual(implicit, {"setup-pstack", "unslop"})

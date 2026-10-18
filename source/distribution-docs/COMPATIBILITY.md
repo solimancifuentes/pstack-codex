@@ -26,6 +26,13 @@ Optional helper commands require Python 3.11+, Bun, and POSIX support on
 macOS/Linux. Their absence does not prevent the Markdown workflows. The existing
 advanced personal manager additionally has a fixed default Codex-home boundary.
 
+## Prepared upstream update
+
+The development checkout prepares port 0.2.0 from upstream pstack 0.15.27. It
+contains 55 skills. The [update record](verification/upstream-0.15.27.md) records
+checks performed in the cloud container and their limits. The v0.1.0 evidence
+below remains the historical release baseline. No new release is published.
+
 ## Verification boundary
 
 v0.1.0 is the first supported release and the public starting point. It includes
