@@ -81,6 +81,11 @@ unchanged. The workflow reports `ISSUES` for this finding even though its outer
 acceptance driver succeeds. It is not a proof for arbitrary JSON, crashes, I/O
 failures, path races, or the whole runtime.
 
+A subsequent [description-fidelity repair](description-fidelity-0.15.27.md)
+corrects seven metadata strings, passes 85 Python tests, and verifies all 55
+semantic descriptions with the actual native loader. It records a new candidate
+identity without changing runtime, helpers, invocation policy or upstream source.
+
 ## Scope of readiness
 
 The source update, reproducible package, native CLI lifecycle and loader,

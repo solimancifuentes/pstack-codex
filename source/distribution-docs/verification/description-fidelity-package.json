@@ -1,0 +1,33 @@
+{
+  "adapters_unchanged": true,
+  "archive_sha256": "db7fa82abb11b881e2b48a0541198e202da4702213b1c84aa860e5fd4714326b",
+  "base_head": "e73155ae909e6b044266e68bb75bc2efd4fb83b8",
+  "changed_descriptions": [
+    "automate-me",
+    "create-formal-verification-skill",
+    "create-verification-skill",
+    "how",
+    "interrogate",
+    "maintain-verification-skill",
+    "principle-prove-it-works"
+  ],
+  "changed_payload_paths": [
+    "skills/automate-me/SKILL.md",
+    "skills/create-formal-verification-skill/SKILL.md",
+    "skills/create-verification-skill/SKILL.md",
+    "skills/how/SKILL.md",
+    "skills/interrogate/SKILL.md",
+    "skills/maintain-verification-skill/SKILL.md",
+    "skills/principle-prove-it-works/SKILL.md"
+  ],
+  "exports_identical": true,
+  "invocation_policies_unchanged": true,
+  "new_regression_tests": 6,
+  "old_release": "0148b78c56c7-59a8c6173218",
+  "oracle": "PyYAML 6.0.3 (read-only validation only; no project dependency)",
+  "python_tests": 85,
+  "release": "0148b78c56c7-5969be8527a3",
+  "semantic_source_description_matches": 55,
+  "skills": 55,
+  "source_unchanged": true
+}

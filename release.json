@@ -64,7 +64,7 @@
     "sha256": "ccd2ed08fd9da9d0d942e5f2491cfc74bb92d8a08fa51755e0da1ac8de287361",
     "source": "skills/poteto-mode/scripts/bootstrap.ts"
   },
-  "manager_sha256": "28f2abe74e01b074d39a8442654a03650703b5649bcf71a3cf53f27f3704b087",
+  "manager_sha256": "687938fb36cd4c309680f4cdbc8c5b626db2d2d7b7106aa2939c966b5101e006",
   "payload": {
     ".codex-plugin/plugin.json": "259d69b956be70e127f542805faede614c97749cd1bafa56de120faed51447db",
     "CODEX.md": "f8aecf9d0a51e6ffcec02fb8faafbec80297e27d60d107b567f0eb5c3b769fda",
@@ -87,7 +87,7 @@
     "skills/architect/references/runner-prompt.md": "21dd5314aab778c5007228027a4591d97693fbec6ab86524037772b63f40948e",
     "skills/arena/SKILL.md": "55847f566f2ddc63ee3a4bf45d42c6744f09840a3ead39ff2d35bd91cc5a7656",
     "skills/arena/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/automate-me/SKILL.md": "1562cde3baa984d3d5c6c4325f480d955736cee78d29cba43ab63784bdae7310",
+    "skills/automate-me/SKILL.md": "bf265e90977a4876b25ab292e8ecd257f5fbfed9063b73aea492d7e7ea8e42d6",
     "skills/automate-me/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/benchmark-checklist/SKILL.md": "0928a291a374f6e129c2a02a54f4f38a6b71ebd2ecf6fefcf86a0a98c225cbc4",
     "skills/benchmark-checklist/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
@@ -97,22 +97,22 @@
     "skills/bro/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/correct/SKILL.md": "fc65c8c79e3d0bbc0c4c529dbb6d63c4fe9920f53a5df1762d1c408862e4e64f",
     "skills/correct/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/create-formal-verification-skill/SKILL.md": "6462471b7492a86874111c09fde4ab682e3496532bead788fd34aac80917fa6f",
+    "skills/create-formal-verification-skill/SKILL.md": "5db302c7554e44812b91761434a5f215e043b4fc6f3aefb2e691e9284aebd1c5",
     "skills/create-formal-verification-skill/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/create-verification-skill/SKILL.md": "dc51f2fdb8531ecb886d3e7aa26fd15472251bdf0bf2e72a64d142c15f8d9cc7",
+    "skills/create-verification-skill/SKILL.md": "8eee7dbc762dbc1461334210abb1ba6efe3f20be9147fe98537a850d32365d5e",
     "skills/create-verification-skill/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/create-verification-skill/references/feature-map-example/README.md": "cb7bd782cf89968a4ba3d58a5151db837430db92d19a6f52a906973b77b516ba",
     "skills/create-verification-skill/references/feature-map-example/create-note.md": "644a44c74f35d38c2feb7cd05a0121fdebbb623e8dc376c185b565a581d1ccf7",
     "skills/create-verification-skill/references/feature-map-example/search.md": "6e87b9e7f2791a7776ba1bb83f371cd285c306c67f19d245cc4dd6ca3015c823",
     "skills/figure-it-out/SKILL.md": "a29f67a12a7d5f7179dd5776779a12caeb384edaddb392dc1c53ab480c1d8457",
     "skills/figure-it-out/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/how/SKILL.md": "a1495b6ed71d6d9398789a59c61467093d04b8ca3b20b12d868709ac6782f629",
+    "skills/how/SKILL.md": "89df1d364780d92fc04e5e10a08af5f42a27ca0d874dbe16e552123b8fc8db4f",
     "skills/how/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/how/references/explainer-prompt.md": "fa12cee4fd520c991e261034b0d05b057010cfe42b2840948b7392389e995f63",
     "skills/how/references/explorer-prompt.md": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
     "skills/in-your-own-words/SKILL.md": "57cc2b5c6827e05b07739212cf329d3ba2f46b88ae402736463fb4bff3a360e3",
     "skills/in-your-own-words/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/interrogate/SKILL.md": "121e80a7b7338436898191bfbfe43b4561104240530888d6a159b93dda5ebade",
+    "skills/interrogate/SKILL.md": "135586869db0a81f928cecc06849af1da35b3d09a3926d26f3fb0112a8cae351",
     "skills/interrogate/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/interrogate/references/code-quality-review.md": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
     "skills/interrogate/references/lead-judgment.md": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
@@ -120,7 +120,7 @@
     "skills/interrogate/references/rubric.md": "0f9c6bdb0b96e26dbde5f6407f417e0c02f54080e7a1268d8994f3c3ec6c5ac0",
     "skills/ketchup/SKILL.md": "36d912dfe96266b67c74e1921bdb4992945de7fde7114e74d75b76870b93db64",
     "skills/ketchup/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/maintain-verification-skill/SKILL.md": "b0d88ef796a735f4179bcbb1133d9dfc89667a03d4987ce1d71dc05152633c6c",
+    "skills/maintain-verification-skill/SKILL.md": "cae37971949d9d6ec42e7707e89cf3d34e36c3faf9661ca76ff529a9dc028978",
     "skills/maintain-verification-skill/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/make-bot-ui/SKILL.md": "f7106b1d9f884a42ac4d59902bb5ba52ba477cb0604659882b81fda11eb5c718",
     "skills/make-bot-ui/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
@@ -212,7 +212,7 @@
     "skills/principle-never-block-on-the-human/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/principle-outcome-oriented-execution/SKILL.md": "d5f7f81b53124b7ac7eeccc5142aee615687795094e5a6468bdc2895037b5e37",
     "skills/principle-outcome-oriented-execution/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
-    "skills/principle-prove-it-works/SKILL.md": "3fb0fedb933d1197c8007919d0c62e446f0f03c1fe634b769af97d5d4be83218",
+    "skills/principle-prove-it-works/SKILL.md": "c8c340e0e35cda6aea0a14201f2b57d6f7f232c6b43c4ffddaccb37162243a59",
     "skills/principle-prove-it-works/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
     "skills/principle-redesign-from-first-principles/SKILL.md": "8d1db3ae590dcf972307b23c5666d8aa10878b939fc9d8e5f4ff7394e3f5622b",
     "skills/principle-redesign-from-first-principles/agents/openai.yaml": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94",
@@ -294,7 +294,7 @@
     "speed": "inherit-parent"
   },
   "profile_mode": "external",
-  "release": "0148b78c56c7-59a8c6173218",
+  "release": "0148b78c56c7-5969be8527a3",
   "repository": "https://github.com/cursor/plugins",
   "schema_version": 1,
   "skills": [
@@ -310,7 +310,7 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Use for \\\"automate me\\\", \\\"create/update/refresh my -mode skill\\\", \\\"turn/capture my preferences or working style into a skill\\\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via skill-creator + unslop, optionally pulling fresh evidence from recent transcripts.",
+      "description": "Use for \"automate me\", \"create/update/refresh my -mode skill\", \"turn/capture my preferences or working style into a skill\", or wanting agents to follow how the user works. Drafts or revises a personal -mode skill via skill-creator + unslop, optionally pulling fresh evidence from recent transcripts.",
       "name": "automate-me"
     },
     {
@@ -335,12 +335,12 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Generate a project-local skill that formally verifies the code where a bug costs the most and tests reach the least, in any language, with whichever verification tool fits. Use for /create-formal-verification-skill, \\\"model-check this race\\\", \\\"prove this invariant\\\", or when concurrency, retries, state machines, parsers, or unsafe code need more than tests.",
+      "description": "Generate a project-local skill that formally verifies the code where a bug costs the most and tests reach the least, in any language, with whichever verification tool fits. Use for /create-formal-verification-skill, \"model-check this race\", \"prove this invariant\", or when concurrency, retries, state machines, parsers, or unsafe code need more than tests.",
       "name": "create-formal-verification-skill"
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Generate a project-local verification skill that drives your app the way a user does \u2014 any language, framework, or platform. Use for /create-verification-skill, \\\"make a control skill for this repo\\\", or when a project has no scripted way to prove UI/CLI/service behavior.",
+      "description": "Generate a project-local verification skill that drives your app the way a user does \u2014 any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior.",
       "name": "create-verification-skill"
     },
     {
@@ -350,7 +350,7 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Use for \\\"how does X work\\\", code walkthroughs before changing something, and placement / ownership / layering questions (\\\"where should this live\\\", \\\"which package owns this\\\", \\\"is this the right layer\\\"). Explains subsystem architecture, runtime flow, onboarding mental models. Use why for motivation.",
+      "description": "Use for \"how does X work\", code walkthroughs before changing something, and placement / ownership / layering questions (\"where should this live\", \"which package owns this\", \"is this the right layer\"). Explains subsystem architecture, runtime flow, onboarding mental models. Use why for motivation.",
       "name": "how"
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Use for \\\"interrogate\\\", \\\"adversarial review\\\", \\\"multi-model review\\\", \\\"challenge this\\\", \\\"stress test this code\\\", \\\"find blind spots\\\", or \\\"tear this apart\\\". Multiple LLM reviewers challenge changes from independent angles.",
+      "description": "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles.",
       "name": "interrogate"
     },
     {
@@ -370,7 +370,7 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Periodic pass that keeps a project's verification skill and feature map honest: parallel source readers per feature, one live session driving every feature, at most one PR of proven corrections. Use for /maintain-verification-skill or \\\"audit the verify skill\\\".",
+      "description": "Periodic pass that keeps a project's verification skill and feature map honest: parallel source readers per feature, one live session driving every feature, at most one PR of proven corrections. Use for /maintain-verification-skill or \"audit the verify skill\".",
       "name": "maintain-verification-skill"
     },
     {
@@ -480,7 +480,7 @@
     },
     {
       "allow_implicit_invocation": false,
-      "description": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles.",
+      "description": "Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles.'",
       "name": "principle-prove-it-works"
     },
     {
