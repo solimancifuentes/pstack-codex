@@ -20,8 +20,10 @@ and Dots runtime adapters, external preferences, and explicit invocation rules
 remain in place. See the [update record](verification/upstream-0.15.27.md).
 
 Port 0.2.0 is unpublished. The installation commands below still select v0.1.0.
-Do not use an uncreated version tag. Actual installation, update, rollback, and
-representative workflow checks are required before publishing a new port release.
+Do not use an uncreated version tag. [Cloud validation](verification/cloud-validation-upstream-0.15.27.md)
+verified native CLI installation, update, rollback, loader discovery, and
+representative workflows. Release metadata and installation instructions are
+finalized as part of a separately authorized publication.
 
 ## Future updates
 

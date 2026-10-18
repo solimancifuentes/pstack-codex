@@ -14,8 +14,11 @@ Both upstream plugin manifests report 0.15.27. The upstream repository has no
 GitHub releases or version tags. This identity comes from its versioned source.
 
 The [referenced X announcement](https://x.com/poteto/status/2111926622278521253)
-returned HTTP 403. Its contents remain unverified. Official upstream source is
-the basis for this update.
+was verified in a signed-in cloud browser by the coordinating task. It announces
+pstack v0.15.27 and the beta `create-formal-verification-skill`, matching this
+source pin. This worker's direct HTTP request returned 403; browser verification
+was provided separately. Official upstream source remains the basis for the
+imported files.
 
 Source acquisition used `git archive` from a fresh clone of
 `https://github.com/cursor/plugins.git` at the exact commit. The source manager's
@@ -58,18 +61,17 @@ on a scratch export with modified formal-verification skill content and passes
 again after restoration. The [integrity receipt](export-integrity-upstream-0.15.27.json) records the failure, restoration, and two byte-identical exports.
 The ZIP is local verification output only.
 
-Native discovery is **unverified**. Codex CLI 0.159.2 is present, but
-`codex app-server --stdio` exits before initialization because its configured
-home at `/run/codex-environment/codex-home` is read-only. Redirecting SQLite state
-through a process-local config override creates scratch databases, but startup
-still exits with `Read-only file system`. The [startup stderr](native-startup-upstream-0.15.27.txt) records that failure. No plugin or credentials were installed.
-Bun is absent, so Bun helper tests were not run. Upstream helper sources and the
-port's runtime launcher are unchanged.
+Initial discovery against the configured read-only home failed. Subsequent
+[cloud validation](cloud-validation-upstream-0.15.27.md) used documented child-only
+Codex state roots and verified actual native install, update, rollback,
+remove/reinstall, exact loader identities, Bun helpers, and representative
+workflows. All 79 Python tests and 68 Bun tests pass; strict TypeScript checking
+passes. The discovered harness identity bug is fixed with nine regression tests.
+The newer validation record supersedes the earlier native-discovery and absent-Bun
+limits while preserving their historical receipts.
 
-Actual native installation, update from v0.1.0, rollback to v0.1.0, a representative
-workflow, Desktop behavior, and live Dots execution remain release gates.
-No tag, release, deployment, permission change, merge, or agent-hub update is part
-of this branch.
+No tag, release, deployment, permission change, merge, credentials installation,
+or agent-hub update is part of this branch.
 
 Two [independent review passes](review-upstream-0.15.27.json) found no blocking
 issues. Both inherited the parent model; exact model identity was unavailable.

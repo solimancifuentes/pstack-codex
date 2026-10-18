@@ -1,0 +1,57 @@
+[
+  {
+    "version": "0.1.0",
+    "mode": "dry-run",
+    "exit_code": 0,
+    "result": {
+      "consolidate": [],
+      "dry_run": true,
+      "entry": {
+        "category": "Developer Tools",
+        "name": "pstack-codex",
+        "policy": {
+          "authentication": "ON_INSTALL",
+          "installation": "AVAILABLE"
+        },
+        "source": {
+          "path": "./.codex/pstack-codex/active/plugin",
+          "source": "local"
+        }
+      },
+      "marketplace": "/workspace/pstack-codex/work/release-validation/native-preflight-user/.agents/plugins/marketplace.json",
+      "previous": null,
+      "release": "850d7f2e9f5e-bb56fab3cd36"
+    }
+  },
+  {
+    "version": "0.2.0",
+    "mode": "dry-run",
+    "exit_code": 0,
+    "result": {
+      "consolidate": [],
+      "dry_run": true,
+      "entry": {
+        "category": "Developer Tools",
+        "name": "pstack-codex",
+        "policy": {
+          "authentication": "ON_INSTALL",
+          "installation": "AVAILABLE"
+        },
+        "source": {
+          "path": "./.codex/pstack-codex/active/plugin",
+          "source": "local"
+        }
+      },
+      "marketplace": "/workspace/pstack-codex/work/release-validation/native-preflight-user/.agents/plugins/marketplace.json",
+      "previous": null,
+      "release": "0148b78c56c7-59a8c6173218"
+    }
+  },
+  {
+    "version": "0.2.0",
+    "mode": "native-scope-preflight",
+    "exit_code": 1,
+    "error": "{\n  \"error\": \"Native plugin mutations require the current user home; --user-home cannot sandbox Codex\"\n}",
+    "temporary_user_directory_created": false
+  }
+]

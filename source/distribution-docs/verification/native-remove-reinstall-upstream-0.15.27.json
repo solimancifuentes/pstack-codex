@@ -1,0 +1,29 @@
+{
+  "method": "Actual native CLI removal and reinstall in task-only Codex root; discovery harness expected to reject removed plugin",
+  "remove_exit": 0,
+  "removed_stdout": {
+    "pluginId": "pstack-codex@pstack-codex",
+    "name": "pstack-codex",
+    "marketplaceName": "pstack-codex"
+  },
+  "removed_discovered_skills": 0,
+  "removed_harness_exit": 1,
+  "reinstall_exit": 0,
+  "reinstalled": {
+    "pluginId": "pstack-codex@pstack-codex",
+    "name": "pstack-codex",
+    "marketplaceName": "pstack-codex",
+    "version": "0.2.0",
+    "installedPath": "/workspace/pstack-codex/work/release-validation/native-codex-state/plugins/cache/pstack-codex/pstack-codex/0.2.0",
+    "authPolicy": "ON_INSTALL"
+  },
+  "fresh_discovery": {
+    "output": "/workspace/pstack-codex/work/release-validation/native-discovery-reinstalled.json",
+    "matching_skill_count": 55,
+    "matching_parse_errors": 0,
+    "passed": true
+  },
+  "profile_bytes_preserved": true,
+  "auth_json_created": false,
+  "passed": true
+}
