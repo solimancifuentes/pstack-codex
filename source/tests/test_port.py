@@ -68,6 +68,47 @@ class NativeFixture(port.Installation):
         return "{}"
 
 
+class DescriptionTests(unittest.TestCase):
+    def normalize(self, raw):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "example/SKILL.md"
+            path.parent.mkdir()
+            path.write_text("---\nname: example\ndescription: " + raw + "\n---\n\nBody.\n")
+            result = port.normalize_skill(path, {})
+            generated, _ = port.frontmatter(path.read_text())
+            self.assertEqual(json.loads(generated["description"]), result["description"])
+            first = path.read_bytes()
+            self.assertEqual(port.normalize_skill(path, {}), result)
+            self.assertEqual(path.read_bytes(), first)
+            return result["description"]
+
+    def test_double_quoted_description_decodes_yaml_json_escapes(self):
+        self.assertEqual(self.normalize(r'"Use \"prove this invariant\", C:\\tmp, and \u03bb."'),
+                         'Use "prove this invariant", C:\\tmp, and λ.')
+
+    def test_double_quoted_description_retains_final_apostrophe(self):
+        self.assertEqual(self.normalize('"Verify the real artifact, not \'it compiles.\'"'),
+                         "Verify the real artifact, not 'it compiles.'")
+
+    def test_plain_description_retains_apostrophes(self):
+        self.assertEqual(self.normalize("Explain the team's 'why.'"), "Explain the team's 'why.'")
+
+    def test_single_quoted_description_decodes_doubled_apostrophe(self):
+        self.assertEqual(self.normalize("'Explain the team''s \"why\".'"),
+                         'Explain the team\'s "why".')
+
+    def test_unsupported_quoted_description_fails_before_rewriting(self):
+        for raw in (r'"YAML-only escape \e"', '"unterminated', "'unescaped ' apostrophe'"):
+            with self.subTest(raw=raw), tempfile.TemporaryDirectory() as temporary:
+                path = Path(temporary) / "example/SKILL.md"
+                path.parent.mkdir()
+                path.write_text("---\nname: example\ndescription: " + raw + "\n---\nBody.\n")
+                before = path.read_bytes()
+                with self.assertRaisesRegex(port.PortError, "description"):
+                    port.normalize_skill(path, {})
+                self.assertEqual(path.read_bytes(), before)
+
+
 class BuildTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -82,11 +123,22 @@ class BuildTests(unittest.TestCase):
     def test_deterministic_build_and_full_coverage(self):
         second = port.build(PROJECT, output=Path(self.scratch.name))
         self.assertEqual(second["release"], self.build["release"])
-        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 54)
+        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 55)
         manifest = port.read_json(self.release / "release.json")
         implicit = {row["name"] for row in manifest["skills"] if row["allow_implicit_invocation"]}
         self.assertEqual(implicit, {"setup-pstack", "unslop"})
         self.assertIn("Must always apply.", next(row["description"] for row in manifest["skills"] if row["name"] == "unslop"))
+
+    def test_formal_description_has_plain_trigger_quotes(self):
+        descriptions = {row["name"]: row["description"]
+                        for row in port.read_json(self.release / "release.json")["skills"]}
+        self.assertEqual(descriptions["create-formal-verification-skill"],
+                         'Generate a project-local skill that formally verifies the code where a bug costs '
+                         'the most and tests reach the least, in any language, with whichever verification '
+                         'tool fits. Use for /create-formal-verification-skill, "model-check this race", '
+                         '"prove this invariant", or when concurrency, retries, state machines, parsers, '
+                         'or unsafe code need more than tests.')
+        self.assertTrue(descriptions["principle-prove-it-works"].endswith("'it compiles.'"))
 
     def test_shared_build_never_embeds_supplied_user_profile(self):
         profile = {"schema_version": 1, "model": "PRIVATE_MODEL_SENTINEL_8d5e", 

@@ -17,7 +17,7 @@ Start a task with `$poteto-mode`, the goal, and an observable definition of done
 
 `$setup-pstack` manages an optional local user profile through a concrete reviewed change. If the profile is absent, the shared package defaults work without setup or the separate manager command. Every role inherits the parent model and reasoning by default. A panel can run independent same-model passes. Actual supported and authorized model choices may differ from the parent, but native collaboration does not reproduce the original Claude/Grok provider mix. Slot limits include the coordinator and nested workers. Larger panels queue.
 
-The upstream explicit-only skills retain their invocation intent, with the package's documented `unslop` default and any user-specific invocation overrides preserved. Eligibility does not guarantee automatic selection. A composed workflow may read sibling skills intentionally. This does not mean all 54 skills run on every turn. `setup-pstack` remains discoverable for setup requests.
+The upstream explicit-only skills retain their invocation intent, with the package's documented `unslop` default and any user-specific invocation overrides preserved. Eligibility does not guarantee automatic selection. A composed workflow may read sibling skills intentionally. This does not mean all 55 skills run on every turn. `setup-pstack` remains discoverable for setup requests.
 
 ## Pick a skill
 
@@ -30,7 +30,7 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Investigate rationale and history | [why](../why/SKILL.md) |
 | Teach a system or change plainly | [teach](../teach/SKILL.md) |
 | Reconstruct recent scoped work | [recall](../recall/SKILL.md) |
-| Catch up on this chat | [ketchup](../ketchup/SKILL.md) |
+| Catch up on this chat in plain words and small visuals, with every item waiting on the user listed and decidable from the reply alone | [ketchup](../ketchup/SKILL.md) |
 | Trace breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Explore types and module shape before implementation | [architect](../architect/SKILL.md) |
 | Compare independent candidate artifacts, then synthesize | [arena](../arena/SKILL.md) |
@@ -44,6 +44,7 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Restate the previous reply plainly | [bro](../bro/SKILL.md) |
 | Create an app verification harness skill | [create-verification-skill](../create-verification-skill/SKILL.md) |
 | Audit the verification skill and every mapped feature | [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
+| Formally verify a race, invariant, or other property that tests rarely reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
 | Validate performance measurements | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | Design a rigorous bespoke run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Keep and audit a decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |

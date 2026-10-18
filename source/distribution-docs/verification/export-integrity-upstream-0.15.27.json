@@ -1,0 +1,11 @@
+{
+  "command": "python3 <scratch-export>/source/tests/verify_repository.py",
+  "unmodified_exit_code": 0,
+  "mutation": "Append a scratch line to packaged create-formal-verification-skill/SKILL.md",
+  "mutated_exit_code": 1,
+  "mutated_stderr": "Tracked plugin differs from the reproducible build",
+  "restored_exit_code": 0,
+  "identical_exports": true,
+  "archive_sha256": "76a766b5aef817df6851d45e1608a011dfac4bdf7bb84ad776a8472c27027d98",
+  "payload_release": "0148b78c56c7-59a8c6173218"
+}

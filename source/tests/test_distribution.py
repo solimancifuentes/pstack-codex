@@ -84,7 +84,7 @@ class DistributionTests(unittest.TestCase):
             self.assertTrue({"node_modules", "standalone-originals", "backups", "verification", ".git", "__pycache__"}.isdisjoint(parts), key)
         self.assertIn("defaults.json", payload)
         self.assertIn("LICENSE", payload)
-        self.assertEqual(len([key for key in payload if re.fullmatch(r"skills/[^/]+/SKILL.md", key)]), 54)
+        self.assertEqual(len([key for key in payload if re.fullmatch(r"skills/[^/]+/SKILL.md", key)]), 55)
 
     def test_root_and_compatibility_metadata_match(self):
         payload = self.zip_payload()

@@ -2,7 +2,7 @@
 
 <img src="plugins/pstack-codex/assets/pstack.png" alt="pstack glass potato logo" width="160" height="160">
 
-[pstack](https://github.com/cursor/plugins/tree/f713f14203cd6420cec13cd7c55c32d598dbab68/pstack) is [Lauren Tan's](https://x.com/poteto) engineering workflow. Lauren, [@poteto on X](https://x.com/poteto), created the original skills, principles, playbooks, and agent prompts. All credit for the original pstack belongs to her.
+[pstack](https://github.com/cursor/plugins/tree/0148b78c56c72a1b8412055913c79f767095b217/pstack) is [Lauren Tan's](https://x.com/poteto) engineering workflow. Lauren, [@poteto on X](https://x.com/poteto), created the original skills, principles, playbooks, and agent prompts. All credit for the original pstack belongs to her.
 
 This repository is an independent adaptation for Codex, maintained by Soliman Cifuentes. It keeps Lauren's approach and changes the parts that depend on Cursor's tools, model routing, and installation format.
 
@@ -10,13 +10,13 @@ An agent can write a plausible fix before it understands the bug. Then you spend
 
 That also gives parallel work a useful constraint. Each worker gets a scope and a check, and the coordinator has to assemble evidence before declaring the job done. More workers only help if you can tell what they did.
 
-The port contains **54 skills, 24 engineering principles, and 23 playbooks**. Codex supplies the models, execution tools, and permissions. pstack supplies the workflow.
+The port contains **55 skills, 24 engineering principles, and 23 playbooks**. Codex supplies the models, execution tools, and permissions. pstack supplies the workflow.
 
 ## install
 
 You can install from GitHub now. This repository is a custom Codex marketplace; pstack is not currently listed in OpenAI's public Plugins directory.
 
-`v0.1.0` is the starting release. If you're already using it, no update or rollback is needed.
+This checkout prepares **port 0.2.0** from upstream pstack **0.15.27**. It is unpublished. `v0.1.0` remains the supported installation tag and contains 54 skills. Existing installations stay on that tag until a reviewed port release is published.
 
 With a recent [Codex CLI](https://learn.chatgpt.com/docs/codex/cli):
 
@@ -150,6 +150,7 @@ tests miss, and keep the review read-only.
 | [benchmark-checklist](plugins/pstack-codex/skills/benchmark-checklist/SKILL.md) | A performance claim needs a trustworthy measurement. |
 | [create-verification-skill](plugins/pstack-codex/skills/create-verification-skill/SKILL.md) | A project needs a repeatable way to verify real behavior. |
 | [maintain-verification-skill](plugins/pstack-codex/skills/maintain-verification-skill/SKILL.md) | A verification workflow needs to keep up with the product. |
+| [create-formal-verification-skill](plugins/pstack-codex/skills/create-formal-verification-skill/SKILL.md) | A race or invariant needs verification beyond tests. |
 | [show-me-your-work](plugins/pstack-codex/skills/show-me-your-work/SKILL.md) | You want a decision trail you can inspect later. |
 
 </details>
@@ -226,11 +227,11 @@ The same package includes a Dots adapter. Local workflows need a connected compu
 
 ## updates and source
 
-The port is based on Lauren's pstack at [`850d7f2e9f5e55dff7eb00a0a479337fe79eb22f`](https://github.com/cursor/plugins/tree/850d7f2e9f5e55dff7eb00a0a479337fe79eb22f/pstack). [`source/source.lock.json`](source/source.lock.json) records the exact upstream files included in the adaptation.
+The port is based on Lauren's pstack at [`0148b78c56c72a1b8412055913c79f767095b217`](https://github.com/cursor/plugins/tree/0148b78c56c72a1b8412055913c79f767095b217/pstack). [`source/source.lock.json`](source/source.lock.json) records the exact upstream files included in the adaptation.
 
 `v0.1.0` is the first supported release, with no earlier public version to update from or roll back to. [UPDATES.md](UPDATES.md) explains how future releases will handle updates and rollback. Maintainer updates review upstream changes and publish tested port versions. Install those releases rather than copying unadapted Cursor instructions into Codex.
 
-The reproducible maintainer source, upstream snapshot, adapters, and tests are in [`source/`](source/). Build with `python3 source/pstack.py build` and run checks with `python3 -m unittest discover -s source/tests -v`.
+The [0.15.27 update record](verification/upstream-0.15.27.md) describes the source comparison and checks. The reproducible maintainer source, upstream snapshot, adapters, and tests are in [`source/`](source/). Build with `python3 source/pstack.py build` and run checks with `python3 -m unittest discover -s source/tests -v`.
 
 ## license
 

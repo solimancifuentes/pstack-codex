@@ -1,319 +1,4 @@
 {
-  "schema_version": 1,
-  "files": [
-    {
-      "source": "agents/comment-sicko.md",
-      "overlay": "files/agents/comment-sicko.md",
-      "sha256": "3e239e40b7b4b9beb2cf7f3ccc57f2388eb8b69bd1ba8ae888ef87ef6e0e2116",
-      "reason": "Convert source comment reviewer into enforced-by-instruction read-only proposal contract"
-    },
-    {
-      "source": "agents/poteto-agent.md",
-      "overlay": "files/agents/poteto-agent.md",
-      "sha256": "979f18abd000d185a0b4c41a2a4111c0910596a7f5c81cbb571885bc721b2bf7",
-      "reason": "Replace Cursor custom-agent registration and cache discovery with prompt reference"
-    },
-    {
-      "source": "skills/architect/SKILL.md",
-      "overlay": "files/skills/architect/SKILL.md",
-      "sha256": "31f8e97a52bfa5432edd61f68ade2a8632ef0bacbc2d2a6802d7a0e6821944ac",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/arena/SKILL.md",
-      "overlay": "files/skills/arena/SKILL.md",
-      "sha256": "ed72f6c132b1ce3974d949581d0adc5dade424fe20793ac3b4c4fae22ecb9354",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/automate-me/SKILL.md",
-      "overlay": "files/skills/automate-me/SKILL.md",
-      "sha256": "30b35f3628c4fd8c11af0ada06d14cdc3b28901810caca2480f627d4d21acfbe",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/blast-radius/SKILL.md",
-      "overlay": "files/skills/blast-radius/SKILL.md",
-      "sha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/create-verification-skill/SKILL.md",
-      "overlay": "files/skills/create-verification-skill/SKILL.md",
-      "sha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/figure-it-out/SKILL.md",
-      "overlay": "files/skills/figure-it-out/SKILL.md",
-      "sha256": "bdb23cdbd82a1e6af094b495691c832a6f7f3ab9706ba9edbeb664ef51a726e1",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/how/SKILL.md",
-      "overlay": "files/skills/how/SKILL.md",
-      "sha256": "08a00079bb15b4258874ac3ff62d4ca7e94350ffedb521d0fd296dc9dd21904e",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/how/references/explainer-prompt.md",
-      "overlay": "files/skills/how/references/explainer-prompt.md",
-      "sha256": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/interrogate/SKILL.md",
-      "overlay": "files/skills/interrogate/SKILL.md",
-      "sha256": "a16dfe179005abc22a4651b82f25b0c8ab953284276efe4e6dc341958fb63647",
-      "reason": "Replace unsupported runtime section while preserving workflow and evidence contract"
-    },
-    {
-      "source": "skills/maintain-verification-skill/SKILL.md",
-      "overlay": "files/skills/maintain-verification-skill/SKILL.md",
-      "sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/make-bot-ui/SKILL.md",
-      "overlay": "files/skills/make-bot-ui/SKILL.md",
-      "sha256": "3624c8ef16cf2e48deb2a4049e72c6962a9431c8d6c6af90e7bd7ea0375224ec",
-      "reason": "Mark unavailable Cursor/Grok Bot workflow diagnostic-only, retain untouched source"
-    },
-    {
-      "source": "skills/no-comments/SKILL.md",
-      "overlay": "files/skills/no-comments/SKILL.md",
-      "sha256": "078ecfe224eafbb017f6476870612838bf6dbe38c0b697e12f0c887d0313f17e",
-      "reason": "Clarify independent read-only reviewer plus coordinator application and protected comments"
-    },
-    {
-      "source": "skills/poteto-help/SKILL.md",
-      "overlay": "files/skills/poteto-help/SKILL.md",
-      "sha256": "1b0645c25200a19e5863583e117bad684b1b79ba8434823ebf4f6bbcc61e8a75",
-      "reason": "Rewrite help around actual Codex capability map while preserving all skill/playbook routing"
-    },
-    {
-      "source": "skills/poteto-help/references/prompting.md",
-      "overlay": "files/skills/poteto-help/references/prompting.md",
-      "sha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-help/references/recipes.md",
-      "overlay": "files/skills/poteto-help/references/recipes.md",
-      "sha256": "5fb97a805976a82db0aba5cc8943e88d0cb38b17a0d6b8e89a44633677febb1a",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/SKILL.md",
-      "overlay": "files/skills/poteto-mode/SKILL.md",
-      "sha256": "f234661471847cafc4ae9bcb4a9208eb32ed8154ac25b91b2b064ec71bd62167",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/authoring-a-skill.md",
-      "overlay": "files/skills/poteto-mode/playbooks/authoring-a-skill.md",
-      "sha256": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/autonomous-run.md",
-      "overlay": "files/skills/poteto-mode/playbooks/autonomous-run.md",
-      "sha256": "6ac974fd2b09748add56493e89f578a35a6a9289e1026515878d81ef3cf129d1",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "overlay": "files/skills/poteto-mode/playbooks/autopilot-full.md",
-      "sha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "overlay": "files/skills/poteto-mode/playbooks/autopilot-stack.md",
-      "sha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/babysit.md",
-      "overlay": "files/skills/poteto-mode/playbooks/babysit.md",
-      "sha256": "e261c1ff5581e0f8fc6c686f34de4b535f87473e77beabea7dd8323021214610",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/bug-fix.md",
-      "overlay": "files/skills/poteto-mode/playbooks/bug-fix.md",
-      "sha256": "66e26542dad131cfd7df80ac0cdf81ed4d85e7b5e3f0eb65b933888760c4831f",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/eval.md",
-      "overlay": "files/skills/poteto-mode/playbooks/eval.md",
-      "sha256": "a93d449a908236afa6645179651844094b1547dbab4e484cffcdda630e4b90bf",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/feature.md",
-      "overlay": "files/skills/poteto-mode/playbooks/feature.md",
-      "sha256": "af8ce700b99953741cb547e34308fde0cf6b98ce67e1652c800d0deedf53aba1",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/hillclimb.md",
-      "overlay": "files/skills/poteto-mode/playbooks/hillclimb.md",
-      "sha256": "942c1565b75ad02a2cb6230dd7c1ebd87e19f59a00319ebac2b6616007bf018f",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/investigation.md",
-      "overlay": "files/skills/poteto-mode/playbooks/investigation.md",
-      "sha256": "dc66bcf6af3a074fc7f67aa5e12b93ef571a4fb4d8e17f2f1af5ae5359f42e46",
-      "reason": "Preserve complete playbook and bind actual Codex runtime contract"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "overlay": "files/skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "sha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "overlay": "files/skills/poteto-mode/playbooks/opening-a-pr.md",
-      "sha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/orchestrate.md",
-      "overlay": "files/skills/poteto-mode/playbooks/orchestrate.md",
-      "sha256": "08dce6c9e7be1d13bc6944ab9b51665f935c531437f5e088bc53d2a62099ef05",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/pause-safely.md",
-      "overlay": "files/skills/poteto-mode/playbooks/pause-safely.md",
-      "sha256": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/perf-issue.md",
-      "overlay": "files/skills/poteto-mode/playbooks/perf-issue.md",
-      "sha256": "c12aa2f82de7651a11676a3d5fea168f539b7f0faaa3a501d279255dd2a469c8",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/prototype.md",
-      "overlay": "files/skills/poteto-mode/playbooks/prototype.md",
-      "sha256": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
-      "reason": "Preserve complete playbook and bind actual Codex runtime contract"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/refactoring.md",
-      "overlay": "files/skills/poteto-mode/playbooks/refactoring.md",
-      "sha256": "0f5dd38113379ea8cf61e2182eca0a7478eea9a869eb40c2dddab3335aeca197",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/runtime-forensics.md",
-      "overlay": "files/skills/poteto-mode/playbooks/runtime-forensics.md",
-      "sha256": "3463372b578c28f27c236f2627f09b5c5b1e85e86db7399fb984f3892fb450f5",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/session-pickup.md",
-      "overlay": "files/skills/poteto-mode/playbooks/session-pickup.md",
-      "sha256": "d194f2a7ef392c1598ef3f0e3b561370ca25c2c7a78308007af4aa46ada8ee12",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/shipping.md",
-      "overlay": "files/skills/poteto-mode/playbooks/shipping.md",
-      "sha256": "bf56339bdf7e0223bcff5abf4e8599e3f5b547b3fcc3b4ce9475e6e7dda14a9f",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/trace-forensics.md",
-      "overlay": "files/skills/poteto-mode/playbooks/trace-forensics.md",
-      "sha256": "ef0bbf79856a4ae1a8993d54c1a1da159cb97623941b652c0069cf75a017e0f5",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/visual-parity.md",
-      "overlay": "files/skills/poteto-mode/playbooks/visual-parity.md",
-      "sha256": "950ca51999a6454c98eee6bcbc3d1bbe501a4e3a5d5439b6f6ddc378991b256c",
-      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail"
-    },
-    {
-      "source": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "overlay": "files/skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "sha256": "be04ae0afe19d4a4da5bcc4e94455f68dbebd1cda6eb0f456ca0d358ecf76c00",
-      "reason": "Replace Cursor transcript/deletion helper with actual Git and Codex ownership checks"
-    },
-    {
-      "source": "skills/principle-never-block-on-the-human/SKILL.md",
-      "overlay": "files/skills/principle-never-block-on-the-human/SKILL.md",
-      "sha256": "05030a7a083c337676f793881b4e93cd218e8f1dd676529f56e6ac1d3efb8d1f",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/recall/SKILL.md",
-      "overlay": "files/skills/recall/SKILL.md",
-      "sha256": "b0ceb996259c3404532f61e4b010df4e3d80d7ddbed85b3c302895723eb62a89",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/reflect/SKILL.md",
-      "overlay": "files/skills/reflect/SKILL.md",
-      "sha256": "1f5a8c246cdee8251f8667d85bd5d97f6c2801f505843c26ddbd6c621632519b",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/reflect/references/divergent-reviewer.md",
-      "overlay": "files/skills/reflect/references/divergent-reviewer.md",
-      "sha256": "f6030d88e20e906ef5e2d9ba44cb013ce610c49c2fe2ef74c377d32e0dc9e939",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/reflect/references/judgment-reviewer.md",
-      "overlay": "files/skills/reflect/references/judgment-reviewer.md",
-      "sha256": "38f917619fbf346062d643e0ad6b12fc952d58678dfcbbf42ffcf6d8b9c08307",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/reflect/references/synthesizer.md",
-      "overlay": "files/skills/reflect/references/synthesizer.md",
-      "sha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/reflect/references/tooling-reviewer.md",
-      "overlay": "files/skills/reflect/references/tooling-reviewer.md",
-      "sha256": "f81b8697e7366fbbc18feba52c6e3253a101f751091364ebc4396a1d9b5753b4",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/setup-pstack/SKILL.md",
-      "overlay": "files/skills/setup-pstack/SKILL.md",
-      "sha256": "d61b47256a18155a81c8e5ef95e3cc6569ce8c18317c35c4dd9c8015cf68cb59",
-      "reason": "Replace Cursor rule writer with scoped Codex profile configuration preserving user choices"
-    },
-    {
-      "source": "skills/show-me-your-work/SKILL.md",
-      "overlay": "files/skills/show-me-your-work/SKILL.md",
-      "sha256": "920a8217cbb62f92a2222fb81fc9eab17ecd554a0277e444a95a927195139bd1",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    },
-    {
-      "source": "skills/swarm/SKILL.md",
-      "overlay": "files/skills/swarm/SKILL.md",
-      "sha256": "c8fe1b28282e7a051a4041a146a11f076e0fd95252bb010106a58209805303d5",
-      "reason": "Replace unsupported runtime section while preserving workflow and evidence contract"
-    },
-    {
-      "source": "skills/why/SKILL.md",
-      "overlay": "files/skills/why/SKILL.md",
-      "sha256": "144d42e7712723d763e607bc0a969e5f1cdf83ec7228519d87677cc534571bed",
-      "reason": "Translate Cursor runtime into Codex with source workflow retained"
-    }
-  ],
   "additional_files": [
     {
       "source": "CODEX.md",
@@ -335,5 +20,320 @@
       "source": "assets/pstack.png",
       "target": "assets/pstack.png"
     }
-  ]
+  ],
+  "files": [
+    {
+      "overlay": "files/agents/comment-sicko.md",
+      "reason": "Convert source comment reviewer into enforced-by-instruction read-only proposal contract",
+      "sha256": "3e239e40b7b4b9beb2cf7f3ccc57f2388eb8b69bd1ba8ae888ef87ef6e0e2116",
+      "source": "agents/comment-sicko.md"
+    },
+    {
+      "overlay": "files/agents/poteto-agent.md",
+      "reason": "Replace Cursor custom-agent registration and cache discovery with prompt reference",
+      "sha256": "979f18abd000d185a0b4c41a2a4111c0910596a7f5c81cbb571885bc721b2bf7",
+      "source": "agents/poteto-agent.md"
+    },
+    {
+      "overlay": "files/skills/architect/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "31f8e97a52bfa5432edd61f68ade2a8632ef0bacbc2d2a6802d7a0e6821944ac",
+      "source": "skills/architect/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/arena/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "ed72f6c132b1ce3974d949581d0adc5dade424fe20793ac3b4c4fae22ecb9354",
+      "source": "skills/arena/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/automate-me/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "30b35f3628c4fd8c11af0ada06d14cdc3b28901810caca2480f627d4d21acfbe",
+      "source": "skills/automate-me/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/blast-radius/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
+      "source": "skills/blast-radius/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/create-verification-skill/SKILL.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
+      "source": "skills/create-verification-skill/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/figure-it-out/SKILL.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "bdb23cdbd82a1e6af094b495691c832a6f7f3ab9706ba9edbeb664ef51a726e1",
+      "source": "skills/figure-it-out/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/how/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "08a00079bb15b4258874ac3ff62d4ca7e94350ffedb521d0fd296dc9dd21904e",
+      "source": "skills/how/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/how/references/explainer-prompt.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
+      "source": "skills/how/references/explainer-prompt.md"
+    },
+    {
+      "overlay": "files/skills/interrogate/SKILL.md",
+      "reason": "Replace unsupported runtime section while preserving workflow and evidence contract",
+      "sha256": "a16dfe179005abc22a4651b82f25b0c8ab953284276efe4e6dc341958fb63647",
+      "source": "skills/interrogate/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/maintain-verification-skill/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",
+      "source": "skills/maintain-verification-skill/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/make-bot-ui/SKILL.md",
+      "reason": "Mark unavailable Cursor/Grok Bot workflow diagnostic-only, retain untouched source",
+      "sha256": "ad19d0bc6764287ec08c2521701974e7dac941f72e4d0fe81a24f4614494586f",
+      "source": "skills/make-bot-ui/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/no-comments/SKILL.md",
+      "reason": "Clarify independent read-only reviewer plus coordinator application and protected comments",
+      "sha256": "078ecfe224eafbb017f6476870612838bf6dbe38c0b697e12f0c887d0313f17e",
+      "source": "skills/no-comments/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/poteto-help/SKILL.md",
+      "reason": "Rewrite help around actual Codex capability map while preserving all skill/playbook routing",
+      "sha256": "ef80c5480b4e9403635036282a9f90d9c3e79ca65e5fb74f96583f320c00c029",
+      "source": "skills/poteto-help/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/poteto-help/references/prompting.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+      "source": "skills/poteto-help/references/prompting.md"
+    },
+    {
+      "overlay": "files/skills/poteto-help/references/recipes.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "5fb97a805976a82db0aba5cc8943e88d0cb38b17a0d6b8e89a44633677febb1a",
+      "source": "skills/poteto-help/references/recipes.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "2755f102e7a6d0496b429d1031a22fb353e1f3d523543367caeaae5c4ed6f544",
+      "source": "skills/poteto-mode/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/authoring-a-skill.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa",
+      "source": "skills/poteto-mode/playbooks/authoring-a-skill.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/autonomous-run.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "6ac974fd2b09748add56493e89f578a35a6a9289e1026515878d81ef3cf129d1",
+      "source": "skills/poteto-mode/playbooks/autonomous-run.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/autopilot-full.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
+      "source": "skills/poteto-mode/playbooks/autopilot-full.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/autopilot-stack.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
+      "source": "skills/poteto-mode/playbooks/autopilot-stack.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/babysit.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "e261c1ff5581e0f8fc6c686f34de4b535f87473e77beabea7dd8323021214610",
+      "source": "skills/poteto-mode/playbooks/babysit.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/bug-fix.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "66e26542dad131cfd7df80ac0cdf81ed4d85e7b5e3f0eb65b933888760c4831f",
+      "source": "skills/poteto-mode/playbooks/bug-fix.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/eval.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "a93d449a908236afa6645179651844094b1547dbab4e484cffcdda630e4b90bf",
+      "source": "skills/poteto-mode/playbooks/eval.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/feature.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "af8ce700b99953741cb547e34308fde0cf6b98ce67e1652c800d0deedf53aba1",
+      "source": "skills/poteto-mode/playbooks/feature.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/hillclimb.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "942c1565b75ad02a2cb6230dd7c1ebd87e19f59a00319ebac2b6616007bf018f",
+      "source": "skills/poteto-mode/playbooks/hillclimb.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/investigation.md",
+      "reason": "Preserve complete playbook and bind actual Codex runtime contract",
+      "sha256": "dc66bcf6af3a074fc7f67aa5e12b93ef571a4fb4d8e17f2f1af5ae5359f42e46",
+      "source": "skills/poteto-mode/playbooks/investigation.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/multi-phase-plan.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
+      "source": "skills/poteto-mode/playbooks/multi-phase-plan.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/opening-a-pr.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
+      "source": "skills/poteto-mode/playbooks/opening-a-pr.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/orchestrate.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "08dce6c9e7be1d13bc6944ab9b51665f935c531437f5e088bc53d2a62099ef05",
+      "source": "skills/poteto-mode/playbooks/orchestrate.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/pause-safely.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
+      "source": "skills/poteto-mode/playbooks/pause-safely.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/perf-issue.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "c12aa2f82de7651a11676a3d5fea168f539b7f0faaa3a501d279255dd2a469c8",
+      "source": "skills/poteto-mode/playbooks/perf-issue.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/prototype.md",
+      "reason": "Preserve complete playbook and bind actual Codex runtime contract",
+      "sha256": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
+      "source": "skills/poteto-mode/playbooks/prototype.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/refactoring.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "0f5dd38113379ea8cf61e2182eca0a7478eea9a869eb40c2dddab3335aeca197",
+      "source": "skills/poteto-mode/playbooks/refactoring.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/runtime-forensics.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "3463372b578c28f27c236f2627f09b5c5b1e85e86db7399fb984f3892fb450f5",
+      "source": "skills/poteto-mode/playbooks/runtime-forensics.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/session-pickup.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "d194f2a7ef392c1598ef3f0e3b561370ca25c2c7a78308007af4aa46ada8ee12",
+      "source": "skills/poteto-mode/playbooks/session-pickup.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/shipping.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "bf56339bdf7e0223bcff5abf4e8599e3f5b547b3fcc3b4ce9475e6e7dda14a9f",
+      "source": "skills/poteto-mode/playbooks/shipping.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/trace-forensics.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "ef0bbf79856a4ae1a8993d54c1a1da159cb97623941b652c0069cf75a017e0f5",
+      "source": "skills/poteto-mode/playbooks/trace-forensics.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/visual-parity.md",
+      "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
+      "sha256": "950ca51999a6454c98eee6bcbc3d1bbe501a4e3a5d5439b6f6ddc378991b256c",
+      "source": "skills/poteto-mode/playbooks/visual-parity.md"
+    },
+    {
+      "overlay": "files/skills/poteto-mode/playbooks/worktree-cleanup.md",
+      "reason": "Replace Cursor transcript/deletion helper with actual Git and Codex ownership checks",
+      "sha256": "be04ae0afe19d4a4da5bcc4e94455f68dbebd1cda6eb0f456ca0d358ecf76c00",
+      "source": "skills/poteto-mode/playbooks/worktree-cleanup.md"
+    },
+    {
+      "overlay": "files/skills/principle-never-block-on-the-human/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "05030a7a083c337676f793881b4e93cd218e8f1dd676529f56e6ac1d3efb8d1f",
+      "source": "skills/principle-never-block-on-the-human/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/recall/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "b0ceb996259c3404532f61e4b010df4e3d80d7ddbed85b3c302895723eb62a89",
+      "source": "skills/recall/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/reflect/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "1f5a8c246cdee8251f8667d85bd5d97f6c2801f505843c26ddbd6c621632519b",
+      "source": "skills/reflect/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/reflect/references/divergent-reviewer.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "f6030d88e20e906ef5e2d9ba44cb013ce610c49c2fe2ef74c377d32e0dc9e939",
+      "source": "skills/reflect/references/divergent-reviewer.md"
+    },
+    {
+      "overlay": "files/skills/reflect/references/judgment-reviewer.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "38f917619fbf346062d643e0ad6b12fc952d58678dfcbbf42ffcf6d8b9c08307",
+      "source": "skills/reflect/references/judgment-reviewer.md"
+    },
+    {
+      "overlay": "files/skills/reflect/references/synthesizer.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
+      "source": "skills/reflect/references/synthesizer.md"
+    },
+    {
+      "overlay": "files/skills/reflect/references/tooling-reviewer.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "f81b8697e7366fbbc18feba52c6e3253a101f751091364ebc4396a1d9b5753b4",
+      "source": "skills/reflect/references/tooling-reviewer.md"
+    },
+    {
+      "overlay": "files/skills/setup-pstack/SKILL.md",
+      "reason": "Replace Cursor rule writer with scoped Codex profile configuration preserving user choices",
+      "sha256": "d61b47256a18155a81c8e5ef95e3cc6569ce8c18317c35c4dd9c8015cf68cb59",
+      "source": "skills/setup-pstack/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/show-me-your-work/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "920a8217cbb62f92a2222fb81fc9eab17ecd554a0277e444a95a927195139bd1",
+      "source": "skills/show-me-your-work/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/swarm/SKILL.md",
+      "reason": "Replace unsupported runtime section while preserving workflow and evidence contract",
+      "sha256": "031657cb81e490f9aed5c75d6ff2a4fda35ccafbaf72be604e59481cc4080cdc",
+      "source": "skills/swarm/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/why/SKILL.md",
+      "reason": "Translate Cursor runtime into Codex with source workflow retained",
+      "sha256": "144d42e7712723d763e607bc0a969e5f1cdf83ec7228519d87677cc534571bed",
+      "source": "skills/why/SKILL.md"
+    }
+  ],
+  "schema_version": 1
 }

@@ -1,0 +1,826 @@
+{
+  "baseline.json": {
+    "bound": {
+      "concrete_traces": 288,
+      "data_cases": 48,
+      "initial_profiles": 4,
+      "ordered_proposal_pairs_per_initial": 12,
+      "schedules_per_case": 6,
+      "updates_per_writer": 1,
+      "writers": 2
+    },
+    "counterexamples": {
+      "stronger_concurrent_preservation": {
+        "both_calls_returned_written_true": true,
+        "data_case": 0,
+        "final": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "model": "inherit-parent",
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "holds": false,
+        "initial": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "mismatches": [
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": 3,
+            "path": [
+              "panels",
+              "arena"
+            ]
+          }
+        ],
+        "proposal_shape": "top-level",
+        "proposals": {
+          "A": {
+            "panels": {
+              "arena": 3
+            }
+          },
+          "B": {
+            "model": "inherit-parent"
+          }
+        },
+        "schedule": [
+          "A.read",
+          "B.read",
+          "A.replace",
+          "B.replace"
+        ],
+        "serial": false,
+        "trace": [
+          {
+            "event": "A.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "A.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "panels": {
+                "arena": 3
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "model": "inherit-parent",
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "documented_serial_preservation": {
+      "checked": 96,
+      "failed": 0,
+      "passed": 96
+    },
+    "method": "bounded exhaustive concrete interleaving exploration",
+    "python": "3.12.14",
+    "reviewed_scratch_mutation": false,
+    "scope": "Valid pre-existing regular scratch profile; fixed disjoint leaf proposals; no crash, path attacker, external writer or I/O failure. Concurrent preservation is a stronger extension, not a documented thread-safety guarantee.",
+    "source": "/workspace/pstack-codex/source/runtime/runtime.py",
+    "source_sha256": "531b3ede8b35ae3222d76c8330e6c3ceb7a29233b9b49cc436b04e6f0c24a65f",
+    "status": "ISSUES",
+    "stronger_concurrent_preservation": {
+      "checked": 192,
+      "failed": 192,
+      "passed": 0
+    },
+    "local_trace_sha256": "5dcb1023596befd39b2fd66326d95c70f3af35e57ce69805844140aaad16b7ec"
+  },
+  "mutant.json": {
+    "bound": {
+      "concrete_traces": 288,
+      "data_cases": 48,
+      "initial_profiles": 4,
+      "ordered_proposal_pairs_per_initial": 12,
+      "schedules_per_case": 6,
+      "updates_per_writer": 1,
+      "writers": 2
+    },
+    "counterexamples": {
+      "documented_serial_preservation": {
+        "both_calls_returned_written_true": true,
+        "data_case": 1,
+        "final": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "roles": {
+            "reviewer": {
+              "speed": "inherit-parent"
+            }
+          }
+        },
+        "holds": false,
+        "initial": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "mismatches": [
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": false,
+            "path": [
+              "roles",
+              "reviewer",
+              "extra"
+            ]
+          },
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": "inherit-parent",
+            "path": [
+              "roles",
+              "reviewer",
+              "model"
+            ]
+          },
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": "high",
+            "path": [
+              "roles",
+              "reviewer",
+              "reasoning_effort"
+            ]
+          }
+        ],
+        "proposal_shape": "shared-role",
+        "proposals": {
+          "A": {
+            "roles": {
+              "reviewer": {
+                "reasoning_effort": "high"
+              }
+            }
+          },
+          "B": {
+            "roles": {
+              "reviewer": {
+                "speed": "inherit-parent"
+              }
+            }
+          }
+        },
+        "schedule": [
+          "A.read",
+          "A.replace",
+          "B.read",
+          "B.replace"
+        ],
+        "serial": true,
+        "trace": [
+          {
+            "event": "A.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "A.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "reasoning_effort": "high"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "reasoning_effort": "high"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "speed": "inherit-parent"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "stronger_concurrent_preservation": {
+        "both_calls_returned_written_true": true,
+        "data_case": 0,
+        "final": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "model": "inherit-parent",
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "holds": false,
+        "initial": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "mismatches": [
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": 3,
+            "path": [
+              "panels",
+              "arena"
+            ]
+          }
+        ],
+        "proposal_shape": "top-level",
+        "proposals": {
+          "A": {
+            "panels": {
+              "arena": 3
+            }
+          },
+          "B": {
+            "model": "inherit-parent"
+          }
+        },
+        "schedule": [
+          "A.read",
+          "B.read",
+          "A.replace",
+          "B.replace"
+        ],
+        "serial": false,
+        "trace": [
+          {
+            "event": "A.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "A.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "panels": {
+                "arena": 3
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "model": "inherit-parent",
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "documented_serial_preservation": {
+      "checked": 96,
+      "failed": 64,
+      "passed": 32
+    },
+    "method": "bounded exhaustive concrete interleaving exploration",
+    "python": "3.12.14",
+    "reviewed_scratch_mutation": true,
+    "scope": "Valid pre-existing regular scratch profile; fixed disjoint leaf proposals; no crash, path attacker, external writer or I/O failure. Concurrent preservation is a stronger extension, not a documented thread-safety guarantee.",
+    "source": "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/runtime.py",
+    "source_sha256": "e1cb45dd28e98e62e609b196cd383de40c59f62cdfe604f76f1ec34063e3cd3b",
+    "status": "ISSUES",
+    "stronger_concurrent_preservation": {
+      "checked": 192,
+      "failed": 192,
+      "passed": 0
+    },
+    "local_trace_sha256": "bf8d4233e7d14f22ec44a005150cb40bc1abc06d39c859b4da58f9af3f044c8e"
+  },
+  "restored.json": {
+    "bound": {
+      "concrete_traces": 288,
+      "data_cases": 48,
+      "initial_profiles": 4,
+      "ordered_proposal_pairs_per_initial": 12,
+      "schedules_per_case": 6,
+      "updates_per_writer": 1,
+      "writers": 2
+    },
+    "counterexamples": {
+      "stronger_concurrent_preservation": {
+        "both_calls_returned_written_true": true,
+        "data_case": 0,
+        "final": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "model": "inherit-parent",
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "holds": false,
+        "initial": {
+          "always_apply": [
+            "unslop"
+          ],
+          "future_adapter": {
+            "keep": 0
+          },
+          "implicit_invocation": {
+            "unslop": false
+          },
+          "roles": {
+            "reviewer": {
+              "extra": false,
+              "model": "inherit-parent"
+            }
+          }
+        },
+        "mismatches": [
+          {
+            "actual": {
+              "missing": true
+            },
+            "expected": 3,
+            "path": [
+              "panels",
+              "arena"
+            ]
+          }
+        ],
+        "proposal_shape": "top-level",
+        "proposals": {
+          "A": {
+            "panels": {
+              "arena": 3
+            }
+          },
+          "B": {
+            "model": "inherit-parent"
+          }
+        },
+        "schedule": [
+          "A.read",
+          "B.read",
+          "A.replace",
+          "B.replace"
+        ],
+        "serial": false,
+        "trace": [
+          {
+            "event": "A.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.read",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "A.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "panels": {
+                "arena": 3
+              },
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          },
+          {
+            "event": "B.replace",
+            "profile": {
+              "always_apply": [
+                "unslop"
+              ],
+              "future_adapter": {
+                "keep": 0
+              },
+              "implicit_invocation": {
+                "unslop": false
+              },
+              "model": "inherit-parent",
+              "roles": {
+                "reviewer": {
+                  "extra": false,
+                  "model": "inherit-parent"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "documented_serial_preservation": {
+      "checked": 96,
+      "failed": 0,
+      "passed": 96
+    },
+    "method": "bounded exhaustive concrete interleaving exploration",
+    "python": "3.12.14",
+    "reviewed_scratch_mutation": false,
+    "scope": "Valid pre-existing regular scratch profile; fixed disjoint leaf proposals; no crash, path attacker, external writer or I/O failure. Concurrent preservation is a stronger extension, not a documented thread-safety guarantee.",
+    "source": "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/runtime.py",
+    "source_sha256": "531b3ede8b35ae3222d76c8330e6c3ceb7a29233b9b49cc436b04e6f0c24a65f",
+    "status": "ISSUES",
+    "stronger_concurrent_preservation": {
+      "checked": 192,
+      "failed": 192,
+      "passed": 0
+    },
+    "local_trace_sha256": "5dcb1023596befd39b2fd66326d95c70f3af35e57ce69805844140aaad16b7ec"
+  },
+  "workflow-receipt.json": {
+    "commands": [
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/verify_profile_updates.py",
+          "--label",
+          "baseline"
+        ],
+        "returncode": 1,
+        "stderr": "",
+        "stdout": "{\"documented_serial_preservation\": {\"checked\": 96, \"failed\": 0, \"passed\": 96}, \"status\": \"ISSUES\", \"stronger_concurrent_preservation\": {\"checked\": 192, \"failed\": 192, \"passed\": 0}}\n"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/verify_profile_updates.py",
+          "--source",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/runtime.py",
+          "--label",
+          "mutant-guard"
+        ],
+        "returncode": 2,
+        "stderr": "",
+        "stdout": "{\"selected_source_changed\": true, \"status\": \"MODEL_REVIEW_REQUIRED\", \"tracked_drift\": []}\n"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/verify_profile_updates.py",
+          "--source",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/runtime.py",
+          "--reviewed-scratch-mutation",
+          "--label",
+          "mutant"
+        ],
+        "returncode": 1,
+        "stderr": "",
+        "stdout": "{\"documented_serial_preservation\": {\"checked\": 96, \"failed\": 64, \"passed\": 32}, \"status\": \"ISSUES\", \"stronger_concurrent_preservation\": {\"checked\": 192, \"failed\": 192, \"passed\": 0}}\n"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/verify_profile_updates.py",
+          "--source",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/runtime.py",
+          "--label",
+          "restored"
+        ],
+        "returncode": 1,
+        "stderr": "",
+        "stdout": "{\"documented_serial_preservation\": {\"checked\": 96, \"failed\": 0, \"passed\": 96}, \"status\": \"ISSUES\", \"stronger_concurrent_preservation\": {\"checked\": 192, \"failed\": 192, \"passed\": 0}}\n"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/pstack-codex/source/runtime/runtime.py",
+          "--state-root",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/cli/unused-state",
+          "profile",
+          "set",
+          "--profile",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/cli/preferences.json",
+          "--file",
+          "/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/cli/proposed.json",
+          "--yes"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "{\n  \"effective\": {\n    \"always_apply\": [\n      \"unslop\"\n    ],\n    \"external_messages\": \"only when explicitly authorized by the user\",\n    \"future_adapter\": {\n      \"keep\": 42\n    },\n    \"implicit_invocation\": {\n      \"extra\": true,\n      \"unslop\": false\n    },\n    \"model\": \"inherit-parent\",\n    \"panels\": {\n      \"architect\": 2,\n      \"arena\": 2,\n      \"interrogate\": 2\n    },\n    \"prefer_existing_browser_and_cli_tools\": true,\n    \"reasoning_effort\": \"inherit-parent\",\n    \"roles\": {\n      \"reviewer\": {\n        \"future\": 7,\n        \"model\": \"inherit-parent\",\n        \"reasoning_effort\": \"high\"\n      }\n    },\n    \"schema_version\": 1,\n    \"speed\": \"inherit-parent\"\n  },\n  \"model_availability\": \"not evaluated; validation does not promise model availability\",\n  \"overrides\": {\n    \"future_adapter\": {\n      \"keep\": 42\n    },\n    \"implicit_invocation\": {\n      \"extra\": true,\n      \"unslop\": false\n    },\n    \"roles\": {\n      \"reviewer\": {\n        \"future\": 7,\n        \"model\": \"inherit-parent\",\n        \"reasoning_effort\": \"high\"\n      }\n    }\n  },\n  \"profile\": \"/workspace/pstack-codex/work/release-validation/formal-workflow/scratch/cli/preferences.json\",\n  \"written\": true\n}\n"
+      }
+    ],
+    "documented_serial_property": "PASS",
+    "negative_control_caught": true,
+    "restored_scratch_sha256": "531b3ede8b35ae3222d76c8330e6c3ceb7a29233b9b49cc436b04e6f0c24a65f",
+    "scratch_restored": true,
+    "source_sha256_before_and_after": "531b3ede8b35ae3222d76c8330e6c3ceb7a29233b9b49cc436b04e6f0c24a65f",
+    "status": "ISSUES",
+    "stronger_concurrent_property": "ISSUES (not a documented concurrency promise)",
+    "workflow_completed": true
+  },
+  "interpretation": "Documented bounded serial preservation passes; stronger concurrent-writer risk is preexisting and not a promised guarantee. No product-runtime changes were made."
+}

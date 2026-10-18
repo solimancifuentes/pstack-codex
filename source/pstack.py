@@ -23,7 +23,7 @@ import urllib.parse
 import zipfile
 
 PLUGIN = "pstack-codex"
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 REPOSITORY = "https://github.com/cursor/plugins"
 CONSOLIDATE = ("bro", "correct", "principle-model-the-domain", "tdd", "technical-writing", "unslop")
 
@@ -96,7 +96,18 @@ def normalize_skill(path, profile):
     text = path.read_text()
     data, body = frontmatter(text)
     slug = path.parent.name
-    description = data.get("description", "").strip().strip('"').strip("'")
+    description = data.get("description", "").strip()
+    # Pinned frontmatter uses single-line scalars; double quotes use the JSON
+    # subset of YAML escapes. Reject other quoted syntax rather than corrupt it.
+    if description.startswith('"'):
+        try:
+            description = json.loads(description)
+        except ValueError as error:
+            raise PortError(f"Unsupported quoted description in {path}: {error}") from error
+    elif description.startswith("'"):
+        if not re.fullmatch(r"'(?:[^']|'')*'", description):
+            raise PortError(f"Invalid single-quoted description in {path}")
+        description = description[1:-1].replace("''", "'")
     if not description or len(description) > 1024:
         raise PortError(f"Invalid description in {path}")
     implicit = data.get("disable-model-invocation") != "true"

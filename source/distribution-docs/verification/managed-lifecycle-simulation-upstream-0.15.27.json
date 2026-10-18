@@ -1,0 +1,47 @@
+{
+  "method": "Filesystem NativeFixture simulation with actual v0.1.0 and candidate packages; real Python/Bun launcher execution; no native Codex install/discovery",
+  "previous_source_commit": "850d7f2e9f5e55dff7eb00a0a479337fe79eb22f",
+  "candidate_source_commit": "0148b78c56c72a1b8412055913c79f767095b217",
+  "steps": [
+    {
+      "phase": "install-old",
+      "version": "0.1.0",
+      "release": "850d7f2e9f5e-bb56fab3cd36",
+      "skills": 54,
+      "payload_integrity": "PASS",
+      "profile_bytes_preserved": true,
+      "unrelated_marketplace_entry_preserved": true,
+      "helper_source_key": "ff151dc8d1fd7a7e9da69aa3d210679e08978d5d1587c620ae1efcf44748716a",
+      "helper_already_prepared": true
+    },
+    {
+      "phase": "update-new",
+      "version": "0.2.0",
+      "release": "0148b78c56c7-59a8c6173218",
+      "skills": 55,
+      "payload_integrity": "PASS",
+      "profile_bytes_preserved": true,
+      "unrelated_marketplace_entry_preserved": true,
+      "helper_source_key": "ff151dc8d1fd7a7e9da69aa3d210679e08978d5d1587c620ae1efcf44748716a",
+      "helper_already_prepared": true
+    },
+    {
+      "phase": "rollback-old",
+      "version": "0.1.0",
+      "release": "850d7f2e9f5e-bb56fab3cd36",
+      "skills": 54,
+      "payload_integrity": "PASS",
+      "profile_bytes_preserved": true,
+      "unrelated_marketplace_entry_preserved": true,
+      "helper_source_key": "ff151dc8d1fd7a7e9da69aa3d210679e08978d5d1587c620ae1efcf44748716a",
+      "helper_already_prepared": true
+    },
+    {
+      "phase": "uninstall-restore",
+      "installed": false,
+      "profile_bytes_preserved": true,
+      "unrelated_marketplace_entry_preserved": true
+    }
+  ],
+  "passed": true
+}

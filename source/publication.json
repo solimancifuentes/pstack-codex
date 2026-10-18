@@ -1,34 +1,34 @@
 {
-  "repository": "https://github.com/solimancifuentes/pstack-codex",
   "author": {
-    "name": "Soliman Cifuentes",
     "email": "contact@solimancifuentes.com",
+    "name": "Soliman Cifuentes",
     "url": "https://github.com/solimancifuentes"
   },
+  "countries": [],
   "interface": {
-    "displayName": "pstack",
-    "shortDescription": "Plan, build, review, verify",
-    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
-    "developerName": "Soliman Cifuentes",
-    "category": "Developer Tools",
     "capabilities": [
       "Engineering workflows",
       "Code review",
       "Verification",
       "Configurable workflows"
     ],
+    "category": "Developer Tools",
+    "composerIcon": "./assets/pstack.png",
     "defaultPrompt": [
       "Use $pstack-codex:poteto-mode to plan and verify this change.",
       "Use $pstack-codex:how to explain this code.",
       "Use $pstack-codex:setup-pstack to inspect my setup."
     ],
-    "websiteURL": "https://github.com/solimancifuentes/pstack-codex",
-    "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
-    "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/TERMS.md",
+    "developerName": "Soliman Cifuentes",
+    "displayName": "pstack",
     "logo": "./assets/pstack.png",
-    "composerIcon": "./assets/pstack.png"
+    "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 55 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
+    "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
+    "shortDescription": "Plan, build, review, verify",
+    "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
+    "termsOfServiceURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/TERMS.md",
+    "websiteURL": "https://github.com/solimancifuentes/pstack-codex"
   },
-  "release_notes": "Initial release of the independent Codex adaptation of Lauren Tan's pstack. Includes 54 skills, 24 engineering principles, 23 playbooks, separate host adapters, the glass-potato logo, and the original MIT attribution. Preferences remain outside the shared package.",
-  "countries": []
+  "release_notes": "Prepares port 0.2.0 from upstream pstack 0.15.27. Adds the formal-verification workflow and updated engineering guidance while preserving Codex and Dots adapters, explicit invocation policies, external preferences, and MIT attribution. This development version is unpublished.",
+  "repository": "https://github.com/solimancifuentes/pstack-codex"
 }

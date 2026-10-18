@@ -5,7 +5,7 @@ description: "Fan out N parallel workers, drain them, and return one report. Use
 
 # Swarm
 
-Fan out N workers through the executing host's selected runtime adapter. They may cover separate slices, race the same brief, or mix both. The parent waits, aggregates, and returns one report.
+Fan out N workers through the executing host's selected runtime adapter.
 
 ## Start
 
@@ -37,8 +37,6 @@ If a worker drops out, proceed with N-1 and note it.
 ## Phase C: Aggregate
 
 Read the terminal results. Drop a result that does not record the SHAs and method its brief names, and respawn that worker once. After a second miss, record a gap. A gap does not count as a pass. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
-
-Keep a compact result table, one-line evidenced issues, and explicit gaps or dropouts.
 
 ## Phase D: Report
 

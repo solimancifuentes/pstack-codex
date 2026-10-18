@@ -1,5 +1,5 @@
 ---
-name: Make Bot UI
+name: make-bot-ui
 description: "Explain the inactive Cursor/Grok Bot integration and its missing native integrations. Use when the original make-bot-ui workflow is requested. Diagnostic only; this port cannot create its routines, secrets, webhook runner, or bot connection."
 disable-model-invocation: true
 ---
