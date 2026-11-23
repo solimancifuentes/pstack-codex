@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-ed2a7e11fbbb` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-870d7bda9b42` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -506,6 +506,20 @@ The round 23 review led to these changes:
 - Shipping's Origin wait has a deadline.
 - An organization-owned fork opens its PR through the REST API with
   `head_repo`.
+
+The round 24 review led to these changes:
+
+- Babysit's watcher rules are split into the watcher, the direct read, and
+  the merge-ready test. The watcher passes `--max-query-errors 1`, so a PR
+  with no checks reaches the direct read at once, and `drive` runs it in
+  slices with a direct read between them, so a pending optional check cannot
+  hold the drive. The thread query returns each thread's id, location, and
+  comments, so `threads-only` can triage and reply. A branch with no
+  required checks passes the required-check test. Shipping's watcher uses the
+  same slices.
+- Opening a PR offers `origin pr create` for every Origin repository again,
+  and limits the REST path to a fork owned by the base repository's
+  organization.
 
 ## Known upstream defects
 
