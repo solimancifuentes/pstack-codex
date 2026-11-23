@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-0d9d4e0bda40` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-d93560c70c68` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -431,6 +431,20 @@ The round 17 review led to these changes:
 - `automate-me` links Opening a PR. Help no longer promises a reason for
   every skipped step, which upstream dropped, and Bun is required only for
   the watcher.
+
+The round 18 review led to these changes:
+
+- On Origin, Shipping restacks and pushes only the next PR in the run, with
+  `origin stack restack --only` and `origin stack push`. Nothing above the
+  ceiling is rewritten.
+- Shipping does Babysit's forge read after every watcher `READY`, and merges
+  only on the verified head with `CLEAN` or `HAS_HOOKS`. Its final status
+  pass checks that every listed PR reads merged, because `--status-only`
+  prints a table and never `COMPLETE`.
+- Babysit and Shipping read the forge directly when the watcher is not
+  prepared.
+- Opening a PR pushes and confirms the head SHA before either creation path,
+  then checks that the PR's head matches it.
 
 ## Known upstream defects
 
