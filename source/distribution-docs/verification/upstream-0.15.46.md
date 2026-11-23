@@ -42,8 +42,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 - 49 overlay files follow the new upstream text. Eight overlays were retired:
   `architect` and `why` are now host-neutral upstream, and the `how` and
   `reflect` reference prompts and the Orchestrate playbook no longer exist.
-- New overlays: `poteto-mode/worker.md` keeps the shared authority boundary and
-  the port's draft-until-verified PR policy. `statechart/SKILL.md` resolves the
+- New overlays: `poteto-mode/worker.md` keeps the shared authority boundary. `statechart/SKILL.md` resolves the
   installed skill path and treats the `mise` Java and TLC install and the Pele
   install as explicit dependency setup. Without install authority, it
   requires absolute `TLA2TOOLS` and `JAVA` paths before each run, because the
@@ -57,10 +56,8 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 - Inherited roles omit model and effort overrides. Arena substitutes a model
   only when the user's selection allows it. Otherwise it drops the seat, and
   it reports when fewer than two runners remain.
-- Opening a PR keeps a PR a draft until landing is authorized, under the
-  draft lifecycle in Opening a PR, and omits `--draft` when a ready PR is
-  requested. Babysit passes `--allow-draft` for such a PR and never marks it
-  ready.
+- PRs open ready for review, as upstream opens them. Round 16 removed the
+  port's earlier draft-until-verified policy and its landing protocol.
 - `reflect` edits pstack through its source overlays, never by copying an
   installed, already-normalized skill into the source tree.
 - The packaged launcher `tools/runtime.py` and the shared contract no longer
@@ -81,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-640adbf508b9` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-532e117901fa` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -382,6 +379,27 @@ because the account reached its monthly spend limit) led to these changes:
 - `BEHIND` is a separate gate: with authority, update the PR's own branch, wait
   for checks, and reapply the carry rule; otherwise hand off.
 
+Round 16 removed the draft-until-verified policy. Rounds 5 to 15 kept
+finding forge edge cases, almost all in the landing protocol that policy
+needed: merge queues, jobs that skip drafts, forks, stacked PRs, and strict
+branch protection. The findings in rounds 1 to 15 that describe that protocol
+no longer apply. Now:
+
+- Opening a PR, Babysit, Shipping, Autopilot-full, Autopilot-stack, and
+  `worker.md` follow upstream: PRs open ready, and there is no promotion
+  stage. Codex adaptations remain: the runtime contract, host-neutral workers
+  started with no parent history, authority to post replies or verdicts, and
+  bounded watcher waits.
+- These parts of the earlier hardening stay. Merges pin the head the verdict
+  covers (`--match-head-commit`), and auto-merge is not armed. A verdict
+  carries over only when the PR's diff is identical, whitespace included, and
+  under Autopilot-stack only when the parent's change cannot affect it. The
+  watcher names the base repository, and Babysit reads the forge's
+  mergeable state before it reports merge-ready.
+- Stack retargeting on Origin uses upstream's `origin pr edit --base` again.
+  Origin's CLI reference returned 404 when round 16 tried to confirm the
+  round 14 alternative.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
@@ -399,8 +417,8 @@ They are left for an upstream fix rather than a port fork:
   `REVIEW_REQUIRED`, or `BEHIND` for that PR. Babysit now reads those fields
   from the forge before it reports merge-ready.
 - `watch-pr` returns `checks-unavailable` and times out for a draft that has
-  no checks yet, even with `--allow-draft`. The draft lifecycle reads the
-  forge's state directly in that case.
+  no checks yet, even with `--allow-draft`. The port opens PRs ready, so its
+  own PRs do not reach this case.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 

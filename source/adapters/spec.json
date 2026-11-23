@@ -270,7 +270,7 @@
     },
     {
       "overlay": "files/skills/poteto-mode/worker.md",
-      "reason": "Bind upstream worker rules to the shared authority boundary and the port's PR readiness policy",
+      "reason": "Bind upstream worker rules to the shared authority boundary",
       "sha256": "d051060527ab1649fb1e69d1e7d416950264f9955c3de3635c0d63569f1b90d8",
       "source": "skills/poteto-mode/worker.md"
     },

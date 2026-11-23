@@ -67,7 +67,7 @@ do not change code. Show the path from the button to the worker stopping.
 
 ```text
 $pstack-codex:poteto-mode Migrate callers to the asynchronous store in small,
-verifiable steps. Preserve behavior. Open a draft PR when the checks pass.
+verifiable steps. Preserve behavior. Open a PR when the checks pass.
 ```
 
 The playbook follows your requested endpoint. Asking for an investigation does not authorize edits, and a workflow name does not authorize merges, deployment, messages, or changes to your settings. Long runs also depend on the session and tools actually available. Cursor's persistent Custom Modes and `/loop` command do not carry over to Codex.
