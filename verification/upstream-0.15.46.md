@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-d0be31125996` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-dc3818a9d557` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -657,6 +657,19 @@ The round 35 review led to these changes:
   timeout again. `check` passes `--pretty` for the table it reports.
 - The README and compatibility notes label the watcher handoff as 0.2.0
   behavior, since installed v0.1.0 has no such handoff.
+
+The round 36 review led to these changes:
+
+- Babysit's `check` is one bounded pass with a host command timeout. It
+  reads the head before and after, and reports a table from a moved head as
+  stale.
+- Shipping hands the merge to the user only when the frontier watcher cannot
+  judge the frontier PR until the run's deadline. A failed progress read is
+  reported and does not stop the run.
+- `automate-me` finds a personal skill's last update without assuming the
+  current checkout tracks it.
+- The launcher's help says that GitHub merge-ready verdicts and landings need
+  its prepared watcher.
 
 ## Deferred forge edge cases
 

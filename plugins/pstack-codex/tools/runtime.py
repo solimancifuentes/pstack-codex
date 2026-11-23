@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Optional pstack helper launcher; skills work without this Python command."""
+"""Optional pstack helper launcher. Skills work without it, but on GitHub a merge-ready verdict and Shipping or Autopilot landings need its prepared PR watcher."""
 
 import argparse
 import contextlib
