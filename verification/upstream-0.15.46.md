@@ -80,9 +80,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-de9d55706317` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-c3d04992f02a` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 97 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -308,7 +308,24 @@ Round 10 led to these changes:
   draft's gates settle, and the watcher is pointed at the base repository with
   `--owner` and `--repo`.
 - `profile show` follows a symlinked config folder, and the log helper no
-  longer needs a helper-state root; writes still refuse symlinks.
+  longer needs a helper-state root.
+
+Round 11 led to these changes:
+
+- Every `gh` read and mutation names the PR by canonical URL or with
+  `--repo`, and the watcher gets `--owner`, `--repo`, and `--pr`, so a fork
+  checkout cannot act on a different PR with the same number.
+- Landing rereads the base tip from the branch itself. Instead of handing off
+  on every repository without base-freshness rules, it merges, checks the
+  merge commit's base parent, and reports and verifies the base branch if the
+  base moved in between.
+- Optional checks that fail or pend no longer stall Shipping or Origin's
+  Babysit drive; required gates are read directly at bounded intervals.
+- An Autopilot wording-only change still reruns a lane whose result cannot
+  carry forward. The organization-fork REST call sends `draft=true` and the
+  right `head` and `head_repo`, and the Origin create command stands on its own.
+- Profile writes follow a symlinked config folder and refuse only a symlinked
+  target file.
 
 ## Known upstream defects
 

@@ -112,14 +112,13 @@ def inside_plugin(path):
 
 
 def plain_path(path):
-    """Reject `..` and any symlink in a user-selected path, so it names exactly where it reads and writes."""
+    """Refuse `..` and a symlinked target; follow symlinked parent folders, as dotfiles setups link ~/.codex."""
     path = Path(path).expanduser().absolute()
     if ".." in path.parts:
         raise RuntimeError(f"Use a path without `..`: {path}")
-    for part in (path, *path.parents):
-        if part.is_symlink():
-            raise RuntimeError(f"Symlinks are not allowed in this path: {part}")
-    return path
+    if path.is_symlink():
+        raise RuntimeError(f"Symlinks are not allowed as the target itself: {path}")
+    return path.parent.resolve() / path.name
 
 
 def within(root, relative):
@@ -206,7 +205,7 @@ def atomic_json(path, value):
 
 
 def profile_set(path, proposed, yes):
-    path = plain_path(path).resolve()  # Write where the guard checked, not through `..`.
+    path = plain_path(path)
     if inside_plugin(path):
         raise RuntimeError("The profile must live outside the installed plugin; choose a path such as ~/.codex/pstack-codex/preferences.json")
     proposed = read_json(proposed)
@@ -227,7 +226,7 @@ def profile_set(path, proposed, yes):
 
 
 def state_root(value):
-    path = plain_path(value).resolve()
+    path = plain_path(value)
     if inside_plugin(path):
         raise RuntimeError("Mutable helper state must be outside the installed plugin")
     return path

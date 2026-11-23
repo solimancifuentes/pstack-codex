@@ -195,6 +195,16 @@ else:
         self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
         self.assertFalse((self.root / "sibling-profile.json").exists())
 
+    def test_profile_set_writes_through_a_symlinked_config_folder(self):
+        real = self.root / "real-dotfiles"
+        real.mkdir()
+        linked = self.root / "dot-codex"
+        linked.symlink_to(real)
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": 4}})
+        self.run_cli("profile", "set", "--profile", str(linked / "preferences.json"), "--file", str(proposed), "--yes")
+        self.assertEqual(json.loads((real / "preferences.json").read_text())["panels"]["arena"], 4)
+
     def test_profile_show_and_log_work_through_a_symlinked_config_folder(self):
         real = self.root / "real-config"
         real.mkdir()

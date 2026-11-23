@@ -66,7 +66,7 @@ All 22 playbooks remain under [poteto-mode](../poteto-mode/SKILL.md). They are r
 - Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, and Trace forensics cover evidence-led diagnosis and changes.
 - Feature, Refactoring, Prototype, and Visual parity cover implementation and design exploration.
 - Authoring a skill and Eval cover skill creation and behavioral comparison.
-- Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready for a ready PR, or at a verified draft for a policy draft, and never promotes or merges. Shipping requires actual landing authority.
+- Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready for a ready PR, or, for a policy draft, when the draft's gates settle, reported as a verified draft only when a verdict covers it. It never promotes or merges. Shipping requires actual landing authority.
 - Autonomous run covers one long task. Upstream removed the Orchestrate playbook; a program larger than one task routes to `figure-it-out`. The Codex adapter uses observed collaboration tools and session limits. The Dots adapter can coordinate supported background agents or configured Codex tasks. Neither Markdown adapter provisions a durable cloud runner or event subscription.
 - Autopilot-full retains one owner per independent PR where merge authority is granted. Autopilot-stack runs Autopilot-full without merging and hands the verified PRs to the operator.
 - Session pickup, Pause safely, Multi-phase plan, and Worktree cleanup cover continuity, planning, and ownership-aware cleanup.
