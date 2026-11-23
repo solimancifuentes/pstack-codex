@@ -50,9 +50,10 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
   command installs Java and TLC whenever its own `mise` lookup fails. It
   treats a `--view` module as code. `ketchup-video` returns the
   video path when the host cannot embed it.
-- Every worker kickoff, from any skill, starts with the `worker.md` line. The
-  shared contract carries that rule, so standalone `how`, `arena`, and
-  `interrogate` runs get it too.
+- Every worker kickoff, from any skill, starts with the `worker.md` line,
+  except eval candidates and judges, whose briefs carry its rules as plain
+  text so blinding holds. The shared contract carries that rule, so standalone
+  `how`, `arena`, and `interrogate` runs get it too.
 - Inherited roles omit model and effort overrides. Arena substitutes a model
   only when the user's selection allows it. Otherwise it drops the seat, and
   it reports when fewer than two runners remain.
@@ -80,7 +81,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-b8d75b0fa076` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-640adbf508b9` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -368,6 +369,18 @@ Round 14 led to these changes:
 - On Origin, Shipping reads back the stack's automatic base move instead of
   retargeting, which could detach the child. Babysit checks every watcher
   `READY` against the required set.
+
+Round 15 (GPT-6.2 Astra and GPT-6.2 Sol; the Opus 5.5 seat could not run
+because the account reached its monthly spend limit) led to these changes:
+
+- Babysit compares every ready PR with the final landing branch's required set
+  and reports a stack child still on its parent as waiting for retarget.
+- A GitHub stack child is created only when the parent's branch exists in the
+  target repository; a fork-only parent waits to land first.
+- Each deferral records its reason, and after a retarget or promotion a fresh,
+  repository-designed skip counts; a draft-guard skip never does.
+- `BEHIND` is a separate gate: with authority, update the PR's own branch, wait
+  for checks, and reapply the carry rule; otherwise hand off.
 
 ## Known upstream defects
 
