@@ -14,7 +14,7 @@ Use [CODEX.md](../../CODEX.md) for runtime capabilities and limits. The original
 
 The installed plugin exposes `$poteto-mode` and the individual `$skill-name` entrypoints. Use the exact discovered namespace when the client shows a qualified name. The port's install receipt and verification report establish what is installed; a source directory alone does not prove discovery. When the question is about a race, an invariant, or another case tests rarely hit and the project has no formal verification skill, mention `create-formal-verification-skill`. When one exists and the code it covers changed after its recorded sync commit, mention `maintain-formal-verification-skill`.
 
-Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. A skipped step keeps its reason. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
+Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
 
 `$setup-pstack` manages an optional local user profile through a concrete reviewed change. If the profile is absent, the shared package defaults work without setup or the separate manager command. Every role inherits the parent model and reasoning by default. A panel can run independent same-model passes. Actual supported and authorized model choices may differ from the parent, but native collaboration does not reproduce the original Claude, Fable, and Gemini panel mix. Slot limits include the coordinator and nested workers. Larger panels queue.
 
@@ -48,7 +48,7 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Audit the verification skill and every mapped feature | [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formally verify a race, invariant, or other property that tests rarely reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
 | Bring a formal verification back in line after the code it covers changed, and tell drift from a bug | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
-| Draw a TLA+-checked statechart with the shortest path to each state that breaks a rule | [statechart](../statechart/SKILL.md) |
+| Draw a TLA+-checked statechart, with the shortest path to each broken invariant and TLC's counterexample for a broken temporal property | [statechart](../statechart/SKILL.md) |
 | Validate performance measurements | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | Design a rigorous bespoke run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Keep and audit a decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
@@ -67,7 +67,7 @@ All 22 playbooks remain under [poteto-mode](../poteto-mode/SKILL.md). They are r
 - Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, and Trace forensics cover evidence-led diagnosis and changes.
 - Feature, Refactoring, Prototype, and Visual parity cover implementation and design exploration.
 - Authoring a skill and Eval cover skill creation and behavioral comparison.
-- Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready. Shipping requires actual landing authority.
+- Babysit, Shipping, and Opening a PR cover forge delivery. PRs open ready for review. A status check is one pass. Babysitting stops at merge-ready and never merges. Shipping requires actual landing authority.
 - Autonomous run covers one long task. Upstream removed the Orchestrate playbook; a program larger than one task routes to `figure-it-out`. The Codex adapter uses observed collaboration tools and session limits. The Dots adapter can coordinate supported background agents or configured Codex tasks. Neither Markdown adapter provisions a durable cloud runner or event subscription.
 - Autopilot-full retains one owner per independent PR where merge authority is granted. Autopilot-stack runs Autopilot-full without merging and hands the verified PRs to the operator.
 - Session pickup, Pause safely, Multi-phase plan, and Worktree cleanup cover continuity, planning, and ownership-aware cleanup.
@@ -85,9 +85,10 @@ named gaps; no adapter invents APIs, unlimited runtime, VM survival, or credenti
 isolation.
 
 The optional helpers run through `tools/runtime.py` in this installed package,
-resolved from the current skill path. They require Python and explicit Bun
-setup for helper commands. Core workflows do not require them or a separate
-`pstack-codex` executable. Defaults work without a personal profile. User
+resolved from the current skill path. They require Python, and the watcher
+also needs explicit Bun setup. Core workflows do not require them or a separate
+`pstack-codex` executable, but on GitHub, Babysit's merge-ready verdict and
+the landings in Shipping and Autopilot need the prepared watcher. Defaults work without a personal profile. User
 overrides stay outside the package and apply only where supported.
 
 `deslop`, `skill-creator`, browser/app tools, and PTY drivers are discovered external capabilities. They are not fake Cursor built-ins bundled by copying files. Investigations use actual available connector schemas and scoped host history or supplied logs. Plain CLI does not require Desktop chat APIs or PR attachments. Summaries do not prove a full transcript audit.

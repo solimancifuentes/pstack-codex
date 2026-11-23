@@ -53,6 +53,12 @@
       "source": "skills/blast-radius/SKILL.md"
     },
     {
+      "overlay": "files/skills/create-formal-verification-skill/SKILL.md",
+      "reason": "Name the explicit-only statechart skill without Cursor slash syntax, and read the report when no chart is written",
+      "sha256": "30ef0ac27612ecd16fdc081112113221d673053cef3f8603db11932193861211",
+      "source": "skills/create-formal-verification-skill/SKILL.md"
+    },
+    {
       "overlay": "files/skills/create-verification-skill/SKILL.md",
       "reason": "Translate runtime syntax and supported paths while retaining original workflow detail",
       "sha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
@@ -81,6 +87,12 @@
       "reason": "Return the video path when the host cannot embed it, and treat renderer installation as explicit dependency setup",
       "sha256": "027aed9a01adf208aeac3a134f47d12f7c1e42d6fea03095aedc2bae58cdcfd1",
       "source": "skills/ketchup-video/SKILL.md"
+    },
+    {
+      "overlay": "files/skills/maintain-formal-verification-skill/SKILL.md",
+      "reason": "Run the deliberate break in a disposable checkout so the user's local changes stay untouched",
+      "sha256": "0c96f54293542d3818b68754562b338073958781a9684454611dca37592e2d2c",
+      "source": "skills/maintain-formal-verification-skill/SKILL.md"
     },
     {
       "overlay": "files/skills/maintain-verification-skill/SKILL.md",
@@ -257,8 +269,14 @@
       "source": "skills/poteto-mode/playbooks/worktree-cleanup.md"
     },
     {
+      "overlay": "files/skills/poteto-mode/references/bugbot-triage.md",
+      "reason": "Keep Bugbot learnings in the task trail instead of the installed plugin",
+      "sha256": "b2d146c770d8d3593e1ef3d77b668039b8e1f78093ea1a86f1d45d7f99614309",
+      "source": "skills/poteto-mode/references/bugbot-triage.md"
+    },
+    {
       "overlay": "files/skills/poteto-mode/worker.md",
-      "reason": "Bind upstream worker rules to the shared authority boundary and the port's PR readiness policy",
+      "reason": "Bind upstream worker rules to the shared authority boundary",
       "sha256": "d051060527ab1649fb1e69d1e7d416950264f9955c3de3635c0d63569f1b90d8",
       "source": "skills/poteto-mode/worker.md"
     },

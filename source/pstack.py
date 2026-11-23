@@ -665,7 +665,9 @@ class Installation:
                             raise PortError(f"Backup destination already exists: {backup}")
                         os.rename(path, backup)
                         self.checkpoint("consolidated:" + name)
-                if not preferences.exists():
+                # A shared release reads its packaged defaults. Copying them here would
+                # turn today's defaults into user overrides that mask later releases.
+                if embedded_profile and not preferences.exists():
                     write_json(preferences, manifest["preferences"])
                 elif embedded_profile and read_json(preferences) != manifest["preferences"]:
                     raise PortError("Local preferences changed during installation; preserving them")
@@ -782,11 +784,15 @@ class Installation:
     def run_tool(self, name, args):
         runtime, scripts = self.runtime()
         verify_payload(self.root / "releases" / self.state()["active"])
-        if name == "watch-pr":
+        # An older active release, such as v0.1.0 after a rollback, may still ship orch.
+        entrypoints = {"watch-pr": "watch-pr/watch-pr", "orch": "orch/orch.ts"}
+        if name in entrypoints:
+            if not (scripts / entrypoints[name]).is_file():
+                raise PortError(f"The active release does not ship the {name} helper. Supported helpers: watch-pr, log.")
             if not (runtime / "setup-receipt.json").is_file():
                 raise PortError("Helpers are not prepared. Run pstack-codex tools-setup --yes. No packages were installed.")
             self.verify_runtime(runtime, scripts)
-            command = ["bun", str(runtime / "watch-pr/watch-pr")]
+            command = ["bun", str(runtime / entrypoints[name])]
         elif name == "log":
             command = ["bash", str(self.root / "releases" / self.state()["active"] / "plugin/skills/show-me-your-work/scripts/log.sh")]
         else:
@@ -827,7 +833,7 @@ def parser():
     tools = sub.add_parser("tools-setup", help="Explicitly install locked helper dependencies into mutable runtime", epilog="Example: pstack-codex tools-setup --yes")
     tools.add_argument("--yes", action="store_true")
     tool = sub.add_parser("tool", help="Run an explicitly prepared helper", epilog="Example: pstack-codex tool watch-pr -- --help")
-    tool.add_argument("name", choices=("watch-pr", "log"))
+    tool.add_argument("name", choices=("watch-pr", "log", "orch"))
     tool.add_argument("args", nargs=argparse.REMAINDER)
     return root
 

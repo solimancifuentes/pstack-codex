@@ -14,13 +14,13 @@ This skill orchestrates three others: an inline mining pass (see step 1), the av
 
 ### 0. Check for an existing skill
 
-Inspect the current host's supported, in-scope skill locations for a mode matching the user's handle. On Codex these can include `.agents/skills/**/*-mode/SKILL.md` and `~/.codex/skills/*-mode/SKILL.md`. A Dot cloud environment may not contain the local computer's skills. Do not search unrelated plugin caches or invent a shared global path. Mode skills can live in a personal category directory (`.agents/skills/<handle>/`), not only at the top level. If one exists, confirm intent with an available user-input tool or concise chat question (unless they already said "update my skill" or similar):
+Inspect the current host's supported, in-scope skill locations for a mode matching the user's handle. On Codex these can include `.agents/skills/**/*-mode/SKILL.md`, `~/.agents/skills/*-mode/SKILL.md`, and `~/.codex/skills/*-mode/SKILL.md`, where earlier versions of this port wrote personal modes. Update an existing mode where it lives, and create new personal modes under `~/.agents/skills/`. A Dot cloud environment may not contain the local computer's skills. Do not search unrelated plugin caches or invent a shared global path. Mode skills can live in a personal category directory (`.agents/skills/<handle>/`), not only at the top level. If one exists, confirm intent with an available user-input tool or concise chat question (unless they already said "update my skill" or similar):
 
 - Update the existing skill (default for repeat runs)
 - Start fresh (rare, ask why before doing it)
 
 Update mode changes the rest of the flow:
-- Step 1 mines only history since the skill was last edited (`git log -1 --format=%cI <path>`).
+- Step 1 mines only history since the skill was last edited: `git -C <skill-folder> log -1 --format=%cI -- SKILL.md` when the file is tracked, matches `HEAD` with no staged or unstaged changes, and the command prints a date. Otherwise use a prior update date the user gives or the file's modification time, named as such.
 - Step 2 asks what's changed or missing, not what to capture from zero.
 - Step 4 edits the existing file in place. Preserve sections the user hasn't contradicted. Revise ones with new evidence. Add new sections only for genuinely new rules.
 
@@ -66,7 +66,7 @@ The **poteto-mode** skill shows the shape. Read it for granularity. Don't copy i
 
 Use the available `skill-creator` skill to author the skill. Placement:
 
-- Path: preserve an existing mode skill's category. For a new mode, use `.agents/skills/<handle>/<handle>-mode/SKILL.md` when the repo has an established personal category for that handle. Otherwise default to `.agents/skills/<handle>-mode/SKILL.md` in the project (or `~/.codex/skills/<handle>-mode/` if the user prefers a personal skill).
+- Path: preserve an existing mode skill's category. For a new mode, use `.agents/skills/<handle>/<handle>-mode/SKILL.md` when the repo has an established personal category for that handle. Otherwise default to `.agents/skills/<handle>-mode/SKILL.md` in the project (or `~/.agents/skills/<handle>-mode/` if the user prefers a personal skill).
 - Handle: the user's first name or chosen identifier.
 - Frontmatter `description`: trigger on their name + `/<handle>-mode` + "work in their style", not on generic keywords like "write code" or "review PR".
 - Frontmatter formatting: follow `skill-creator`'s YAML rules. Keep `description` as one YAML scalar. Quote it or use `description: >-` with indented continuation lines when punctuation or wrapping requires it.
@@ -80,7 +80,7 @@ Show the draft to the user and take feedback. Expect multiple iterations. Cut ru
 
 ### 6. Land it
 
-For a project skill, use an isolated worktree and a draft PR when that delivery is within the requested scope. For a personal skill, show the concrete installation changes and honor the user's installation approval preference before writing the global location. Keep the completed draft available for review. Do not create a repository or PR solely because this source workflow assumed one.
+For a project skill, use an isolated worktree and a PR opened per [Opening a PR](../poteto-mode/playbooks/opening-a-pr.md) when that delivery is within the requested scope. For a personal skill, show the concrete installation changes and honor the user's installation approval preference before writing the global location. Keep the completed draft available for review. Do not create a repository or PR solely because this source workflow assumed one.
 
 ## Guardrails
 

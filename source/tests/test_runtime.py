@@ -133,8 +133,89 @@ else:
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": None}, "future": {"setting": None}})
         saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
-        self.assertEqual(saved["overrides"], {"panels": {}, "future": {}})
+        self.assertEqual(saved["overrides"], {})
         self.assertEqual(saved["effective"]["panels"], {"arena": 2})
+
+    def test_profile_removal_under_scalar_parent_keeps_the_value(self):
+        self.write_json(self.profile, {"future_provider": "manual"})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"future_provider": {"unused": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"future_provider": "manual"})
+
+    def test_profile_set_stores_an_explicit_empty_object(self):
+        self.write_json(self.profile, {"future_driver": "auto"})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"future_driver": {}, "roles": {"feature, refactoring": {}}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"future_driver": {}, "roles": {"feature, refactoring": {}}})
+
+    def test_legacy_single_seat_arena_still_allows_profile_work(self):
+        self.write_json(self.profile, {"panels": {"arena": 1}})
+        shown = json.loads(self.run_cli("profile", "show", "--profile", str(self.profile)).stdout)
+        self.assertIn("panels.arena is below 2", shown["warnings"][0])
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"personal-note": "unrelated"})
+        self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes")
+        self.write_json(proposed, {"panels": {"arena": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"]["panels"], {})
+
+    def test_profile_set_refuses_a_path_inside_the_plugin(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": None})
+        defaults = self.package / "defaults.json"
+        before = defaults.read_bytes()
+        result = self.run_cli("profile", "set", "--profile", str(defaults), "--file", str(proposed), "--yes", expected=1)
+        self.assertIn("outside the installed plugin", result.stderr)
+        self.assertEqual(defaults.read_bytes(), before)
+
+    def test_profile_set_refuses_a_differently_cased_plugin_path(self):
+        variant = self.package.with_name(self.package.name.upper())
+        if not variant.exists():
+            self.skipTest("case-sensitive filesystem")
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        target = variant / "unexpected-profile.json"
+        result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
+        self.assertIn("outside the installed plugin", result.stderr)
+        self.assertFalse((self.package / "unexpected-profile.json").exists())
+
+    def test_profile_paths_with_dotdot_are_refused_for_reads_and_writes(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        before = sorted(path.name for path in self.package.iterdir())
+        for target in (self.package / ".." / "sibling-profile.json",
+                       self.package / "missing" / ".." / ".." / "outside-profile.json",
+                       self.root / "missing" / ".." / "chosen.json"):
+            with self.subTest(target=str(target)):
+                result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
+                self.assertIn("without `..`", result.stderr)
+                self.assertIn("without `..`", self.run_cli("profile", "show", "--profile", str(target), expected=1).stderr)
+        self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
+        self.assertFalse((self.root / "sibling-profile.json").exists())
+
+    def test_profile_set_writes_through_a_symlinked_config_folder(self):
+        real = self.root / "real-dotfiles"
+        real.mkdir()
+        linked = self.root / "dot-codex"
+        linked.symlink_to(real)
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": 4}})
+        self.run_cli("profile", "set", "--profile", str(linked / "preferences.json"), "--file", str(proposed), "--yes")
+        self.assertEqual(json.loads((real / "preferences.json").read_text())["panels"]["arena"], 4)
+
+    def test_profile_show_and_log_work_through_a_symlinked_config_folder(self):
+        real = self.root / "real-config"
+        real.mkdir()
+        self.write_json(real / "preferences.json", {"panels": {"arena": 4}})
+        linked = self.root / "linked-config"
+        linked.symlink_to(real)
+        shown = json.loads(self.run_cli("profile", "show", "--profile", str(linked / "preferences.json")).stdout)
+        self.assertEqual(shown["effective"]["panels"]["arena"], 4)
+        log = self.root / "decisions.tsv"
+        self.run_cli("--state-root", str(linked / "state"), "tool", "log", "--", str(log), "plan", "choose", "why", "evidence", "result")
+        self.assertTrue(log.is_file())
 
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"

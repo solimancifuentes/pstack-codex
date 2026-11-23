@@ -67,7 +67,7 @@ do not change code. Show the path from the button to the worker stopping.
 
 ```text
 $pstack-codex:poteto-mode Migrate callers to the asynchronous store in small,
-verifiable steps. Preserve behavior. Open a draft PR when the checks pass.
+verifiable steps. Preserve behavior. Open a PR when the checks pass.
 ```
 
 The playbook follows your requested endpoint. Asking for an investigation does not authorize edits, and a workflow name does not authorize merges, deployment, messages, or changes to your settings. Long runs also depend on the session and tools actually available. Cursor's persistent Custom Modes and `/loop` command do not carry over to Codex.
@@ -152,7 +152,7 @@ tests miss, and keep the review read-only.
 | [maintain-verification-skill](plugins/pstack-codex/skills/maintain-verification-skill/SKILL.md) | A verification workflow needs to keep up with the product. |
 | [create-formal-verification-skill](plugins/pstack-codex/skills/create-formal-verification-skill/SKILL.md) | A race or invariant needs verification beyond tests. |
 | [maintain-formal-verification-skill](plugins/pstack-codex/skills/maintain-formal-verification-skill/SKILL.md) | Code changed under a formal verification, and you need to know whether a failure is drift or a bug. |
-| [statechart](plugins/pstack-codex/skills/statechart/SKILL.md) | You want a TLA+-checked chart of a flow, with the shortest path to each broken rule. |
+| [statechart](plugins/pstack-codex/skills/statechart/SKILL.md) | You want a TLA+-checked chart of a flow, with the shortest path to each broken invariant and TLC's counterexample for a broken temporal property. |
 | [show-me-your-work](plugins/pstack-codex/skills/show-me-your-work/SKILL.md) | You want a decision trail you can inspect later. |
 
 </details>
@@ -207,11 +207,11 @@ You may want the engineering rules and a different working style. [`automate-me`
 
 [`setup-pstack`](plugins/pstack-codex/skills/setup-pstack/SKILL.md) handles supported model and panel preferences. Optional overrides live at `~/.codex/pstack-codex/preferences.json`, outside the installed package, so release updates and rollback preserve them. A cloud worker needs its own accessible preferences or a brief containing the relevant choices.
 
-The default arena and interrogate panels have three seats, matching upstream. A profile that the personal manager wrote for v0.1.0 holds the old two-seat values; `setup-pstack` offers to remove them. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
+Installed v0.1.0 defaults the arena and interrogate panels to two seats. This checkout, the unpublished 0.2.0, defaults them to three, matching upstream. A profile that the personal manager wrote for v0.1.0 holds a copy of the old defaults, and 0.2.0's `setup-pstack` offers to remove the copied values. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
 
 ## optional helpers and automations
 
-The Markdown workflows work without Python or Bun. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
+The Markdown workflows work without Python or Bun, with one limit in this unpublished 0.2.0 checkout: on GitHub, Babysit's merge-ready verdict and the landings in Shipping and Autopilot need the prepared PR watcher. Without it they report the forge's state and leave the merge to you. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
 
 ```sh
 python3 /actual/plugin/path/tools/runtime.py profile show

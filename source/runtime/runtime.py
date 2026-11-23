@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Optional pstack helper launcher; skills work without this Python command."""
+"""Optional pstack helper launcher. Skills work without it, but on GitHub a merge-ready verdict and Shipping or Autopilot landings need its prepared PR watcher."""
 
 import argparse
 import contextlib
@@ -49,6 +49,11 @@ def merge(base, overrides):
     return result
 
 
+def only_removals(change):
+    # An empty object is an explicit value to store, not a removal.
+    return bool(change) and all(value is None or (isinstance(value, dict) and only_removals(value)) for value in change.values())
+
+
 def apply_change(current, change):
     """Merge a proposed change into stored overrides; a null value removes that key."""
     result = dict(current)
@@ -57,6 +62,8 @@ def apply_change(current, change):
             result.pop(key, None)
         elif isinstance(value, dict):
             parent = result.get(key)
+            if not isinstance(parent, dict) and only_removals(value):
+                continue  # Nothing to remove; never replace an existing value with {}.
             result[key] = apply_change(parent if isinstance(parent, dict) else {}, value)
         else:
             result[key] = value
@@ -87,8 +94,6 @@ def validate_profile(profile):
     for name, seats in panels.items():
         if type(seats) is not int or seats < 1:
             raise RuntimeError(f"profile.panels.{name} must be a positive integer; actual concurrency remains host-limited")
-    if panels.get("arena", 2) < 2:
-        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     implicit = profile.get("implicit_invocation", {})
     if not isinstance(implicit, dict) or any(type(value) is not bool for value in implicit.values()):
         raise RuntimeError("profile.implicit_invocation must map skill names to booleans")
@@ -97,13 +102,23 @@ def validate_profile(profile):
     return profile
 
 
-def plain_path(path):
-    """Reject a symlink at a user-selected mutation target or its parents."""
-    path = Path(path).expanduser().absolute()
+def inside_plugin(path):
+    """Compare by filesystem identity, so a differently cased path on a case-insensitive volume still matches."""
+    path = path.resolve()  # Collapse `..` first; symlinks were already rejected.
     for part in (path, *path.parents):
-        if part.is_symlink():
-            raise RuntimeError(f"Symlinks are not allowed in this path: {part}")
-    return path
+        if part.exists() and os.path.samefile(part, PLUGIN):
+            return True
+    return path.resolve().is_relative_to(PLUGIN)
+
+
+def plain_path(path):
+    """Refuse `..` and a symlinked target; follow symlinked parent folders, as dotfiles setups link ~/.codex."""
+    path = Path(path).expanduser().absolute()
+    if ".." in path.parts:
+        raise RuntimeError(f"Use a path without `..`: {path}")
+    if path.is_symlink():
+        raise RuntimeError(f"Symlinks are not allowed as the target itself: {path}")
+    return path.parent.resolve() / path.name
 
 
 def within(root, relative):
@@ -155,11 +170,24 @@ def default_profile():
     return Path.home() / ".codex/pstack-codex/preferences.json"
 
 
+def readable_path(path):
+    """A read may follow symlinks, as dotfiles setups often link ~/.codex, but never `..`."""
+    path = Path(path).expanduser().absolute()
+    if ".." in path.parts:
+        raise RuntimeError(f"Use a path without `..`: {path}")
+    return path
+
+
 def profile_show(path):
     defaults = validate_profile(read_json(within(PLUGIN, "defaults.json")))
-    overrides = read_json(plain_path(path)) if path.exists() else {}
-    return {"profile": str(path), "exists": path.exists(), "effective": validate_profile(merge(defaults, overrides)),
-            "model_availability": "not evaluated; use the current host's supported models and effort values"}
+    path = readable_path(path)
+    overrides = read_json(path) if path.exists() else {}
+    effective = validate_profile(merge(defaults, overrides))
+    result = {"profile": str(path), "exists": path.exists(), "effective": effective,
+              "model_availability": "not evaluated; use the current host's supported models and effort values"}
+    if effective.get("panels", {}).get("arena", 2) < 2:
+        result["warnings"] = ["panels.arena is below 2, so arena cannot run as saved; set it to 2 or more, or to null to use the default"]
+    return result
 
 
 def atomic_json(path, value):
@@ -178,11 +206,16 @@ def atomic_json(path, value):
 
 def profile_set(path, proposed, yes):
     path = plain_path(path)
+    if inside_plugin(path):
+        raise RuntimeError("The profile must live outside the installed plugin; choose a path such as ~/.codex/pstack-codex/preferences.json")
     proposed = read_json(proposed)
     defaults = read_json(within(PLUGIN, "defaults.json"))
     current = read_json(path) if path.exists() else {}
     if not isinstance(proposed, dict):
         raise RuntimeError("The proposed change must be a JSON object")
+    seats = proposed.get("panels", {}).get("arena") if isinstance(proposed.get("panels"), dict) else None
+    if type(seats) is int and seats < 2:
+        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     updated = apply_change(current, proposed)
     effective = validate_profile(merge(defaults, updated))
     # Store only user overrides. Unknown keys are preserved for newer adapters.
@@ -194,7 +227,7 @@ def profile_set(path, proposed, yes):
 
 def state_root(value):
     path = plain_path(value)
-    if path.resolve().is_relative_to(PLUGIN):
+    if inside_plugin(path):
         raise RuntimeError("Mutable helper state must be outside the installed plugin")
     return path
 
@@ -341,7 +374,9 @@ def main():
         elif options.command == "tools-setup":
             result = setup_tools(state_root(options.state_root))
         else:
-            return run_tool(state_root(options.state_root), options.name, options.arguments)
+            # The log helper keeps no state, so a symlinked state root must not block it.
+            state = None if options.name == "log" else state_root(options.state_root)
+            return run_tool(state, options.name, options.arguments)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
     except (RuntimeError, OSError, subprocess.SubprocessError) as error:

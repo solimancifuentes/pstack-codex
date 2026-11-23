@@ -38,6 +38,14 @@ unavailable controls, not choices to translate into invented names. A panel
 count is total seats, queued within actual runtime capacity. Defaults are three
 arena candidates and three independent interrogate adversaries.
 
+Write role choices only under the role keys listed in the shared contract,
+such as `feature, refactoring`, `swarm workers`, or `arena runners`. Any other
+key is saved but steers nothing, so never invent one. A legacy `feature` or
+`refactoring` key still steers its playbook while `feature, refactoring` is
+absent. Writing the combined key replaces both fallbacks, so preview the
+effective Feature and Refactoring choices before that write, and offer to move
+a legacy value into the combined key.
+
 Upstream retired the `architect` panel and the `hardest tasks`,
 `architect runners`, `how explorer`, `how explainer`, `why investigators`,
 `why synthesizer`, `reflect tooling`, and `reflect judgment, divergent,
@@ -45,11 +53,17 @@ synthesizer` roles. A profile entry for one of them no longer steers any
 workflow. Report each one you find. Remove it only as part of a change the
 user approves.
 
-A profile whose `panels` equal exactly `{architect: 2, arena: 2, interrogate:
-2}` is the v0.1.0 snapshot the personal manager copied from the old defaults,
-not a set of user choices. Propose removing those three keys so the current
-defaults apply, and tell the user which values change. Any other panel value is
-the user's choice and stays. To remove a key, set it to `null` in the change
+The v0.1.0 personal manager copied its whole default profile into
+`preferences.json`: `schema_version: 1`, `model`, `reasoning_effort`, and
+`speed` all `inherit-parent`, `always_apply: ["unslop"]`,
+`implicit_invocation: {unslop: true}`,
+`prefer_existing_browser_and_cli_tools: true`, `external_messages: "only when
+explicitly authorized by the user"`, `roles: {}`, and `panels: {architect: 2,
+arena: 2, interrogate: 2}`. Those copied values are old defaults, not user
+choices. When `panels` equal exactly that snapshot, propose removing every key
+whose value still equals its snapshot value, so the current defaults apply, and
+tell the user which effective values change. A key whose value differs from the
+snapshot is the user's choice and stays. To remove a key, set it to `null` in the change
 file; `profile set` deletes it and keeps every other key.
 
 ## 2. Show the concrete change

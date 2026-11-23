@@ -14,18 +14,18 @@ Every candidate gets the same prompt, so the prompt is the contract.
 
 1. State the artifact each candidate is producing.
 2. Derive the rubric, 3-6 concrete gradeable criteria for what success looks like on *this* task. It is the picker's tool in Phase D. Candidates only see the task.
-3. Pick the runners using the runtime `arena` panel described in [CODEX.md](../../CODEX.md), three by default and never fewer than two. Each inherits the parent by default. Honor explicit, available, authorized model choices. If a chosen model is rejected, use another model only when the user's selection allows that substitution. Otherwise drop the seat and say so. If fewer than two runners remain, report that the arena cannot run as selected rather than filling the seat with a model the user did not choose. Independent same-model candidates are supported, but do not claim the original Claude/Fable/Gemini diversity. Use additional runners only when the design directions or generation workload justify them.
+3. Pick the runners using the runtime `arena` panel described in [CODEX.md](../../CODEX.md), three by default and never fewer than two. Each inherits the parent by default, or follows the `arena runners` role when the user saved one. Honor explicit, available, authorized model choices. If a chosen model is rejected, use another model only when the user's selection allows that substitution. Otherwise drop the seat and say so. If fewer than two runners remain, report that the arena cannot run as selected rather than filling the seat with a model the user did not choose. Independent same-model candidates are supported, but do not claim the original Claude/Fable/Gemini diversity. Use additional runners only when the design directions or generation workload justify them.
 4. Give each candidate its own output location (a git worktree where possible, otherwise `/tmp/arena-<slug>/candidate-<n>/`), per the **separate-before-serializing-shared-state** principle skill.
 
 ## Phase B: Fan out
 
-Launch the N candidates through the selected runtime adapter's actual worker or task operation, queueing beyond actual free slots, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
+Launch the N candidates through the selected runtime adapter's actual worker or task operation, each with no parent history per the shared contract, queueing beyond actual free slots, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
 
-If a candidate produces no output, proceed with N-1 and note the dropout.
+If a candidate produces no output, proceed with N-1 and note the dropout. If fewer than two usable artifacts remain, stop before Phase C and report the incomplete comparison.
 
 ## Phase C: Cross-judge
 
-After all Phase B candidates complete, spawn a fresh judge that authored none of the candidates. Use the runtime model profile, inheriting the parent by default. Prefer an explicitly authorized different available model when one exists. Same-provider judging does not meet upstream's cross-provider assurance, so record the reduced diversity. The judge has a read-only assignment. It sees the rubric and candidates by path label, scores each criterion, and recommends a base with rationale. It runs alongside your reading in Phase D. Do not spawn it while candidates are still writing. If no judge can run, skip it and say so.
+After all Phase B candidates complete, spawn a fresh judge, with no parent history, that authored none of the candidates. Use the `arena cross-judge pool` role, inheriting the parent by default. Among the models the user authorized, prefer one from a provider other than the parent's, then any other different model. Same-provider judging does not meet upstream's cross-provider assurance, so record the reduced diversity. The judge has a read-only assignment. It sees the rubric and candidates by path label, scores each criterion, and recommends a base with rationale. It runs alongside your reading in Phase D. Do not spawn it while candidates are still writing. If no judge can run, skip it and say so.
 
 ## Phase D: Pick a base
 
