@@ -56,8 +56,10 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 - Inherited roles omit model and effort overrides. Arena substitutes a model
   only when the user's selection allows it. Otherwise it drops the seat, and
   it reports when fewer than two runners remain.
-- Opening a PR uses `gh pr create --draft` until verification is done, and
-  Babysit passes `--allow-draft` for such a PR and never marks it ready.
+- Opening a PR keeps a PR a draft until landing is authorized, under the
+  draft lifecycle in Opening a PR, and omits `--draft` when a ready PR is
+  requested. Babysit passes `--allow-draft` for such a PR and never marks it
+  ready.
 - `reflect` edits pstack through its source overlays, never by copying an
   installed, already-normalized skill into the source tree.
 - The packaged launcher `tools/runtime.py` and the shared contract no longer
@@ -78,9 +80,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-8a6f744ea4ac` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-412b7ad6cb49` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 96 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 97 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -240,6 +242,22 @@ Round 6 led to these changes:
 - Generated formal-verification skills can read the installed `statechart`
   skill directly, and statechart coverage is described per invariant and per
   temporal property.
+
+Round 7 led to these changes:
+
+- Taking over any PR to babysit or land it first checks for armed auto-merge,
+  not only before promotion, so a ready PR cannot land before its verdict.
+- Stage 2 is defined by its evidence, so standalone Shipping can verify a PR
+  that no agent owns, from its verifier's receipts and the forge's CI.
+- Landing accepts GitHub's `UNSTABLE` when every required check and user gate
+  passed, and reports the optional failure.
+- `gh pr create` gets an explicit title and body, so it runs without a prompt.
+  Babysit's direct read also queries review-thread resolution.
+- For a model-based check such as TLA+, the formal-verification skills put the
+  deliberate break in the model and tie the model to the code with a replay or
+  a code-level test.
+- Profile and helper-state paths are resolved before writing, so a path
+  through a missing directory inside the plugin creates nothing there.
 
 ## Known upstream defects
 

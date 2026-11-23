@@ -195,7 +195,7 @@ def atomic_json(path, value):
 
 
 def profile_set(path, proposed, yes):
-    path = plain_path(path)
+    path = plain_path(path).resolve()  # Write where the guard checked, not through `..`.
     if inside_plugin(path):
         raise RuntimeError("The profile must live outside the installed plugin; choose a path such as ~/.codex/pstack-codex/preferences.json")
     proposed = read_json(proposed)
@@ -216,7 +216,7 @@ def profile_set(path, proposed, yes):
 
 
 def state_root(value):
-    path = plain_path(value)
+    path = plain_path(value).resolve()
     if inside_plugin(path):
         raise RuntimeError("Mutable helper state must be outside the installed plugin")
     return path

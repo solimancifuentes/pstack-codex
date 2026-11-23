@@ -188,6 +188,15 @@ else:
         self.run_cli("profile", "set", "--profile", str(sibling), "--file", str(proposed), "--yes")
         self.assertTrue((self.root / "sibling-profile.json").is_file())
 
+    def test_profile_path_through_a_missing_plugin_directory_leaves_the_plugin_untouched(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        before = sorted(path.name for path in self.package.iterdir())
+        target = self.package / "missing" / ".." / ".." / "outside-profile.json"
+        self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes")
+        self.assertTrue((self.root / "outside-profile.json").is_file())
+        self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

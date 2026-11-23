@@ -38,7 +38,7 @@ If the check is a TLA+ model, tell the next agent to read every result with the 
 
 ## Prove it before you hand off
 
-Follow the generated skill once, as the next agent would, on a scratch change that breaks the property in the real code. Make that change in a disposable worktree or a copy, never in the user's checkout, so no local change is touched. It must catch the break. Then drop the scratch change and confirm that the check is back where it started: passing, or failing only on the findings you will report. A verify skill that was never run is a draft. If the skill misses the break or a step does not run, fix the skill or the verification, not the scratch change.
+Follow the generated skill once, as the next agent would, on a scratch change that breaks the property in the real code. Make that change in a disposable worktree or a copy, never in the user's checkout, so no local change is touched. A check that reads a model of the design, such as a TLA+ spec, never sees a product-code change, so for it the break goes into the model, mirroring the code change, and a replay of a bug path or a code-level test shows that the model describes the code. It must catch the break. Then drop the scratch change and confirm that the check is back where it started: passing, or failing only on the findings you will report. A verify skill that was never run is a draft. If the skill misses the break or a step does not run, fix the skill or the verification, not the scratch change.
 
 ## Hand off
 
