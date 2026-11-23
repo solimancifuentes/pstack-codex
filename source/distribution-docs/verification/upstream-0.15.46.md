@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-870d7bda9b42` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-a945169d2367` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -520,6 +520,16 @@ The round 24 review led to these changes:
 - Opening a PR offers `origin pr create` for every Origin repository again,
   and limits the REST path to a fork owned by the base repository's
   organization.
+
+The round 25 review (GPT-6.2 Astra and GPT-6.2 Sol; the Opus 5.5 seat
+stopped at the account's monthly spend limit) led to these changes:
+
+- Babysit's merge-ready test blocks on `CHANGES_REQUESTED` and reports
+  `REVIEW_REQUIRED` as waiting. The forge's merge state decides required
+  checks, because `gh pr checks --required` reports only checks that have
+  already reported.
+- The thread query reads `fullDatabaseId`, because current comment ids
+  exceed the deprecated 32-bit `databaseId`.
 
 ## Known upstream defects
 
