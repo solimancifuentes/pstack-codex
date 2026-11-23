@@ -648,6 +648,24 @@ The round 34 review led to these changes:
 - The README, compatibility notes, and help say that GitHub merge-ready
   verdicts and landings need the prepared watcher.
 
+## Deferred forge edge cases
+
+Reviewers raised these repeatedly. They are left for follow-up work rather
+than more port rules, because each earlier attempt to cover such cases in
+prose added new defects:
+
+- Branches that require a merge queue, where `gh pr merge` can enqueue the PR
+  or arm auto-merge while checks are pending.
+- A stack child whose parent branch exists only in a fork.
+- Workflows filtered to trunk, which leave a stack child without checks until
+  it is retargeted, and strict protection that requires an up-to-date head.
+- Review threads with more than 50 comments, of which the thread query reads
+  the first 50.
+- Origin `pr` command flags beyond those on Origin's stack reference, which
+  could not be rechecked because the PR command reference returned 404.
+- Repositories without CI, and fork PRs whose workflows wait for approval,
+  where the upstream watcher cannot judge readiness and the user decides.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
