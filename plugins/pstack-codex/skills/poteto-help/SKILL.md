@@ -13,7 +13,7 @@ Use [CODEX.md](../../CODEX.md) for runtime capabilities and limits. The original
 
 The installed plugin exposes `$poteto-mode` and the individual `$skill-name` entrypoints. Use the exact discovered namespace when the client shows a qualified name. The port's install receipt and verification report establish what is installed; a source directory alone does not prove discovery. When the question is about a race, an invariant, or another case tests rarely hit and the project has no formal verification skill, mention `create-formal-verification-skill`. When one exists and the code it covers changed after its recorded sync commit, mention `maintain-formal-verification-skill`.
 
-Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. A skipped step keeps its reason. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
+Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
 
 `$setup-pstack` manages an optional local user profile through a concrete reviewed change. If the profile is absent, the shared package defaults work without setup or the separate manager command. Every role inherits the parent model and reasoning by default. A panel can run independent same-model passes. Actual supported and authorized model choices may differ from the parent, but native collaboration does not reproduce the original Claude, Fable, and Gemini panel mix. Slot limits include the coordinator and nested workers. Larger panels queue.
 
@@ -84,8 +84,8 @@ named gaps; no adapter invents APIs, unlimited runtime, VM survival, or credenti
 isolation.
 
 The optional helpers run through `tools/runtime.py` in this installed package,
-resolved from the current skill path. They require Python and explicit Bun
-setup for helper commands. Core workflows do not require them or a separate
+resolved from the current skill path. They require Python, and the watcher
+also needs explicit Bun setup. Core workflows do not require them or a separate
 `pstack-codex` executable. Defaults work without a personal profile. User
 overrides stay outside the package and apply only where supported.
 

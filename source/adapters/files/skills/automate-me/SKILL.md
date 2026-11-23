@@ -80,7 +80,7 @@ Show the draft to the user and take feedback. Expect multiple iterations. Cut ru
 
 ### 6. Land it
 
-For a project skill, use an isolated worktree and a PR opened per `poteto-mode/playbooks/opening-a-pr.md` when that delivery is within the requested scope. For a personal skill, show the concrete installation changes and honor the user's installation approval preference before writing the global location. Keep the completed draft available for review. Do not create a repository or PR solely because this source workflow assumed one.
+For a project skill, use an isolated worktree and a PR opened per [Opening a PR](../poteto-mode/playbooks/opening-a-pr.md) when that delivery is within the requested scope. For a personal skill, show the concrete installation changes and honor the user's installation approval preference before writing the global location. Keep the completed draft available for review. Do not create a repository or PR solely because this source workflow assumed one.
 
 ## Guardrails
 

@@ -4,7 +4,7 @@ Read the [shared runtime contract](../../../CODEX.md) for delegation, authority,
 
 Invoked at the end of every other playbook.
 
-Work from a git worktree off trunk, or off the parent PR's branch for a stack child, and keep unrelated work out of it. Inspect Git state first, and never use `reset --hard` or discard unrelated work to get a clean start. One writer owns each branch and worktree. Rebase into small, landable commits. Run the available `deslop` skill over the diff before commit.
+Work from a git worktree off trunk, or, for a stack child, off the parent PR's pushed head, fetched and checked as an ancestor of the child, and keep unrelated work out of it. Inspect Git state first, and never use `reset --hard` or discard unrelated work to get a clean start. One writer owns each branch and worktree. Rebase into small, landable commits. Run the available `deslop` skill over the diff before commit.
 
 Title: `type(scope): subject`, naming a real symbol when one carries the change. Body: a one-minute briefing under 40 lines with these `##` headings in order, dropping empty ones: `## Why`, `## What changed`, `## Scope`, `## Tradeoffs` (only rejected alternatives a reviewer would otherwise ask about), `## Blast Radius`, `## Verification`.
 
