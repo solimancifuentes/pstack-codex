@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-027e1cfa3acc` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-ed2a7e11fbbb` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -496,6 +496,16 @@ The round 22 review led to these changes:
   includes `state`, so a merged or closed PR ends the drive.
 - `gh pr create` names the base repository, and a fork head is written
   `<owner>:<branch>`.
+
+The round 23 review led to these changes:
+
+- Babysit's `threads-only` mode reads review threads directly instead of
+  waiting on the watcher's CI result. When the watcher and the forge
+  disagree, `drive` continues with direct reads within the same deadline and
+  reports merge-ready only with the forge's agreement.
+- Shipping's Origin wait has a deadline.
+- An organization-owned fork opens its PR through the REST API with
+  `head_repo`.
 
 ## Known upstream defects
 
