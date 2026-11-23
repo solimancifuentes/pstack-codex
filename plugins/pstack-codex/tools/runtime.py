@@ -112,8 +112,10 @@ def inside_plugin(path):
 
 
 def plain_path(path):
-    """Reject a symlink at a user-selected mutation target or its parents."""
-    path = Path(os.path.normpath(Path(path).expanduser().absolute()))  # Collapse `..` before the symlink check.
+    """Reject `..` and any symlink in a user-selected path, so it names exactly where it reads and writes."""
+    path = Path(path).expanduser().absolute()
+    if ".." in path.parts:
+        raise RuntimeError(f"Use a path without `..`: {path}")
     for part in (path, *path.parents):
         if part.is_symlink():
             raise RuntimeError(f"Symlinks are not allowed in this path: {part}")
@@ -171,7 +173,8 @@ def default_profile():
 
 def profile_show(path):
     defaults = validate_profile(read_json(within(PLUGIN, "defaults.json")))
-    overrides = read_json(plain_path(path)) if path.exists() else {}
+    path = plain_path(path)
+    overrides = read_json(path) if path.exists() else {}
     effective = validate_profile(merge(defaults, overrides))
     result = {"profile": str(path), "exists": path.exists(), "effective": effective,
               "model_availability": "not evaluated; use the current host's supported models and effort values"}

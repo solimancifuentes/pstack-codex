@@ -82,22 +82,20 @@ test_packaged_source_mutation_and_extra_file_are_rejected (test_runtime.RuntimeC
 test_prepared_dispatch_forwards_arguments_without_installing (test_runtime.RuntimeCLITests.test_prepared_dispatch_forwards_arguments_without_installing) ... ok
 test_prepared_source_mutation_and_receipt_mismatch_are_rejected (test_runtime.RuntimeCLITests.test_prepared_source_mutation_and_receipt_mismatch_are_rejected) ... ok
 test_profile_dry_run_and_partial_write_preserve_unknown_nested_values (test_runtime.RuntimeCLITests.test_profile_dry_run_and_partial_write_preserve_unknown_nested_values) ... ok
-test_profile_path_through_a_missing_plugin_directory_leaves_the_plugin_untouched (test_runtime.RuntimeCLITests.test_profile_path_through_a_missing_plugin_directory_leaves_the_plugin_untouched) ... ok
+test_profile_paths_with_dotdot_are_refused_for_reads_and_writes (test_runtime.RuntimeCLITests.test_profile_paths_with_dotdot_are_refused_for_reads_and_writes) ... ok
 test_profile_rejects_single_seat_arena (test_runtime.RuntimeCLITests.test_profile_rejects_single_seat_arena) ... ok
 test_profile_removal_under_scalar_parent_keeps_the_value (test_runtime.RuntimeCLITests.test_profile_removal_under_scalar_parent_keeps_the_value) ... ok
-test_profile_set_accepts_a_sibling_reached_through_dotdot (test_runtime.RuntimeCLITests.test_profile_set_accepts_a_sibling_reached_through_dotdot) ... ok
 test_profile_set_null_removes_only_that_key (test_runtime.RuntimeCLITests.test_profile_set_null_removes_only_that_key) ... ok
 test_profile_set_null_under_absent_parent_stores_no_null (test_runtime.RuntimeCLITests.test_profile_set_null_under_absent_parent_stores_no_null) ... ok
 test_profile_set_refuses_a_differently_cased_plugin_path (test_runtime.RuntimeCLITests.test_profile_set_refuses_a_differently_cased_plugin_path) ... ok
 test_profile_set_refuses_a_path_inside_the_plugin (test_runtime.RuntimeCLITests.test_profile_set_refuses_a_path_inside_the_plugin) ... ok
 test_profile_set_requires_explicit_action (test_runtime.RuntimeCLITests.test_profile_set_requires_explicit_action) ... ok
 test_profile_set_stores_an_explicit_empty_object (test_runtime.RuntimeCLITests.test_profile_set_stores_an_explicit_empty_object) ... ok
-test_profile_symlink_reached_through_dotdot_is_refused (test_runtime.RuntimeCLITests.test_profile_symlink_reached_through_dotdot_is_refused) ... ok
 test_profile_symlink_write_rejected (test_runtime.RuntimeCLITests.test_profile_symlink_write_rejected) ... ok
 test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITests.test_state_inside_plugin_and_symlink_escapes_rejected) ... ok
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 98 tests in 67.281s
+Ran 96 tests in 69.015s
 
 OK

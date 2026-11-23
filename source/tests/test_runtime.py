@@ -181,32 +181,19 @@ else:
         self.assertIn("outside the installed plugin", result.stderr)
         self.assertFalse((self.package / "unexpected-profile.json").exists())
 
-    def test_profile_set_accepts_a_sibling_reached_through_dotdot(self):
-        proposed = self.root / "proposal.json"
-        self.write_json(proposed, {"model": "inherit-parent"})
-        sibling = self.package / ".." / "sibling-profile.json"
-        self.run_cli("profile", "set", "--profile", str(sibling), "--file", str(proposed), "--yes")
-        self.assertTrue((self.root / "sibling-profile.json").is_file())
-
-    def test_profile_path_through_a_missing_plugin_directory_leaves_the_plugin_untouched(self):
+    def test_profile_paths_with_dotdot_are_refused_for_reads_and_writes(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"model": "inherit-parent"})
         before = sorted(path.name for path in self.package.iterdir())
-        target = self.package / "missing" / ".." / ".." / "outside-profile.json"
-        self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes")
-        self.assertTrue((self.root / "outside-profile.json").is_file())
+        for target in (self.package / ".." / "sibling-profile.json",
+                       self.package / "missing" / ".." / ".." / "outside-profile.json",
+                       self.root / "missing" / ".." / "chosen.json"):
+            with self.subTest(target=str(target)):
+                result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
+                self.assertIn("without `..`", result.stderr)
+                self.assertIn("without `..`", self.run_cli("profile", "show", "--profile", str(target), expected=1).stderr)
         self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
-
-    def test_profile_symlink_reached_through_dotdot_is_refused(self):
-        proposed = self.root / "proposal.json"
-        self.write_json(proposed, {"model": "inherit-parent"})
-        real = self.root / "real-profile.json"
-        self.write_json(real, {})
-        (self.root / "chosen.json").symlink_to(real)
-        target = self.root / "missing" / ".." / "chosen.json"
-        result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
-        self.assertIn("Symlinks are not allowed", result.stderr)
-        self.assertEqual(json.loads(real.read_text()), {})
+        self.assertFalse((self.root / "sibling-profile.json").exists())
 
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"

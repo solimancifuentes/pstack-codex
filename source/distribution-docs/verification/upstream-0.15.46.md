@@ -80,9 +80,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-56758d851c2d` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-788f60b5e24e` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 96 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -272,7 +272,26 @@ Round 8 led to these changes:
   pages through the results.
 - Generated formal-verification skills find `statechart` through the skill
   picker or the plugin root a loaded pstack skill gives, never a cache search.
-- Profile and helper-state paths collapse `..` before the symlink check.
+- Profile and helper-state paths are checked for symlinks on every component.
+
+Round 9 led to these changes:
+
+- The merge-result rule applies to the base the verdict ran on; a later base
+  move carries the verdict only under Shipping step 3's rule, so landing on a
+  busy repository can finish.
+- The armed auto-merge check applies only where a verdict gates landing.
+  Standalone Babysit reports a user-armed auto-merge and carries on.
+- Each required check is classified by its trigger, so a mix of draft and
+  promotion-only checks no longer blocks promotion.
+- Landings run one per base at a time, and where other writers can move the
+  base, the lifecycle relies on the forge's up-to-date rule or a covered merge
+  queue, or reports the race.
+- Babysit's final read includes the base; Shipping and Autopilot apply the
+  required-gate rule when the watcher stops on an optional failure.
+- `gh pr create` names the base repository and the pushed head, and Origin uses
+  `--status open` for a ready PR.
+- Profile and helper-state paths containing `..` are refused for reads and
+  writes, so a path always names exactly where it reads and writes.
 
 ## Known upstream defects
 
