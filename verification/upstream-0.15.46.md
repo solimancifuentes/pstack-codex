@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-a945169d2367` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-e36842559d80` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -530,6 +530,20 @@ stopped at the account's monthly spend limit) led to these changes:
   already reported.
 - The thread query reads `fullDatabaseId`, because current comment ids
   exceed the deprecated 32-bit `databaseId`.
+
+The round 26 review led to these changes:
+
+- Babysit's merge-ready test no longer accepts `UNSTABLE` for any optional
+  check. On a repository without required checks, `UNSTABLE` covers the
+  PR's own failing or pending CI, so a pending check always waits and a
+  failing one blocks unless it fails the same way on the base or the user
+  named it non-blocking. This replaces the round 7 and round 24 rule.
+- The direct read rereads the head and merge state after the check and
+  thread reads, and repeats the pass if the head moved.
+- A reply targets the thread's first comment, which GitHub's reply endpoint
+  requires.
+- Watcher slices also get a host command timeout, because the watcher can
+  finish a read past its own deadline.
 
 ## Known upstream defects
 
