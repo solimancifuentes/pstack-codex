@@ -685,6 +685,9 @@ change: Babysit's pre-slice read includes the merge state and stops on
 GitHub runs no `pull_request` workflow on a conflicted head, so the watcher
 would otherwise wait until the deadline.
 
+Round 39 (Claude Opus 5.5, GPT-6.2 Astra at xhigh, and GPT-6.2 Sol at max)
+came back clean from all three reviewers at `a80f407`, which ends the loop.
+
 ## Deferred forge edge cases
 
 Reviewers raised these repeatedly. They are left for follow-up work rather
