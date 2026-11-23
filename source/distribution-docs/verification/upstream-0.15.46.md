@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-dc3818a9d557` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-717e9b76fd6b` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -670,6 +670,14 @@ The round 36 review led to these changes:
   current checkout tracks it.
 - The launcher's help says that GitHub merge-ready verdicts and landings need
   its prepared watcher.
+
+The round 37 review led to these changes:
+
+- Shipping arms GitHub auto-merge only after Babysit reports the PR
+  merge-ready at the verified head, so never without the prepared watcher.
+- Babysit's `check` pass has one deadline covering every read.
+- `automate-me` uses the Git date only for a committed, unchanged `SKILL.md`
+  and falls back when the lookup prints nothing.
 
 ## Deferred forge edge cases
 
