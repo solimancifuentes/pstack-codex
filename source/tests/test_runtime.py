@@ -195,6 +195,18 @@ else:
         self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
         self.assertFalse((self.root / "sibling-profile.json").exists())
 
+    def test_profile_show_and_log_work_through_a_symlinked_config_folder(self):
+        real = self.root / "real-config"
+        real.mkdir()
+        self.write_json(real / "preferences.json", {"panels": {"arena": 4}})
+        linked = self.root / "linked-config"
+        linked.symlink_to(real)
+        shown = json.loads(self.run_cli("profile", "show", "--profile", str(linked / "preferences.json")).stdout)
+        self.assertEqual(shown["effective"]["panels"]["arena"], 4)
+        log = self.root / "decisions.tsv"
+        self.run_cli("--state-root", str(linked / "state"), "tool", "log", "--", str(log), "plan", "choose", "why", "evidence", "result")
+        self.assertTrue(log.is_file())
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

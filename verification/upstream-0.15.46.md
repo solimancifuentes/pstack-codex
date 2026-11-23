@@ -80,9 +80,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-788f60b5e24e` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-de9d55706317` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 96 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 97 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -292,6 +292,23 @@ Round 9 led to these changes:
   `--status open` for a ready PR.
 - Profile and helper-state paths containing `..` are refused for reads and
   writes, so a path always names exactly where it reads and writes.
+
+Round 10 led to these changes:
+
+- `gh pr create` uses `--head <branch>` for a same-repository head and
+  `<user>:<branch>` for a user fork, and creates through the REST API with
+  `head_repo` for an organization-owned fork.
+- Gates that can only clear after promotion, such as code-owner approval, are
+  merge gates in stage 4, so they no longer hold a draft back.
+- Where other writers can move the base and the forge enforces neither an
+  up-to-date branch nor a covered merge queue, landing hands the PR to the
+  operator instead of merging.
+- Babysit reads required checks directly when the watcher waits on an optional
+  check or finds no checks on a ready PR, ends a policy-draft drive when the
+  draft's gates settle, and the watcher is pointed at the base repository with
+  `--owner` and `--repo`.
+- `profile show` follows a symlinked config folder, and the log helper no
+  longer needs a helper-state root; writes still refuse symlinks.
 
 ## Known upstream defects
 

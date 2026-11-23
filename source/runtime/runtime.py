@@ -171,9 +171,17 @@ def default_profile():
     return Path.home() / ".codex/pstack-codex/preferences.json"
 
 
+def readable_path(path):
+    """A read may follow symlinks, as dotfiles setups often link ~/.codex, but never `..`."""
+    path = Path(path).expanduser().absolute()
+    if ".." in path.parts:
+        raise RuntimeError(f"Use a path without `..`: {path}")
+    return path
+
+
 def profile_show(path):
     defaults = validate_profile(read_json(within(PLUGIN, "defaults.json")))
-    path = plain_path(path)
+    path = readable_path(path)
     overrides = read_json(path) if path.exists() else {}
     effective = validate_profile(merge(defaults, overrides))
     result = {"profile": str(path), "exists": path.exists(), "effective": effective,
@@ -367,7 +375,9 @@ def main():
         elif options.command == "tools-setup":
             result = setup_tools(state_root(options.state_root))
         else:
-            return run_tool(state_root(options.state_root), options.name, options.arguments)
+            # The log helper keeps no state, so a symlinked state root must not block it.
+            state = None if options.name == "log" else state_root(options.state_root)
+            return run_tool(state, options.name, options.arguments)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
     except (RuntimeError, OSError, subprocess.SubprocessError) as error:
