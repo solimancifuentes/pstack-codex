@@ -92,11 +92,12 @@ test_profile_set_refuses_a_differently_cased_plugin_path (test_runtime.RuntimeCL
 test_profile_set_refuses_a_path_inside_the_plugin (test_runtime.RuntimeCLITests.test_profile_set_refuses_a_path_inside_the_plugin) ... ok
 test_profile_set_requires_explicit_action (test_runtime.RuntimeCLITests.test_profile_set_requires_explicit_action) ... ok
 test_profile_set_stores_an_explicit_empty_object (test_runtime.RuntimeCLITests.test_profile_set_stores_an_explicit_empty_object) ... ok
+test_profile_symlink_reached_through_dotdot_is_refused (test_runtime.RuntimeCLITests.test_profile_symlink_reached_through_dotdot_is_refused) ... ok
 test_profile_symlink_write_rejected (test_runtime.RuntimeCLITests.test_profile_symlink_write_rejected) ... ok
 test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITests.test_state_inside_plugin_and_symlink_escapes_rejected) ... ok
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 97 tests in 69.301s
+Ran 98 tests in 67.281s
 
 OK

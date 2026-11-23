@@ -113,7 +113,7 @@ def inside_plugin(path):
 
 def plain_path(path):
     """Reject a symlink at a user-selected mutation target or its parents."""
-    path = Path(path).expanduser().absolute()
+    path = Path(os.path.normpath(Path(path).expanduser().absolute()))  # Collapse `..` before the symlink check.
     for part in (path, *path.parents):
         if part.is_symlink():
             raise RuntimeError(f"Symlinks are not allowed in this path: {part}")

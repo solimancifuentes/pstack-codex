@@ -80,9 +80,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-412b7ad6cb49` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-56758d851c2d` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 97 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -258,6 +258,21 @@ Round 7 led to these changes:
   a code-level test.
 - Profile and helper-state paths are resolved before writing, so a path
   through a missing directory inside the plugin creates nothing there.
+
+Round 8 led to these changes:
+
+- Takeover also checks merge-queue membership, and dequeues with authority or
+  stops.
+- Opening a PR pushes the branch first, so creation never prompts, and handles
+  repositories that cannot hold drafts by asking before opening ready.
+- Stage 2 uses the same required-check and user-gate rule as stage 4, so a
+  failing optional check no longer blocks. When the head does not contain the
+  current base, the verdict must cover the merge result or a rebased head.
+- Babysit's direct GraphQL read selects `isResolved` on each thread node and
+  pages through the results.
+- Generated formal-verification skills find `statechart` through the skill
+  picker or the plugin root a loaded pstack skill gives, never a cache search.
+- Profile and helper-state paths collapse `..` before the symlink check.
 
 ## Known upstream defects
 

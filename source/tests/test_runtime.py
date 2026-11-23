@@ -197,6 +197,17 @@ else:
         self.assertTrue((self.root / "outside-profile.json").is_file())
         self.assertEqual(sorted(path.name for path in self.package.iterdir()), before)
 
+    def test_profile_symlink_reached_through_dotdot_is_refused(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        real = self.root / "real-profile.json"
+        self.write_json(real, {})
+        (self.root / "chosen.json").symlink_to(real)
+        target = self.root / "missing" / ".." / "chosen.json"
+        result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
+        self.assertIn("Symlinks are not allowed", result.stderr)
+        self.assertEqual(json.loads(real.read_text()), {})
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})
