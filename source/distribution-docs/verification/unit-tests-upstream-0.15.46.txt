@@ -98,6 +98,6 @@ test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITe
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 98 tests in 66.998s
+Ran 98 tests in 66.441s
 
 OK

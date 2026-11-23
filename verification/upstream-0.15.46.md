@@ -80,7 +80,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-c3d04992f02a` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-56e3342d5f26` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -326,6 +326,19 @@ Round 11 led to these changes:
   right `head` and `head_repo`, and the Origin create command stands on its own.
 - Profile writes follow a symlinked config folder and refuse only a symlinked
   target file.
+
+Round 12 led to these changes:
+
+- The post-merge base check finds the landed base per merge method, including
+  the first replayed commit's parent for a rebase merge, and confirms the
+  merged PR's base branch.
+- Babysit takes the base SHA from the branch tip instead of the PR's
+  `baseRefOid`, passes `--pr` to the watcher, and its Origin drive also waits
+  for unresolved threads.
+- Shipping's Origin path polls required gates instead of blocking on
+  `origin pr checks --watch`.
+- The required set comes from the base branch's rules, so a required check that
+  has not reported yet is not mistaken for green.
 
 ## Known upstream defects
 
