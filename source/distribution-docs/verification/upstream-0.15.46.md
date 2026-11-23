@@ -80,7 +80,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-56e3342d5f26` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-9a602f2c0692` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -339,6 +339,20 @@ Round 12 led to these changes:
   `origin pr checks --watch`.
 - The required set comes from the base branch's rules, so a required check that
   has not reported yet is not mistaken for green.
+
+Round 13 led to these changes:
+
+- The required set is read from the branch the PR finally lands on, through
+  two endpoints readable without admin rights, and an empty set passes.
+  Shipping uses the same read.
+- A required job that skips itself on drafts counts as deferred, never as a
+  pass, and every deferred check needs a successful run on the verified
+  revision before landing.
+- The post-merge check verifies the landed commit by SHA, and for a merge
+  queue it confirms that the checked merge group is what landed.
+- Babysit runs the thread query in every direct read and reads Origin's base
+  tip with `git ls-remote`. Shipping handles upper PRs whose CI runs only
+  against trunk. Autopilot-stack owners stop at stage 2.
 
 ## Known upstream defects
 
