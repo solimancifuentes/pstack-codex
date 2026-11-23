@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-fad9ed338eda` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-23718061c764` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -589,6 +589,20 @@ The round 30 review led to these changes:
 - Shipping's Origin loop reruns the pinned merge when the gates clear, and its
   auto-merge note says GitHub keeps auto-merge armed through other writers'
   pushes.
+
+The round 31 review led to these changes:
+
+- Babysit no longer infers which checks should appear. Rounds 27 to 30
+  inferred them from workflow files, apps, and recent PRs, and each round
+  found a case it got wrong: path and branch filters, renamed jobs, disabled
+  workflows, and `pull_request_target` revisions. Babysit now trusts the
+  check list once the head is a few minutes old and two reads agree, and a
+  required check that never reports still shows as `BLOCKED`.
+- The direct check read uses `--json name,state,bucket,link`, so an
+  `ACTION_REQUIRED` approval is not mistaken for a failure.
+- Shipping arms GitHub auto-merge only when no one, the arming agent
+  included, will push before it lands, and turns it off before any later
+  push.
 
 ## Known upstream defects
 
