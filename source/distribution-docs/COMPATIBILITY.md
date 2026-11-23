@@ -23,7 +23,7 @@ task APIs and supported event sources must be observed before use. Connecting a
 plugin does not establish a schedule or authorize messages to other people.
 
 Optional helper commands require Python 3.11+ and POSIX support on
-macOS/Linux, and the watcher also needs Bun. Their absence does not prevent the Markdown workflows, but on GitHub, Babysit's merge-ready verdict and the landings in Shipping and Autopilot need the prepared watcher; without it they report the forge's state and leave the merge to the user. The
+macOS/Linux, and the watcher also needs Bun. Their absence does not prevent the Markdown workflows, but in the unpublished 0.2.0 checkout, on GitHub, Babysit's merge-ready verdict and the landings in Shipping and Autopilot need the prepared watcher; without it they report the forge's state and leave the merge to the user. The
 `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+,
 and Java with TLC.
 Installing Java and TLC through `mise`, or the Pele renderer through npm, is

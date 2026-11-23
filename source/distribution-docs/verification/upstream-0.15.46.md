@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-b37e52e93b34` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-d0be31125996` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -648,6 +648,16 @@ The round 34 review led to these changes:
 - The README, compatibility notes, and help say that GitHub merge-ready
   verdicts and landings need the prepared watcher.
 
+The round 35 review led to these changes:
+
+- Babysit's `drive` no longer passes `--max-query-errors 1`. Round 24 added
+  it to reach a direct read at once, and after round 33 removed that read it
+  made every fresh push stop the drive before checks registered. `check` and
+  Shipping's progress read still fail fast, and the progress read has a host
+  timeout again. `check` passes `--pretty` for the table it reports.
+- The README and compatibility notes label the watcher handoff as 0.2.0
+  behavior, since installed v0.1.0 has no such handoff.
+
 ## Deferred forge edge cases
 
 Reviewers raised these repeatedly. They are left for follow-up work rather
@@ -684,9 +694,10 @@ They are left for an upstream fix rather than a port fork:
   from the forge before it reports merge-ready.
 - `watch-pr` returns `checks-unavailable` for any PR with no checks, such as
   one on a repository without CI, and ends in a `status-query` blocker after
-  its retries, dropping the review-thread result. Babysit then reports the
-  forge's state without a merge-ready verdict, and Shipping stops and
-  reports.
+  its retries, dropping the review-thread result. Babysit's `drive` keeps the
+  default retries so checks that are still registering are waited out; if
+  the error lasts until the drive's deadline, Babysit reports the forge's
+  state without a merge-ready verdict, and Shipping stops and reports.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 

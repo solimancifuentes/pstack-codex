@@ -211,7 +211,7 @@ Installed v0.1.0 defaults the arena and interrogate panels to two seats. This ch
 
 ## optional helpers and automations
 
-The Markdown workflows work without Python or Bun, with one limit: on GitHub, Babysit's merge-ready verdict and the landings in Shipping and Autopilot need the prepared PR watcher. Without it they report the forge's state and leave the merge to you. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
+The Markdown workflows work without Python or Bun, with one limit in this unpublished 0.2.0 checkout: on GitHub, Babysit's merge-ready verdict and the landings in Shipping and Autopilot need the prepared PR watcher. Without it they report the forge's state and leave the merge to you. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
 
 ```sh
 python3 /actual/plugin/path/tools/runtime.py profile show
