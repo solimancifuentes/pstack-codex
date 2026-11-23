@@ -207,7 +207,7 @@ You may want the engineering rules and a different working style. [`automate-me`
 
 [`setup-pstack`](plugins/pstack-codex/skills/setup-pstack/SKILL.md) handles supported model and panel preferences. Optional overrides live at `~/.codex/pstack-codex/preferences.json`, outside the installed package, so release updates and rollback preserve them. A cloud worker needs its own accessible preferences or a brief containing the relevant choices.
 
-The default arena and interrogate panels have three seats, matching upstream. A profile that the personal manager wrote for v0.1.0 holds a copy of the old defaults, including two-seat panels; `setup-pstack` offers to remove the copied values. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
+Installed v0.1.0 defaults the arena and interrogate panels to two seats. This checkout, the unpublished 0.2.0, defaults them to three, matching upstream. A profile that the personal manager wrote for v0.1.0 holds a copy of the old defaults, and 0.2.0's `setup-pstack` offers to remove the copied values. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
 
 ## optional helpers and automations
 

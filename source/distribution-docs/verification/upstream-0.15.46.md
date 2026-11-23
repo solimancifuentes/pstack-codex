@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-d68d3b1a632c` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-a4c396cdedd4` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -554,6 +554,16 @@ The round 27 review led to these changes:
   runs for the PR either.
 - A head that moves during a `check` pass is reported as unknown readiness
   instead of starting another pass.
+
+The round 28 review led to these changes:
+
+- Babysit treats a check known to run for the PR as pending until it
+  appears, even when other checks have reported, and rereads an `UNKNOWN`
+  merge state.
+- An Autopilot owner that takes over an existing PR checks for auto-merge
+  someone already armed, as Shipping does.
+- The README separates installed v0.1.0's two-seat panel defaults from the
+  unpublished 0.2.0 defaults.
 
 ## Known upstream defects
 
