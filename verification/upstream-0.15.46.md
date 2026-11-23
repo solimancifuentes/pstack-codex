@@ -80,7 +80,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-9a602f2c0692` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-b8d75b0fa076` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -353,6 +353,21 @@ Round 13 led to these changes:
 - Babysit runs the thread query in every direct read and reads Origin's base
   tip with `git ls-remote`. Shipping handles upper PRs whose CI runs only
   against trunk. Autopilot-stack owners stop at stage 2.
+
+Round 14 led to these changes:
+
+- A required check that a workflow branch filter keeps from running on a stack
+  child is deferred to retarget, so Autopilot-stack hands off instead of
+  waiting forever. Babysit reads the required set of the final landing branch.
+- A draft-skipped job needs a fresh event, such as reopening the ready PR or a
+  new commit; a rerun replays the draft event and skips again.
+- On a private repository whose plan has no branch rules, the plan-specific 403
+  plus `protected: false` means no required checks. The rules read paginates.
+- A merge-queue landing records the tested and landed SHAs separately and
+  compares trees when they differ.
+- On Origin, Shipping reads back the stack's automatic base move instead of
+  retargeting, which could detach the child. Babysit checks every watcher
+  `READY` against the required set.
 
 ## Known upstream defects
 
