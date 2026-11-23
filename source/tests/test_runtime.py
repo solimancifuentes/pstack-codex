@@ -170,6 +170,17 @@ else:
         self.assertIn("outside the installed plugin", result.stderr)
         self.assertEqual(defaults.read_bytes(), before)
 
+    def test_profile_set_refuses_a_differently_cased_plugin_path(self):
+        variant = self.package.with_name(self.package.name.upper())
+        if not variant.exists():
+            self.skipTest("case-sensitive filesystem")
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        target = variant / "unexpected-profile.json"
+        result = self.run_cli("profile", "set", "--profile", str(target), "--file", str(proposed), "--yes", expected=1)
+        self.assertIn("outside the installed plugin", result.stderr)
+        self.assertFalse((self.package / "unexpected-profile.json").exists())
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

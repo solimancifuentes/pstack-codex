@@ -78,9 +78,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-da0401eab424` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-47823a3fe96d` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 94 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 95 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -205,6 +205,24 @@ Round 4 led to these changes:
   model when the actual one is hidden. `worker.md` carries the eval exception.
 - `create-formal-verification-skill` makes its scratch break in a disposable
   checkout, and statechart's coverage is described per broken rule.
+
+Round 5 led to these changes:
+
+- Landing rereads the base repository and branch name as well as the SHAs, so
+  a PR retargeted to another branch at the same commit stops. On a branch that
+  requires a merge queue, the port enqueues with `expectedHeadOid` instead of
+  running `gh pr merge`, which can arm auto-merge when a check is pending. The
+  merge method follows what the repository allows.
+- Autopilot's verdict comes from the owner's code-ready receipts, and the owner
+  reports a verified draft only after it, which removes a circular wait. A PR
+  that is already ready skips promotion but still goes through verification
+  and landing, and Autopilot-stack can hand it off. Shipping confirms draft
+  checks before it promotes.
+- Origin reads use `origin pr view --checks`, with `--comments` in Babysit's
+  one-pass check.
+- The plugin-path guard compares by filesystem identity, so a differently
+  cased path on a case-insensitive volume is refused.
+- The decision-trail reviewer reports a requested model honestly.
 
 ## Known upstream defects
 

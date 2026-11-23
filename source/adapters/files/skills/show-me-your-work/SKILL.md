@@ -71,7 +71,7 @@ Before handing back, use an independent reviewer that did not do the work. It re
 - Choices that look risky in hindsight (premature, scope-creeping, papering over a symptom).
 - Gaps the user would otherwise miss on a casual skim.
 
-Every reply for a run that produced a trail ends with an "Attention" section. Lead with the reviewer's model on its own line (`reviewed by <model>`), then list each flag pointing to specific rows or moments. "No flags" is a valid value. Name the actual model when known. If the runtime does not expose it, say `parent model inherited; exact model unavailable` instead of inventing one.
+Every reply for a run that produced a trail ends with an "Attention" section. Lead with the reviewer's model on its own line (`reviewed by <model>`), then list each flag pointing to specific rows or moments. "No flags" is a valid value. Name the actual model when known. If the runtime does not expose it, name the requested model and say the actual model was unavailable; write `parent model inherited; exact model unavailable` only for a reviewer launched without a model override. Never invent one.
 
 ## Reviewing the trail
 

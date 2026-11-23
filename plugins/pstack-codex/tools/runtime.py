@@ -102,6 +102,14 @@ def validate_profile(profile):
     return profile
 
 
+def inside_plugin(path):
+    """Compare by filesystem identity, so a differently cased path on a case-insensitive volume still matches."""
+    for part in (path, *path.parents):
+        if part.exists() and os.path.samefile(part, PLUGIN):
+            return True
+    return path.resolve().is_relative_to(PLUGIN)
+
+
 def plain_path(path):
     """Reject a symlink at a user-selected mutation target or its parents."""
     path = Path(path).expanduser().absolute()
@@ -187,7 +195,7 @@ def atomic_json(path, value):
 
 def profile_set(path, proposed, yes):
     path = plain_path(path)
-    if path.resolve().is_relative_to(PLUGIN):
+    if inside_plugin(path):
         raise RuntimeError("The profile must live outside the installed plugin; choose a path such as ~/.codex/pstack-codex/preferences.json")
     proposed = read_json(proposed)
     defaults = read_json(within(PLUGIN, "defaults.json"))
@@ -208,7 +216,7 @@ def profile_set(path, proposed, yes):
 
 def state_root(value):
     path = plain_path(value)
-    if path.resolve().is_relative_to(PLUGIN):
+    if inside_plugin(path):
         raise RuntimeError("Mutable helper state must be outside the installed plugin")
     return path
 
