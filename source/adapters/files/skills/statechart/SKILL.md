@@ -20,7 +20,7 @@ sh <skill dir>/scripts/statechart SPEC.tla [--config FILE] [--view FILE] [--out 
 
 `scripts/statechart.ts` is TypeScript, so run it with a runtime that can execute TypeScript. `scripts/statechart` is a POSIX shell script that picks one. On native Windows, run `node --disable-warning=ExperimentalWarning <skill dir>/scripts/statechart.ts` with Node 22.18 to 22.x, or Node 23.6 or later.
 
-With no `TLA2TOOLS` set, any run that cannot find TLC and Java through `mise` installs them, which needs the network and writes to `mise`'s data directory. That install is dependency setup under CODEX.md, and the command gives no way to skip it. So before each run, either set `TLA2TOOLS` to an existing `tla2tools.jar` and `JAVA` to a Java 11 or later binary, both as absolute paths, or confirm that `mise where` finds the `tla2tools` tool and `mise which java --tool java@temurin-25` finds Java. If neither holds and the install is not authorized, report the missing prerequisite and do not run.
+With no `TLA2TOOLS` set, any run that cannot find TLC and Java through `mise` installs them, which needs the network and writes to `mise`'s data directory. That install is dependency setup under CODEX.md, and the command gives no way to skip it. The command's own lookup uses a pinned tool identifier in a fresh temporary directory, so a `mise` check in your shell does not prove it will skip the install. Without install authority, always set `TLA2TOOLS` to an existing `tla2tools.jar` and `JAVA` to a Java 11 or later binary, both as absolute paths, before each run. If you cannot find both, report the missing prerequisite and do not run.
 
 ## Write the spec
 

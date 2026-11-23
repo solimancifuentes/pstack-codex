@@ -129,6 +129,13 @@ else:
         self.assertEqual(saved["overrides"], {"keep": True, "panels": {"interrogate": 2}})
         self.assertEqual(json.loads(self.profile.read_text()), saved["overrides"])
 
+    def test_profile_set_null_under_absent_parent_stores_no_null(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": None}, "future": {"setting": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"panels": {}, "future": {}})
+        self.assertEqual(saved["effective"]["panels"], {"arena": 2})
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

@@ -21,6 +21,10 @@ with tempfile.TemporaryDirectory(prefix="pstack-verify-") as temporary:
         path = repository / relative
         if not path.is_file() or port.sha(path.read_bytes()) != digest:
             raise SystemExit("Distribution document differs: " + relative)
+    for name in ("NOTICE", "LICENSE"):
+        packaged = repository / "plugins" / port.PLUGIN / name
+        if (repository / name).read_bytes() != packaged.read_bytes():
+            raise SystemExit("Repository " + name + " differs from the packaged copy")
     print(json.dumps({"verified": True, "source_commit": manifest["source_commit"],
                       "upstream_version": manifest["upstream_version"],
                       "port_version": manifest["port_version"],

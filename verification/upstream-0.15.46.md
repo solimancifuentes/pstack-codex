@@ -45,15 +45,17 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 - New overlays: `poteto-mode/worker.md` keeps the shared authority boundary and
   the port's draft-until-verified PR policy. `statechart/SKILL.md` resolves the
   installed skill path and treats the `mise` Java and TLC install and the Pele
-  install as explicit dependency setup. It requires a preflight check before
-  each run, because the command installs Java and TLC whenever `mise` lacks
-  them, and it treats a `--view` module as code. `ketchup-video` returns the
+  install as explicit dependency setup. Without install authority, it
+  requires absolute `TLA2TOOLS` and `JAVA` paths before each run, because the
+  command installs Java and TLC whenever its own `mise` lookup fails. It
+  treats a `--view` module as code. `ketchup-video` returns the
   video path when the host cannot embed it.
 - Every worker kickoff, from any skill, starts with the `worker.md` line. The
   shared contract carries that rule, so standalone `how`, `arena`, and
   `interrogate` runs get it too.
 - Inherited roles omit model and effort overrides. Arena substitutes a model
-  only when the user's selection allows it.
+  only when the user's selection allows it. Otherwise it drops the seat, and
+  it reports when fewer than two runners remain.
 - Opening a PR uses `gh pr create --draft` until verification is done, and
   Babysit passes `--allow-draft` for such a PR and never marks it ready.
 - `reflect` edits pstack through its source overlays, never by copying an
@@ -74,10 +76,10 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-aa4272c82ff5` and matches the tracked plugin, `release.json`,
-  and mirrored documents.
-- [All 88 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
-  tests for `null` removal, the arena minimum, and the Fable, Gemini, and Opus
+  `7a583913eb1b-c56574b5b419` and matches the tracked plugin, `release.json`, the mirrored
+  documents, and the repository `NOTICE` and `LICENSE`.
+- [All 89 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+  tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
   invocation policy, profile preservation, update and rollback recovery, and
@@ -104,7 +106,10 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 Two independent read-only reviews ran on head `b1c85a2`. One was a fresh
 Claude Opus 5.5 worker. The other was GPT-6.2 Astra at xhigh reasoning through
 Codex. Neither found a blocking defect. Their findings on the port's own
-adaptations and documents are fixed above.
+adaptations and documents are fixed above. An Astra re-check of the fix commit
+found five remaining gaps: null deletion under an absent parent, a premature
+"verified" claim in Babysit, arena's inherited fallback, the statechart install
+guidance, and a stale repository `NOTICE`. Those are fixed too.
 
 ## Known upstream defects
 

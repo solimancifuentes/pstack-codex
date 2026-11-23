@@ -147,9 +147,10 @@ The `statechart` skill runs its own TypeScript launcher from the installed
 skill directory with an available Node, Bun, or Deno runtime. A run that cannot
 find Java and TLC installs them with `mise`, and rendering uses the `pele` npm
 package. Both are dependency setup that needs the same explicit authority, and
-both write persistent tool caches. Setting `TLA2TOOLS` and `JAVA` to existing
-installations, as absolute paths, avoids the `mise` install. The chart
-generator itself writes to its output folder, a staging folder beside it, and
+both write persistent tool caches. Without install authority, always set
+`TLA2TOOLS` and `JAVA` to existing installations as absolute paths. The chart
+generator itself writes to its output folder, which it creates with any missing
+parents, a staging folder in the nearest existing ancestor of that folder, and
 system temporary files. A `--view` module is executable code that runs with
 the caller's permissions, so treat a supplied view as code to review.
 

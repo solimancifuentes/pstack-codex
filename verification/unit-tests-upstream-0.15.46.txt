@@ -82,12 +82,13 @@ test_prepared_source_mutation_and_receipt_mismatch_are_rejected (test_runtime.Ru
 test_profile_dry_run_and_partial_write_preserve_unknown_nested_values (test_runtime.RuntimeCLITests.test_profile_dry_run_and_partial_write_preserve_unknown_nested_values) ... ok
 test_profile_rejects_single_seat_arena (test_runtime.RuntimeCLITests.test_profile_rejects_single_seat_arena) ... ok
 test_profile_set_null_removes_only_that_key (test_runtime.RuntimeCLITests.test_profile_set_null_removes_only_that_key) ... ok
+test_profile_set_null_under_absent_parent_stores_no_null (test_runtime.RuntimeCLITests.test_profile_set_null_under_absent_parent_stores_no_null) ... ok
 test_profile_set_requires_explicit_action (test_runtime.RuntimeCLITests.test_profile_set_requires_explicit_action) ... ok
 test_profile_symlink_write_rejected (test_runtime.RuntimeCLITests.test_profile_symlink_write_rejected) ... ok
 test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITests.test_state_inside_plugin_and_symlink_escapes_rejected) ... ok
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 88 tests in 102.593s
+Ran 89 tests in 71.292s
 
 OK

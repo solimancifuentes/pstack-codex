@@ -55,8 +55,9 @@ def apply_change(current, change):
     for key, value in change.items():
         if value is None:
             result.pop(key, None)
-        elif isinstance(result.get(key), dict) and isinstance(value, dict):
-            result[key] = apply_change(result[key], value)
+        elif isinstance(value, dict):
+            parent = result.get(key)
+            result[key] = apply_change(parent if isinstance(parent, dict) else {}, value)
         else:
             result[key] = value
     return result
