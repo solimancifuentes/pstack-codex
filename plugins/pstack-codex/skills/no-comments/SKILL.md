@@ -5,7 +5,7 @@ description: "Spawn Comment Sicko, fix accepted findings, and offer encodings fo
 
 # No comments
 
-Use an independent Comment Sicko review and apply only accepted findings. Read [CODEX.md](../../CODEX.md) for delegation, model selection, and authority.
+Use an independent Comment Sicko review, started with no parent history, and apply only accepted findings. Read [CODEX.md](../../CODEX.md) for delegation, model selection, and authority.
 
 ## Scope
 

@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-5a5e7dea3705` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-a64f5ef9369b` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 93 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -164,6 +164,28 @@ Round 2 led to these changes:
   already uses, and the formal-verification handoffs use Codex skill names
   instead of slash commands.
 
+Round 3 led to these changes:
+
+- Every independent seat (arena candidates and judges, interrogate
+  adversaries, Comment Sicko, verifiers, eval) starts with no parent history.
+  On Codex that is `fork_turns: "none"`, because `spawn_agent` forks the whole
+  history by default.
+- Shipping gives one merge command on both forges, pinned to the head its
+  verdict covers, and arms auto-merge only with that pin. A verdict carries
+  across a restack only when the PR's diff is byte-identical, whitespace
+  included, and the base change cannot affect it; `git patch-id` alone ignores
+  whitespace.
+- Checks that start only on ready PRs are expected after promotion, so they no
+  longer deadlock a draft. Origin stack children pass `--stack-on`.
+- Babysit reads the forge's head, review, and base state before it reports
+  merge-ready. Interrogate reports `INCOMPLETE` when no adversary returns.
+- The legacy `feature` and `refactoring` keys are documented as read-only
+  fallbacks, and `setup-pstack` previews both effects before writing the
+  combined key.
+- The decision-trail reviewer prefers another provider, the eval judge gets
+  the same blinding as candidates, automate-me still finds modes in the old
+  `~/.codex/skills/` location, and recipes keep project skill names.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
@@ -177,6 +199,9 @@ They are left for an upstream fix rather than a port fork:
   loop forever.
 - `statechart/scripts/test/cli.test.ts` builds its symlink fixture from the
   lexical temporary path, so it fails on macOS when `TMPDIR` is under `/var`.
+- The `watch-pr` policy can report `READY` while GitHub shows `BLOCKED`,
+  `REVIEW_REQUIRED`, or `BEHIND` for that PR. Babysit now reads those fields
+  from the forge before it reports merge-ready.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 

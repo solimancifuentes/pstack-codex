@@ -64,7 +64,7 @@ Correct the log, not the story. The audit never edits or removes a row, even an 
 
 ## Cross-model review of the trail
 
-Before handing back, use an independent reviewer that did not do the work. It reads the audit trail, available scoped trace evidence, and cited artifacts, then flags what the user should inspect. Use an explicitly authorized different model if one is available, otherwise inherit the parent and report the loss of cross-provider assurance. This is an evidence audit, not a redo of the work. Do not claim the original different-family condition was satisfied by a second same-provider seat.
+Before handing back, use an independent reviewer that did not do the work. It reads the audit trail, available scoped trace evidence, and cited artifacts, then flags what the user should inspect. Among the models the user authorized, prefer one from a provider other than the author's, then any other different model. Otherwise inherit the parent and report the loss of cross-provider assurance. Start it with no parent history. This is an evidence audit, not a redo of the work. Do not claim the original different-family condition was satisfied by a second same-provider seat.
 
 - Decisions logged with weak or absent evidence.
 - Verification steps skipped or claimed without proof in the transcript.

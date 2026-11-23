@@ -19,13 +19,13 @@ Every candidate gets the same prompt, so the prompt is the contract.
 
 ## Phase B: Fan out
 
-Launch the N candidates through the selected runtime adapter's actual worker or task operation, queueing beyond actual free slots, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
+Launch the N candidates through the selected runtime adapter's actual worker or task operation, each with no parent history per the shared contract, queueing beyond actual free slots, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
 
 If a candidate produces no output, proceed with N-1 and note the dropout. If fewer than two usable artifacts remain, stop before Phase C and report the incomplete comparison.
 
 ## Phase C: Cross-judge
 
-After all Phase B candidates complete, spawn a fresh judge that authored none of the candidates. Use the `arena cross-judge pool` role, inheriting the parent by default. Among the models the user authorized, prefer one from a provider other than the parent's, then any other different model. Same-provider judging does not meet upstream's cross-provider assurance, so record the reduced diversity. The judge has a read-only assignment. It sees the rubric and candidates by path label, scores each criterion, and recommends a base with rationale. It runs alongside your reading in Phase D. Do not spawn it while candidates are still writing. If no judge can run, skip it and say so.
+After all Phase B candidates complete, spawn a fresh judge, with no parent history, that authored none of the candidates. Use the `arena cross-judge pool` role, inheriting the parent by default. Among the models the user authorized, prefer one from a provider other than the parent's, then any other different model. Same-provider judging does not meet upstream's cross-provider assurance, so record the reduced diversity. The judge has a read-only assignment. It sees the rubric and candidates by path label, scores each criterion, and recommends a base with rationale. It runs alongside your reading in Phase D. Do not spawn it while candidates are still writing. If no judge can run, skip it and say so.
 
 ## Phase D: Pick a base
 

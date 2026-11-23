@@ -14,7 +14,7 @@ This skill orchestrates three others: an inline mining pass (see step 1), the av
 
 ### 0. Check for an existing skill
 
-Inspect the current host's supported, in-scope skill locations for a mode matching the user's handle. On Codex these can include `.agents/skills/**/*-mode/SKILL.md` and `~/.agents/skills/*-mode/SKILL.md`. A Dot cloud environment may not contain the local computer's skills. Do not search unrelated plugin caches or invent a shared global path. Mode skills can live in a personal category directory (`.agents/skills/<handle>/`), not only at the top level. If one exists, confirm intent with an available user-input tool or concise chat question (unless they already said "update my skill" or similar):
+Inspect the current host's supported, in-scope skill locations for a mode matching the user's handle. On Codex these can include `.agents/skills/**/*-mode/SKILL.md`, `~/.agents/skills/*-mode/SKILL.md`, and `~/.codex/skills/*-mode/SKILL.md`, where earlier versions of this port wrote personal modes. Update an existing mode where it lives, and create new personal modes under `~/.agents/skills/`. A Dot cloud environment may not contain the local computer's skills. Do not search unrelated plugin caches or invent a shared global path. Mode skills can live in a personal category directory (`.agents/skills/<handle>/`), not only at the top level. If one exists, confirm intent with an available user-input tool or concise chat question (unless they already said "update my skill" or similar):
 
 - Update the existing skill (default for repeat runs)
 - Start fresh (rare, ask why before doing it)

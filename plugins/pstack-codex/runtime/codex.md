@@ -11,7 +11,9 @@ Use current native collaboration tools when exposed. These may include
 current API may not provide Cursor's `Task` subtype selector, a read-only switch,
 cloud selector, fast suffix, or background flag. Do not supply absent fields.
 Queue panel seats within the reported limit, including nested workers and the
-coordinator. Native child workers ordinarily share the current host and tool
+coordinator. `spawn_agent` forks the parent's whole history by default. Start
+every independent seat with `fork_turns: "none"`, or with history forking off
+on a schema that names it differently, as the shared contract requires. Native child workers ordinarily share the current host and tool
 access; rely on explicit environment guarantees when they differ.
 
 The agent prompt references do not register native agent types. Give every

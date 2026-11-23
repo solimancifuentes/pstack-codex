@@ -46,8 +46,11 @@ Workflows read these role keys under `roles`, using the upstream labels:
 `feature, refactoring`, `bug-fix`, `perf-issue`, `hillclimb`,
 `judgment and prose`, `swarm workers`, `arena runners`, `arena cross-judge pool`,
 and `interrogate reviewers`. Each value is one routing object that applies to
-every seat of its role; panel seat counts live separately under `panels`. A key
-outside this list steers nothing.
+every seat of its role; panel seat counts live separately under `panels`. Two
+legacy keys from the 0.15.27 port are read only as fallbacks: `feature` for
+Feature and `refactoring` for Refactoring, each used only when
+`feature, refactoring` is absent. New choices are written under the combined
+key. Any other key steers nothing.
 
 Every role inherits the parent's model, reasoning, and speed by default.
 `inherit-parent` and `auto` mean omit overrides. Honor saved role choices only
@@ -79,9 +82,17 @@ Comment Sicko receives `agents/comment-sicko.md` and stays a read-only reviewer.
 The first line of every worker's kickoff, from any skill, is `Read
 <PLUGIN_ROOT>/skills/poteto-mode/worker.md before anything else.` with the
 absolute path. When the worker cannot read that path, as in a separate cloud
-environment, include the file's rules in the brief. Eval candidates are the
-exception: the eval playbook keeps workflow paths out of their briefs so the
-blinding holds.
+environment, include the file's rules in the brief. Eval candidates and judges
+are the exception: the eval playbook keeps workflow paths out of their briefs
+so the blinding holds, and gives them the authority rules as plain text.
+
+An independent seat starts with no parent history, only its brief. That covers
+arena candidates and judges, interrogate adversaries, Comment Sicko, Shipping
+and Autopilot verifiers, and eval candidates and judges, because a seat that
+inherits the coordinator's conversation sees the rubric, the other seats'
+briefs, and the author's intent. Put everything the seat needs in its brief.
+When the host cannot start a worker without the parent's history, report the
+reduced independence.
 
 Honor actual live slot, nesting, budget, and environment limits. Queue excess
 seats. Do not assume a fixed tree, unlimited fan-out, or background execution.

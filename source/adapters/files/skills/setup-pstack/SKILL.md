@@ -40,7 +40,11 @@ arena candidates and three independent interrogate adversaries.
 
 Write role choices only under the role keys listed in the shared contract,
 such as `feature, refactoring`, `swarm workers`, or `arena runners`. Any other
-key is saved but steers nothing, so never invent one.
+key is saved but steers nothing, so never invent one. A legacy `feature` or
+`refactoring` key still steers its playbook while `feature, refactoring` is
+absent. Writing the combined key replaces both fallbacks, so preview the
+effective Feature and Refactoring choices before that write, and offer to move
+a legacy value into the combined key.
 
 Upstream retired the `architect` panel and the `hardest tasks`,
 `architect runners`, `how explorer`, `how explainer`, `why investigators`,

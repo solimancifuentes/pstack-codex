@@ -1,6 +1,6 @@
 # Prompts worth copying
 
-Swap in the real paths, skills, and done checks. Informal wording works. In Codex, type each `/skill-name` below as `$pstack-codex:skill-name`, or pick the skill from the host's skill picker.
+Swap in the real paths, skills, and done checks. Informal wording works. In Codex, type each bundled `/skill-name` below as `$pstack-codex:skill-name`, or pick the skill from the host's skill picker. A project skill such as `/verify-<app>` keeps its own discovered name.
 
 ## Understand
 

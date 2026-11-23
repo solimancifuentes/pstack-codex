@@ -10,7 +10,7 @@ Read the [shared runtime contract](../../../CODEX.md) for delegation, authority,
 - The candidate prompt looks like an organic user request. State the goal, not the meta.
 - No chain-eliciting cues. Don't ask the candidate to list which skills, principles, or files they applied. Ask for design notes generally and grade chain-following from code shape, not self-report.
 - Sanitize directory and slug names. Use project-shaped names a user might pick.
-- Candidates are not implementation delegates. Do not give them the `worker.md`, `poteto-agent`, or poteto-mode paths, which name the workflows under test. Put the authority and isolation rules from `worker.md` into the brief as plain text instead.
+- Candidates and the judge are not implementation delegates. Do not give them the `worker.md`, `poteto-agent`, or poteto-mode paths, which name the workflows under test. Put the authority and isolation rules from `worker.md` into the brief as plain text instead.
 - Start every candidate and the judge with a fresh context that holds only its brief, never a fork of the coordinator's conversation, for example `fork_turns: "none"` where the spawn tool supports it. The coordinator's history holds the rubric and the label-to-model mapping. If the host cannot isolate history, report the eval as unblinded.
 - Don't tell the candidate other candidates exist.
 - The judge can know it's judging but sees outputs by sanitized label only, never by model name.
