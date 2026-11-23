@@ -25,7 +25,7 @@
     "files/skills/poteto-mode/playbooks/autonomous-run.md": "d7a56fe15ef459f000c3345772c9048a0018d310294aaed3c21c2433c1989d4a",
     "files/skills/poteto-mode/playbooks/autopilot-full.md": "6eb11d3139ea3c81eb5669e19febf93a9da0c9cb0628b2f0efae5069e267b334",
     "files/skills/poteto-mode/playbooks/autopilot-stack.md": "e2897e0a0a96f7e0c688de8899c935a89234bf887448416d4375fbc6ef4313fd",
-    "files/skills/poteto-mode/playbooks/babysit.md": "db314675f169e911b3858b511682fd5bbac9392750eb835ce783ec5c48bd4009",
+    "files/skills/poteto-mode/playbooks/babysit.md": "59e75bf7b5577a4620167d6c9a2b9a215b0054ee92e3d654ab99bf44cb116e64",
     "files/skills/poteto-mode/playbooks/bug-fix.md": "055b2ba8022330334103068ff57ec707f755ab707d8dfa805b3fac24be41cbd1",
     "files/skills/poteto-mode/playbooks/eval.md": "357b67e5a7e9123ccb62af6827f8aded597aa17c22d052f4f49b8c936307086e",
     "files/skills/poteto-mode/playbooks/feature.md": "ffad5017342dd056f08a7a214e84473671e161cac07cec338aff54809fdab900",
@@ -130,7 +130,7 @@
     "skills/poteto-mode/playbooks/autonomous-run.md": "d7a56fe15ef459f000c3345772c9048a0018d310294aaed3c21c2433c1989d4a",
     "skills/poteto-mode/playbooks/autopilot-full.md": "6eb11d3139ea3c81eb5669e19febf93a9da0c9cb0628b2f0efae5069e267b334",
     "skills/poteto-mode/playbooks/autopilot-stack.md": "e2897e0a0a96f7e0c688de8899c935a89234bf887448416d4375fbc6ef4313fd",
-    "skills/poteto-mode/playbooks/babysit.md": "db314675f169e911b3858b511682fd5bbac9392750eb835ce783ec5c48bd4009",
+    "skills/poteto-mode/playbooks/babysit.md": "59e75bf7b5577a4620167d6c9a2b9a215b0054ee92e3d654ab99bf44cb116e64",
     "skills/poteto-mode/playbooks/bug-fix.md": "055b2ba8022330334103068ff57ec707f755ab707d8dfa805b3fac24be41cbd1",
     "skills/poteto-mode/playbooks/eval.md": "357b67e5a7e9123ccb62af6827f8aded597aa17c22d052f4f49b8c936307086e",
     "skills/poteto-mode/playbooks/feature.md": "ffad5017342dd056f08a7a214e84473671e161cac07cec338aff54809fdab900",
@@ -676,7 +676,7 @@
     "speed": "inherit-parent"
   },
   "profile_mode": "external",
-  "release": "7a583913eb1b-e36842559d80",
+  "release": "7a583913eb1b-d68d3b1a632c",
   "repository": "https://github.com/cursor/plugins",
   "schema_version": 1,
   "skills": [

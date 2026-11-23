@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-e36842559d80` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-d68d3b1a632c` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -544,6 +544,16 @@ The round 26 review led to these changes:
   requires.
 - Watcher slices also get a host command timeout, because the watcher can
   finish a read past its own deadline.
+
+The round 27 review led to these changes:
+
+- Babysit's merge-ready test accepts skipped and neutral checks, as GitHub
+  and the upstream watcher do. A check the user named non-blocking may also
+  stay pending.
+- An empty check list counts as no CI only when no app that posts checks
+  runs for the PR either.
+- A head that moves during a `check` pass is reported as unknown readiness
+  instead of starting another pass.
 
 ## Known upstream defects
 
