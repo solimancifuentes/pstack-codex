@@ -85,7 +85,7 @@ Historical data showed humans sometimes dismiss security/data-flow comments. Tre
 
 ## Candidate learnings from recent babysits
 
-Append new candidate learnings here during or after babysitting when they look team-useful but not yet mature. Prefer promoting recurring candidates into the section above once several PRs confirm the pattern.
+Record new candidate learnings in the task's decision trail during or after babysitting when they look team-useful but not yet mature, never in this installed file. A recurring candidate that several PRs confirm becomes an entry here only through an authorized edit of this port's source overlay.
 
 ### Manual reimplementations of native browser behavior
 

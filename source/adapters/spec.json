@@ -269,6 +269,12 @@
       "source": "skills/poteto-mode/playbooks/worktree-cleanup.md"
     },
     {
+      "overlay": "files/skills/poteto-mode/references/bugbot-triage.md",
+      "reason": "Keep Bugbot learnings in the task trail instead of the installed plugin",
+      "sha256": "b2d146c770d8d3593e1ef3d77b668039b8e1f78093ea1a86f1d45d7f99614309",
+      "source": "skills/poteto-mode/references/bugbot-triage.md"
+    },
+    {
       "overlay": "files/skills/poteto-mode/worker.md",
       "reason": "Bind upstream worker rules to the shared authority boundary",
       "sha256": "d051060527ab1649fb1e69d1e7d416950264f9955c3de3635c0d63569f1b90d8",

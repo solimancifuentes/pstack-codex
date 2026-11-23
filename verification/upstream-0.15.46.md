@@ -39,7 +39,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 
 ## Adaptations
 
-- 49 overlay files follow the new upstream text. Eight overlays were retired:
+- 50 overlay files follow the new upstream text. Eight overlays were retired:
   `architect` and `why` are now host-neutral upstream, and the `how` and
   `reflect` reference prompts and the Orchestrate playbook no longer exist.
 - New overlays: `poteto-mode/worker.md` keeps the shared authority boundary. `statechart/SKILL.md` resolves the
@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-f8fc15af2324` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-b718805b8c02` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -477,6 +477,17 @@ The round 20 review led to these changes:
   decision trail, not the installed reference.
 - `reflect` points a copied skill's helper commands at the installed plugin.
 
+The round 21 review led to these changes:
+
+- Shipping falls back to Babysit's direct forge read when the watcher is not
+  prepared or finds no checks, and confirms each merged PR directly.
+- A new overlay of the Bugbot triage reference sends candidate learnings to
+  the task trail instead of the installed file. The port now has 50 overlays.
+- Babysit's Origin `drive` re-reads the PR at bounded intervals instead of
+  blocking on `origin pr checks --watch`.
+- `reflect` edits an existing project or personal copy in place, and copies
+  the installed folder only when no copy exists.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
@@ -495,8 +506,9 @@ They are left for an upstream fix rather than a port fork:
   from the forge before it reports merge-ready.
 - `watch-pr` returns `checks-unavailable` for any PR with no checks, such as
   one on a repository without CI, and ends in a `status-query` blocker after
-  its retries, dropping the review-thread result. Babysit and Shipping then
-  read `mergeStateStatus` and the review threads from the forge.
+  its retries, dropping the review-thread result. Babysit then reads
+  `mergeStateStatus` and the review threads from the forge, and Shipping uses
+  Babysit's direct read for its frontier PR.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 
