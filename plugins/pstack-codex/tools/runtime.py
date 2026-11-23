@@ -49,6 +49,10 @@ def merge(base, overrides):
     return result
 
 
+def only_removals(change):
+    return all(value is None or (isinstance(value, dict) and only_removals(value)) for value in change.values())
+
+
 def apply_change(current, change):
     """Merge a proposed change into stored overrides; a null value removes that key."""
     result = dict(current)
@@ -57,6 +61,8 @@ def apply_change(current, change):
             result.pop(key, None)
         elif isinstance(value, dict):
             parent = result.get(key)
+            if not isinstance(parent, dict) and only_removals(value):
+                continue  # Nothing to remove; never replace an existing value with {}.
             result[key] = apply_change(parent if isinstance(parent, dict) else {}, value)
         else:
             result[key] = value
@@ -87,8 +93,6 @@ def validate_profile(profile):
     for name, seats in panels.items():
         if type(seats) is not int or seats < 1:
             raise RuntimeError(f"profile.panels.{name} must be a positive integer; actual concurrency remains host-limited")
-    if panels.get("arena", 2) < 2:
-        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     implicit = profile.get("implicit_invocation", {})
     if not isinstance(implicit, dict) or any(type(value) is not bool for value in implicit.values()):
         raise RuntimeError("profile.implicit_invocation must map skill names to booleans")
@@ -158,8 +162,12 @@ def default_profile():
 def profile_show(path):
     defaults = validate_profile(read_json(within(PLUGIN, "defaults.json")))
     overrides = read_json(plain_path(path)) if path.exists() else {}
-    return {"profile": str(path), "exists": path.exists(), "effective": validate_profile(merge(defaults, overrides)),
-            "model_availability": "not evaluated; use the current host's supported models and effort values"}
+    effective = validate_profile(merge(defaults, overrides))
+    result = {"profile": str(path), "exists": path.exists(), "effective": effective,
+              "model_availability": "not evaluated; use the current host's supported models and effort values"}
+    if effective.get("panels", {}).get("arena", 2) < 2:
+        result["warnings"] = ["panels.arena is below 2, so arena cannot run as saved; set it to 2 or more, or to null to use the default"]
+    return result
 
 
 def atomic_json(path, value):
@@ -183,6 +191,9 @@ def profile_set(path, proposed, yes):
     current = read_json(path) if path.exists() else {}
     if not isinstance(proposed, dict):
         raise RuntimeError("The proposed change must be a JSON object")
+    seats = proposed.get("panels", {}).get("arena") if isinstance(proposed.get("panels"), dict) else None
+    if type(seats) is int and seats < 2:
+        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     updated = apply_change(current, proposed)
     effective = validate_profile(merge(defaults, updated))
     # Store only user overrides. Unknown keys are preserved for newer adapters.

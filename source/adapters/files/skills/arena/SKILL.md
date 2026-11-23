@@ -21,7 +21,7 @@ Every candidate gets the same prompt, so the prompt is the contract.
 
 Launch the N candidates through the selected runtime adapter's actual worker or task operation, queueing beyond actual free slots, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
 
-If a candidate produces no output, proceed with N-1 and note the dropout.
+If a candidate produces no output, proceed with N-1 and note the dropout. If fewer than two usable artifacts remain, stop before Phase C and report the incomplete comparison.
 
 ## Phase C: Cross-judge
 

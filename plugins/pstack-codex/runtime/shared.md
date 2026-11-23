@@ -72,7 +72,9 @@ Comment Sicko receives `agents/comment-sicko.md` and stays a read-only reviewer.
 The first line of every worker's kickoff, from any skill, is `Read
 <PLUGIN_ROOT>/skills/poteto-mode/worker.md before anything else.` with the
 absolute path. When the worker cannot read that path, as in a separate cloud
-environment, include the file's rules in the brief.
+environment, include the file's rules in the brief. Eval candidates are the
+exception: the eval playbook keeps workflow paths out of their briefs so the
+blinding holds.
 
 Honor actual live slot, nesting, budget, and environment limits. Queue excess
 seats. Do not assume a fixed tree, unlimited fan-out, or background execution.

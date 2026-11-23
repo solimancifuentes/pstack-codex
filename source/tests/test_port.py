@@ -272,9 +272,7 @@ class LifecycleTests(LifecycleFixture, unittest.TestCase):
         catalog["plugins"].append({"name": "later-plugin", "custom": 7})
         port.write_json(self.installation.marketplace, catalog)
         preferences = self.installation.root / "preferences.json"
-        profile = port.read_json(preferences)
-        profile["personal-note"] = "keep my later preference"
-        port.write_json(preferences, profile)
+        port.write_json(preferences, {"schema_version": 1, "personal-note": "keep my later preference"})
         self.installation.rollback("before-install")
         self.assertEqual([row["name"] for row in self.installation.catalog()["plugins"]], ["ponytail", "later-plugin"])
         for name, hashes in self.original.items():
@@ -309,6 +307,11 @@ class LifecycleTests(LifecycleFixture, unittest.TestCase):
         self.assertEqual(self.installation.catalog()["plugins"], [{"name": "ponytail", "custom": "keep"}])
         for name, hashes in self.original.items():
             self.assertEqual(port.tree(self.user_home / ".agents/skills" / name), hashes)
+
+    def test_orch_runs_only_for_a_release_that_ships_it(self):
+        self.installation.install(self.release)
+        with self.assertRaisesRegex(port.PortError, "does not ship the orch helper"):
+            self.installation.run_tool("orch", ["--help"])
 
     def test_helper_missing_dependencies_never_installs(self):
         self.installation.install(self.release)
@@ -389,8 +392,9 @@ class LifecycleTests(LifecycleFixture, unittest.TestCase):
 
     def test_new_user_gets_shared_defaults_without_migration(self):
         self.installation.install(self.release)
-        self.assertEqual(port.read_json(self.installation.root / "preferences.json"),
-                         port.read_json(self.release / "plugin/defaults.json"))
+        # The packaged defaults apply directly; no snapshot of them becomes a user override.
+        self.assertFalse((self.installation.root / "preferences.json").exists())
+        self.assertTrue((self.release / "plugin/defaults.json").is_file())
         for name, expected in self.original.items():
             self.assertEqual(port.tree(self.user_home / ".agents/skills" / name), expected)
 

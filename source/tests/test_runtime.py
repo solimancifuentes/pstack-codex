@@ -133,8 +133,26 @@ else:
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": None}, "future": {"setting": None}})
         saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
-        self.assertEqual(saved["overrides"], {"panels": {}, "future": {}})
+        self.assertEqual(saved["overrides"], {})
         self.assertEqual(saved["effective"]["panels"], {"arena": 2})
+
+    def test_profile_removal_under_scalar_parent_keeps_the_value(self):
+        self.write_json(self.profile, {"future_provider": "manual"})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"future_provider": {"unused": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"future_provider": "manual"})
+
+    def test_legacy_single_seat_arena_still_allows_profile_work(self):
+        self.write_json(self.profile, {"panels": {"arena": 1}})
+        shown = json.loads(self.run_cli("profile", "show", "--profile", str(self.profile)).stdout)
+        self.assertIn("panels.arena is below 2", shown["warnings"][0])
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"personal-note": "unrelated"})
+        self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes")
+        self.write_json(proposed, {"panels": {"arena": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"]["panels"], {})
 
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
