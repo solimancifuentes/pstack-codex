@@ -78,9 +78,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-a64f5ef9369b` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-da0401eab424` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 93 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 94 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -186,6 +186,26 @@ Round 3 led to these changes:
   the same blinding as candidates, automate-me still finds modes in the old
   `~/.codex/skills/` location, and recipes keep project skill names.
 
+Round 4 led to these changes:
+
+- Opening a PR now defines one draft lifecycle: open, verified draft, promote,
+  land. Babysit, Autopilot-full, Autopilot-stack, and Shipping follow it
+  instead of each carrying its own draft rules. A verified draft is the report
+  a draft gets in place of merge-ready, so Autopilot no longer deadlocks
+  before promotion. Checks that start only on promotion are recorded as
+  deferred when the repository's triggers show it.
+- Landing requires the forge's affirmative mergeable state, rereads head and
+  base, and merges with `--match-head-commit` on GitHub or Origin. Shipping no
+  longer arms auto-merge, because neither forge documents it as bound to the
+  verified head. Origin's documented `--match-head-commit` and `--stack-on`
+  flags were checked against its CLI reference.
+- `profile set` refuses a profile path inside the installed plugin.
+- The decision-trail reviewer inherits history, since it audits the
+  transcript. A seat launched with an explicit model reports the requested
+  model when the actual one is hidden. `worker.md` carries the eval exception.
+- `create-formal-verification-skill` makes its scratch break in a disposable
+  checkout, and statechart's coverage is described per broken rule.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
@@ -202,6 +222,9 @@ They are left for an upstream fix rather than a port fork:
 - The `watch-pr` policy can report `READY` while GitHub shows `BLOCKED`,
   `REVIEW_REQUIRED`, or `BEHIND` for that PR. Babysit now reads those fields
   from the forge before it reports merge-ready.
+- `watch-pr` returns `checks-unavailable` and times out for a draft that has
+  no checks yet, even with `--allow-draft`. The draft lifecycle reads the
+  forge's state directly in that case.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 

@@ -161,6 +161,15 @@ else:
         saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
         self.assertEqual(saved["overrides"]["panels"], {})
 
+    def test_profile_set_refuses_a_path_inside_the_plugin(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": None})
+        defaults = self.package / "defaults.json"
+        before = defaults.read_bytes()
+        result = self.run_cli("profile", "set", "--profile", str(defaults), "--file", str(proposed), "--yes", expected=1)
+        self.assertIn("outside the installed plugin", result.stderr)
+        self.assertEqual(defaults.read_bytes(), before)
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

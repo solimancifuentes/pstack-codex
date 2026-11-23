@@ -187,6 +187,8 @@ def atomic_json(path, value):
 
 def profile_set(path, proposed, yes):
     path = plain_path(path)
+    if path.resolve().is_relative_to(PLUGIN):
+        raise RuntimeError("The profile must live outside the installed plugin; choose a path such as ~/.codex/pstack-codex/preferences.json")
     proposed = read_json(proposed)
     defaults = read_json(within(PLUGIN, "defaults.json"))
     current = read_json(path) if path.exists() else {}

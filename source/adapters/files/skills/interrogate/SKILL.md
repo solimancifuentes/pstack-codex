@@ -29,4 +29,4 @@ Skip arena Phases C, D, and E. Adversaries find different failures, so the verdi
 - **Intent**: the restatement.
 - **Findings**: for each verified finding, the command, its output, how it breaks the intent, and the adversaries that found it. Say "no verified findings" only when at least one adversary returned a report and none survive. When no adversary returned a report, the result is `INCOMPLETE`: say so, with each adversary's failure.
 - **Dropped**: for each adversary, the count of dropped findings and why.
-- **Adversaries**: the actual model per seat when the host exposes it, otherwise `parent model inherited; exact model unavailable`. Independent same-provider seats do not establish cross-provider assurance.
+- **Adversaries**: the actual model per seat when the host exposes it. Otherwise name the requested model and say the actual model was unavailable, and write `parent model inherited; exact model unavailable` only for a seat launched without an override. Independent same-provider seats do not establish cross-provider assurance.

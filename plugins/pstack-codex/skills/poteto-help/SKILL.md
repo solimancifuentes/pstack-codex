@@ -47,7 +47,7 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Audit the verification skill and every mapped feature | [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formally verify a race, invariant, or other property that tests rarely reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
 | Bring a formal verification back in line after the code it covers changed, and tell drift from a bug | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
-| Draw a TLA+-checked statechart with the shortest path to each state that breaks a rule | [statechart](../statechart/SKILL.md) |
+| Draw a TLA+-checked statechart, with the shortest path to a breaking state for each rule that breaks | [statechart](../statechart/SKILL.md) |
 | Validate performance measurements | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | Design a rigorous bespoke run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Keep and audit a decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |

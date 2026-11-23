@@ -66,8 +66,9 @@ run. Do not overwrite capability notes as if they were user model choices.
 Use the host's supported model identifiers and effort values. Do not invent a
 slug, add an effort suffix, or select an unrequested provider. A single Astra
 consultation does not change permanent routing. Report the actual model per
-seat when exposed; otherwise write `parent model inherited; exact model
-unavailable`. Independent same-model passes are useful review separation. They
+seat when exposed. Otherwise, for a seat launched with an explicit model, name
+the requested model and say the actual model was unavailable; for a seat
+launched without one, write `parent model inherited; exact model unavailable`. Independent same-model passes are useful review separation. They
 do not establish cross-provider assurance.
 
 ## Delegation and ownership
