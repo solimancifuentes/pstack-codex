@@ -181,6 +181,13 @@ else:
         self.assertIn("outside the installed plugin", result.stderr)
         self.assertFalse((self.package / "unexpected-profile.json").exists())
 
+    def test_profile_set_accepts_a_sibling_reached_through_dotdot(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"model": "inherit-parent"})
+        sibling = self.package / ".." / "sibling-profile.json"
+        self.run_cli("profile", "set", "--profile", str(sibling), "--file", str(proposed), "--yes")
+        self.assertTrue((self.root / "sibling-profile.json").is_file())
+
     def test_profile_rejects_single_seat_arena(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"panels": {"arena": 1}})

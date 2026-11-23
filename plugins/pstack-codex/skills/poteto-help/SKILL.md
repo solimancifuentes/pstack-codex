@@ -47,7 +47,7 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Audit the verification skill and every mapped feature | [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formally verify a race, invariant, or other property that tests rarely reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
 | Bring a formal verification back in line after the code it covers changed, and tell drift from a bug | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
-| Draw a TLA+-checked statechart, with the shortest path to a breaking state for each rule that breaks | [statechart](../statechart/SKILL.md) |
+| Draw a TLA+-checked statechart, with the shortest path to each broken invariant and TLC's counterexample for a broken temporal property | [statechart](../statechart/SKILL.md) |
 | Validate performance measurements | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | Design a rigorous bespoke run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Keep and audit a decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
@@ -66,7 +66,7 @@ All 22 playbooks remain under [poteto-mode](../poteto-mode/SKILL.md). They are r
 - Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, and Trace forensics cover evidence-led diagnosis and changes.
 - Feature, Refactoring, Prototype, and Visual parity cover implementation and design exploration.
 - Authoring a skill and Eval cover skill creation and behavioral comparison.
-- Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready. Shipping requires actual landing authority.
+- Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready for a ready PR, or at a verified draft for a policy draft, and never promotes or merges. Shipping requires actual landing authority.
 - Autonomous run covers one long task. Upstream removed the Orchestrate playbook; a program larger than one task routes to `figure-it-out`. The Codex adapter uses observed collaboration tools and session limits. The Dots adapter can coordinate supported background agents or configured Codex tasks. Neither Markdown adapter provisions a durable cloud runner or event subscription.
 - Autopilot-full retains one owner per independent PR where merge authority is granted. Autopilot-stack runs Autopilot-full without merging and hands the verified PRs to the operator.
 - Session pickup, Pause safely, Multi-phase plan, and Worktree cleanup cover continuity, planning, and ownership-aware cleanup.

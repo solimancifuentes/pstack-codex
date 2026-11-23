@@ -104,6 +104,7 @@ def validate_profile(profile):
 
 def inside_plugin(path):
     """Compare by filesystem identity, so a differently cased path on a case-insensitive volume still matches."""
+    path = path.resolve()  # Collapse `..` first; symlinks were already rejected.
     for part in (path, *path.parents):
         if part.exists() and os.path.samefile(part, PLUGIN):
             return True

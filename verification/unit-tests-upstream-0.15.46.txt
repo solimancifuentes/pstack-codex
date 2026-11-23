@@ -84,6 +84,7 @@ test_prepared_source_mutation_and_receipt_mismatch_are_rejected (test_runtime.Ru
 test_profile_dry_run_and_partial_write_preserve_unknown_nested_values (test_runtime.RuntimeCLITests.test_profile_dry_run_and_partial_write_preserve_unknown_nested_values) ... ok
 test_profile_rejects_single_seat_arena (test_runtime.RuntimeCLITests.test_profile_rejects_single_seat_arena) ... ok
 test_profile_removal_under_scalar_parent_keeps_the_value (test_runtime.RuntimeCLITests.test_profile_removal_under_scalar_parent_keeps_the_value) ... ok
+test_profile_set_accepts_a_sibling_reached_through_dotdot (test_runtime.RuntimeCLITests.test_profile_set_accepts_a_sibling_reached_through_dotdot) ... ok
 test_profile_set_null_removes_only_that_key (test_runtime.RuntimeCLITests.test_profile_set_null_removes_only_that_key) ... ok
 test_profile_set_null_under_absent_parent_stores_no_null (test_runtime.RuntimeCLITests.test_profile_set_null_under_absent_parent_stores_no_null) ... ok
 test_profile_set_refuses_a_differently_cased_plugin_path (test_runtime.RuntimeCLITests.test_profile_set_refuses_a_differently_cased_plugin_path) ... ok
@@ -95,6 +96,6 @@ test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITe
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 95 tests in 78.065s
+Ran 96 tests in 68.005s
 
 OK

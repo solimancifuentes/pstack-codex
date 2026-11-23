@@ -152,7 +152,7 @@ tests miss, and keep the review read-only.
 | [maintain-verification-skill](plugins/pstack-codex/skills/maintain-verification-skill/SKILL.md) | A verification workflow needs to keep up with the product. |
 | [create-formal-verification-skill](plugins/pstack-codex/skills/create-formal-verification-skill/SKILL.md) | A race or invariant needs verification beyond tests. |
 | [maintain-formal-verification-skill](plugins/pstack-codex/skills/maintain-formal-verification-skill/SKILL.md) | Code changed under a formal verification, and you need to know whether a failure is drift or a bug. |
-| [statechart](plugins/pstack-codex/skills/statechart/SKILL.md) | You want a TLA+-checked chart of a flow, with the shortest path to each broken rule. |
+| [statechart](plugins/pstack-codex/skills/statechart/SKILL.md) | You want a TLA+-checked chart of a flow, with the shortest path to each broken invariant and TLC's counterexample for a broken temporal property. |
 | [show-me-your-work](plugins/pstack-codex/skills/show-me-your-work/SKILL.md) | You want a decision trail you can inspect later. |
 
 </details>

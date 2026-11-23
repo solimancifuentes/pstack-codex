@@ -78,9 +78,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-47823a3fe96d` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-8a6f744ea4ac` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 95 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 96 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -223,6 +223,23 @@ Round 5 led to these changes:
 - The plugin-path guard compares by filesystem identity, so a differently
   cased path on a case-insensitive volume is refused.
 - The decision-trail reviewer reports a requested model honestly.
+
+Round 6 led to these changes:
+
+- Autopilot owners send a proof report with head, base, CI, and self-proof
+  receipts before the verdict, and report merge-ready or a verified draft only
+  after it, which fully removes the circular wait.
+- Opening a PR omits `--draft` when a ready PR is requested, turns off an
+  already armed auto-merge before promotion or stops for the operator, names
+  only the lowest open PR in an Origin merge, and enqueues on a merge-queue
+  branch only when the merge-group checks cover the verified behavior.
+- Babysit's one-pass check avoids watcher retry backoff, and help text says
+  where Babysit stops for drafts.
+- The plugin-path guard resolves `..` before comparing, so a sibling path is
+  accepted.
+- Generated formal-verification skills can read the installed `statechart`
+  skill directly, and statechart coverage is described per invariant and per
+  temporal property.
 
 ## Known upstream defects
 
