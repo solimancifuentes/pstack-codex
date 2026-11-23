@@ -45,6 +45,13 @@ synthesizer` roles. A profile entry for one of them no longer steers any
 workflow. Report each one you find. Remove it only as part of a change the
 user approves.
 
+A profile whose `panels` equal exactly `{architect: 2, arena: 2, interrogate:
+2}` is the v0.1.0 snapshot the personal manager copied from the old defaults,
+not a set of user choices. Propose removing those three keys so the current
+defaults apply, and tell the user which values change. Any other panel value is
+the user's choice and stays. To remove a key, set it to `null` in the change
+file; `profile set` deletes it and keeps every other key.
+
 ## 2. Show the concrete change
 
 State the actual profile path, current effective values, and exact proposed

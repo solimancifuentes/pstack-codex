@@ -20,7 +20,7 @@ sh <skill dir>/scripts/statechart SPEC.tla [--config FILE] [--view FILE] [--out 
 
 `scripts/statechart.ts` is TypeScript, so run it with a runtime that can execute TypeScript. `scripts/statechart` is a POSIX shell script that picks one. On native Windows, run `node --disable-warning=ExperimentalWarning <skill dir>/scripts/statechart.ts` with Node 22.18 to 22.x, or Node 23.6 or later.
 
-With no `TLA2TOOLS` set, the first run installs TLC and Java with `mise` and needs the network. That install is dependency setup, so run it only with the authority CODEX.md requires. Otherwise set `TLA2TOOLS` to an existing `tla2tools.jar` and `JAVA` to a Java 11 or later binary, or report the missing prerequisite.
+With no `TLA2TOOLS` set, any run that cannot find TLC and Java through `mise` installs them, which needs the network and writes to `mise`'s data directory. That install is dependency setup under CODEX.md, and the command gives no way to skip it. So before each run, either set `TLA2TOOLS` to an existing `tla2tools.jar` and `JAVA` to a Java 11 or later binary, both as absolute paths, or confirm that `mise where` finds the `tla2tools` tool and `mise which java --tool java@temurin-25` finds Java. If neither holds and the install is not authorized, report the missing prerequisite and do not run.
 
 ## Write the spec
 
@@ -30,7 +30,7 @@ With no `TLA2TOOLS` set, the first run installs TLC and Java with `mise` and nee
 
 ## Pick the chart
 
-You do the work that needs judgment: the words on each state and arrow, the phases and their colors, the title, and the report to the reader. Put your work in a view module, and give it with `--view`.
+You do the work that needs judgment: the words on each state and arrow, the phases and their colors, the title, and the report to the reader. Put your work in a view module, and give it with `--view`. The command imports the view as code with your permissions, so pass only a view you wrote or reviewed.
 
 To show the reader's words, the view exports `state(vars)`. The value that `state()` returns picks the form:
 

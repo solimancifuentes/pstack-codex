@@ -29,6 +29,6 @@
     "termsOfServiceURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/TERMS.md",
     "websiteURL": "https://github.com/solimancifuentes/pstack-codex"
   },
-  "release_notes": "Prepares port 0.2.0 from upstream pstack 0.15.46. Adds formal-verification maintenance, statechart, and ketchup-video skills, follows upstream's shorter skill texts, and removes the Orchestrate playbook and orch helper that upstream deleted, while preserving Codex and Dots adapters, explicit invocation policies, external preferences, and MIT attribution. This development version is unpublished.",
+  "release_notes": "Prepares port 0.2.0 from upstream pstack 0.15.46. Adds the create-formal-verification-skill, maintain-formal-verification-skill, statechart, and ketchup-video skills, follows upstream's shorter skill texts, and removes the Orchestrate playbook and orch helper that upstream deleted, while preserving Codex and Dots adapters, explicit invocation policies, external preferences, and MIT attribution. This development version is unpublished.",
   "repository": "https://github.com/solimancifuentes/pstack-codex"
 }

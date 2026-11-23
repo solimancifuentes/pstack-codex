@@ -26,8 +26,8 @@ Optional helper commands require Python 3.11+, Bun, and POSIX support on
 macOS/Linux. Their absence does not prevent the Markdown workflows. The
 `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+,
 and Java with TLC.
-Installing Java and TLC through `mise`, or the Pele renderer through npm, is an
-explicitly authorized dependency setup. The existing
+Installing Java and TLC through `mise`, or the Pele renderer through npm, is
+dependency setup that requires explicit authorization. The existing
 advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Prepared upstream update

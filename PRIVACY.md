@@ -42,8 +42,8 @@ names, timestamps, and status. The caller selects the task-store directory or
 log path. These records support coordination, verification, and resuming work.
 
 These local records have no automatic time-based expiry. They remain until you
-or your environment remove or replace them. Some helper commands replace
-status files or delete consumed inbox pointers. Plugin updates and uninstall
+or your environment remove or replace them. The decision-log helper only
+appends rows. Plugin updates and uninstall
 do not purge separately stored preferences, task records, backups, or caches.
 
 You control these local files. After stopping active helpers, you can delete the
@@ -57,7 +57,9 @@ services' controls for their copies.
 
 Invoked repository helpers use your existing command-line tools to query forge
 services such as GitHub for repository and pull-request information. Explicit
-dependency preparation contacts the package registry configured for Bun.
+dependency preparation contacts the package registry configured for Bun. When
+authorized, the `statechart` skill's `mise` install downloads Java and TLC, and
+its renderer install contacts the npm registry.
 Maintainer upstream checks contact GitHub's API and source-download service.
 Other workflow actions use the connected services authorized for the task.
 

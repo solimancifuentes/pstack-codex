@@ -77,6 +77,12 @@
       "source": "skills/interrogate/SKILL.md"
     },
     {
+      "overlay": "files/skills/ketchup-video/SKILL.md",
+      "reason": "Return the video path when the host cannot embed it, and treat renderer installation as explicit dependency setup",
+      "sha256": "027aed9a01adf208aeac3a134f47d12f7c1e42d6fea03095aedc2bae58cdcfd1",
+      "source": "skills/ketchup-video/SKILL.md"
+    },
+    {
       "overlay": "files/skills/maintain-verification-skill/SKILL.md",
       "reason": "Translate Cursor runtime into Codex with source workflow retained",
       "sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",

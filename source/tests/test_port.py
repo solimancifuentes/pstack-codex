@@ -202,6 +202,17 @@ class BuildTests(unittest.TestCase):
             with self.assertRaisesRegex(port.PortError, "Unadapted runtime instruction"):
                 port.build(project)
 
+    def test_upstream_model_slugs_rejected(self):
+        for slug in ("claude-fable-5-2-high", "gemini-4-neon-xhigh", "claude-opus-5-5-high-fast"):
+            with self.subTest(slug=slug), tempfile.TemporaryDirectory() as temp:
+                project = self.copy_project(temp)
+                spec = port.read_json(project / "adapters/spec.json")
+                row = next(row for row in spec["files"] if row["source"].endswith("SKILL.md"))
+                with (project / "adapters" / row["overlay"]).open("a") as output:
+                    output.write(f"\nRun the judge on `{slug}`.\n")
+                with self.assertRaisesRegex(port.PortError, "Unadapted runtime instruction"):
+                    port.build(project)
+
     def test_payload_tamper_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             copy = Path(temp) / "release"

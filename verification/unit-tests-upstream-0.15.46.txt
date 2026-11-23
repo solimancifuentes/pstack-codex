@@ -26,6 +26,7 @@ test_modified_pinned_source_rejected (test_port.BuildTests.test_modified_pinned_
 test_payload_tamper_rejected (test_port.BuildTests.test_payload_tamper_rejected) ... ok
 test_shared_build_never_embeds_supplied_user_profile (test_port.BuildTests.test_shared_build_never_embeds_supplied_user_profile) ... ok
 test_unadapted_active_cursor_instruction_rejected (test_port.BuildTests.test_unadapted_active_cursor_instruction_rejected) ... ok
+test_upstream_model_slugs_rejected (test_port.BuildTests.test_upstream_model_slugs_rejected) ... ok
 test_double_quoted_description_decodes_yaml_json_escapes (test_port.DescriptionTests.test_double_quoted_description_decodes_yaml_json_escapes) ... ok
 test_double_quoted_description_retains_final_apostrophe (test_port.DescriptionTests.test_double_quoted_description_retains_final_apostrophe) ... ok
 test_plain_description_retains_apostrophes (test_port.DescriptionTests.test_plain_description_retains_apostrophes) ... ok
@@ -79,12 +80,14 @@ test_packaged_source_mutation_and_extra_file_are_rejected (test_runtime.RuntimeC
 test_prepared_dispatch_forwards_arguments_without_installing (test_runtime.RuntimeCLITests.test_prepared_dispatch_forwards_arguments_without_installing) ... ok
 test_prepared_source_mutation_and_receipt_mismatch_are_rejected (test_runtime.RuntimeCLITests.test_prepared_source_mutation_and_receipt_mismatch_are_rejected) ... ok
 test_profile_dry_run_and_partial_write_preserve_unknown_nested_values (test_runtime.RuntimeCLITests.test_profile_dry_run_and_partial_write_preserve_unknown_nested_values) ... ok
+test_profile_rejects_single_seat_arena (test_runtime.RuntimeCLITests.test_profile_rejects_single_seat_arena) ... ok
+test_profile_set_null_removes_only_that_key (test_runtime.RuntimeCLITests.test_profile_set_null_removes_only_that_key) ... ok
 test_profile_set_requires_explicit_action (test_runtime.RuntimeCLITests.test_profile_set_requires_explicit_action) ... ok
 test_profile_symlink_write_rejected (test_runtime.RuntimeCLITests.test_profile_symlink_write_rejected) ... ok
 test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITests.test_state_inside_plugin_and_symlink_escapes_rejected) ... ok
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 85 tests in 198.888s
+Ran 88 tests in 102.593s
 
 OK

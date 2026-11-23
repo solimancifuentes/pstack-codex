@@ -49,6 +49,19 @@ def merge(base, overrides):
     return result
 
 
+def apply_change(current, change):
+    """Merge a proposed change into stored overrides; a null value removes that key."""
+    result = dict(current)
+    for key, value in change.items():
+        if value is None:
+            result.pop(key, None)
+        elif isinstance(result.get(key), dict) and isinstance(value, dict):
+            result[key] = apply_change(result[key], value)
+        else:
+            result[key] = value
+    return result
+
+
 def validate_profile(profile):
     def routing(value, label):
         if not isinstance(value, dict):
@@ -73,6 +86,8 @@ def validate_profile(profile):
     for name, seats in panels.items():
         if type(seats) is not int or seats < 1:
             raise RuntimeError(f"profile.panels.{name} must be a positive integer; actual concurrency remains host-limited")
+    if panels.get("arena", 2) < 2:
+        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     implicit = profile.get("implicit_invocation", {})
     if not isinstance(implicit, dict) or any(type(value) is not bool for value in implicit.values()):
         raise RuntimeError("profile.implicit_invocation must map skill names to booleans")
@@ -165,7 +180,9 @@ def profile_set(path, proposed, yes):
     proposed = read_json(proposed)
     defaults = read_json(within(PLUGIN, "defaults.json"))
     current = read_json(path) if path.exists() else {}
-    updated = merge(current, proposed)
+    if not isinstance(proposed, dict):
+        raise RuntimeError("The proposed change must be a JSON object")
+    updated = apply_change(current, proposed)
     effective = validate_profile(merge(defaults, updated))
     # Store only user overrides. Unknown keys are preserved for newer adapters.
     if yes:
@@ -297,7 +314,7 @@ def parser():
     operations = profiles.add_subparsers(dest="operation", required=True)
     show = operations.add_parser("show", help="Read effective defaults plus optional overrides without writing", epilog="Example: runtime.py profile show --profile ./preferences.json")
     show.add_argument("--profile", type=Path, default=default_profile())
-    update = operations.add_parser("set", help="Deep-merge proposed overrides while preserving unknown keys", epilog="Example: runtime.py profile set --file ./choices.json --dry-run")
+    update = operations.add_parser("set", help="Deep-merge proposed overrides while preserving unknown keys; a null value removes that key", epilog="Example: runtime.py profile set --file ./choices.json --dry-run")
     update.add_argument("--profile", type=Path, default=default_profile())
     update.add_argument("--file", type=Path, required=True)
     choice = update.add_mutually_exclusive_group(required=True)

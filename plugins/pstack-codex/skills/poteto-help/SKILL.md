@@ -11,7 +11,7 @@ Use [CODEX.md](../../CODEX.md) for runtime capabilities and limits. The original
 
 ## Start and configure
 
-The installed plugin exposes `$poteto-mode` and the individual `$skill-name` entrypoints. Use the exact discovered namespace when the client shows a qualified name. The port's install receipt and verification report establish what is installed; a source directory alone does not prove discovery.
+The installed plugin exposes `$poteto-mode` and the individual `$skill-name` entrypoints. Use the exact discovered namespace when the client shows a qualified name. The port's install receipt and verification report establish what is installed; a source directory alone does not prove discovery. When the question is about a race, an invariant, or another case tests rarely hit and the project has no formal verification skill, mention `create-formal-verification-skill`. When one exists and the code it covers changed after its recorded sync commit, mention `maintain-formal-verification-skill`.
 
 Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. A skipped step keeps its reason. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
 

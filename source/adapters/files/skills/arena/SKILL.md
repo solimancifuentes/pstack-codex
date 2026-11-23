@@ -14,7 +14,7 @@ Every candidate gets the same prompt, so the prompt is the contract.
 
 1. State the artifact each candidate is producing.
 2. Derive the rubric, 3-6 concrete gradeable criteria for what success looks like on *this* task. It is the picker's tool in Phase D. Candidates only see the task.
-3. Pick the runners using the runtime `arena` panel described in [CODEX.md](../../CODEX.md), three by default and never fewer than two. Each inherits the parent by default. Honor explicit, available, authorized model choices. If a chosen model is rejected, use the nearest available choice or drop the seat, keep at least two runners, and say so. Independent same-model candidates are supported, but do not claim the original Claude/Fable/Gemini diversity. Use additional runners only when the design directions or generation workload justify them.
+3. Pick the runners using the runtime `arena` panel described in [CODEX.md](../../CODEX.md), three by default and never fewer than two. Each inherits the parent by default. Honor explicit, available, authorized model choices. If a chosen model is rejected, use another model only when the user's selection allows that substitution. Otherwise run that seat inherited or drop it, keep at least two runners, and say so. Independent same-model candidates are supported, but do not claim the original Claude/Fable/Gemini diversity. Use additional runners only when the design directions or generation workload justify them.
 4. Give each candidate its own output location (a git worktree where possible, otherwise `/tmp/arena-<slug>/candidate-<n>/`), per the **separate-before-serializing-shared-state** principle skill.
 
 ## Phase B: Fan out

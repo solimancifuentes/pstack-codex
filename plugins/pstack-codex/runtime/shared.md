@@ -69,6 +69,10 @@ actions, acceptance checks, and report format. Pass absolute readable paths to
 helper workers and tell them to read the linked workflow and runtime contract.
 These Markdown files are prompt references, not registered native subtypes.
 Comment Sicko receives `agents/comment-sicko.md` and stays a read-only reviewer.
+The first line of every worker's kickoff, from any skill, is `Read
+<PLUGIN_ROOT>/skills/poteto-mode/worker.md before anything else.` with the
+absolute path. When the worker cannot read that path, as in a separate cloud
+environment, include the file's rules in the brief.
 
 Honor actual live slot, nesting, budget, and environment limits. Queue excess
 seats. Do not assume a fixed tree, unlimited fan-out, or background execution.
@@ -140,12 +144,14 @@ review gates before accepting its readiness policy. The retained
 reference, not a portable acceptance gate.
 
 The `statechart` skill runs its own TypeScript launcher from the installed
-skill directory with an available Node, Bun, or Deno runtime. Its first run
-installs Java and TLC with `mise`, and rendering uses the `pele` npm package.
-Both are dependency setup that needs the same explicit authority. Setting
-`TLA2TOOLS` and `JAVA` to existing installations avoids the `mise` install.
-Statechart writes only to its output folder, a staging folder beside it, and
-system temporary files.
+skill directory with an available Node, Bun, or Deno runtime. A run that cannot
+find Java and TLC installs them with `mise`, and rendering uses the `pele` npm
+package. Both are dependency setup that needs the same explicit authority, and
+both write persistent tool caches. Setting `TLA2TOOLS` and `JAVA` to existing
+installations, as absolute paths, avoids the `mise` install. The chart
+generator itself writes to its output folder, a staging folder beside it, and
+system temporary files. A `--view` module is executable code that runs with
+the caller's permissions, so treat a supplied view as code to review.
 
 ## Continuation and unsupported integrations
 

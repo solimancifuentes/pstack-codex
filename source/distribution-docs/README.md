@@ -89,7 +89,7 @@ The playbook follows your requested endpoint. Asking for an investigation does n
 | [visual parity](plugins/pstack-codex/skills/poteto-mode/playbooks/visual-parity.md) | Compare two interfaces against the same visual target. |
 | [authoring a skill](plugins/pstack-codex/skills/poteto-mode/playbooks/authoring-a-skill.md) | Write or revise a skill. |
 | [eval](plugins/pstack-codex/skills/poteto-mode/playbooks/eval.md) | Compare prompt or skill changes through blinded evaluation. |
-| [babysit](plugins/pstack-codex/skills/poteto-mode/playbooks/babysit.md) | Resolve PR conflicts, review threads, and CI problems. |
+| [babysit](plugins/pstack-codex/skills/poteto-mode/playbooks/babysit.md) | Work review threads and CI, and report conflicts to the branch owner. |
 | [shipping](plugins/pstack-codex/skills/poteto-mode/playbooks/shipping.md) | Verify a stack before an authorized landing. |
 | [autonomous run](plugins/pstack-codex/skills/poteto-mode/playbooks/autonomous-run.md) | Carry a scoped long task through to its endpoint. |
 | [autopilot-full](plugins/pstack-codex/skills/poteto-mode/playbooks/autopilot-full.md) | Coordinate independent PRs through review and authorized merging. |
@@ -207,11 +207,11 @@ You may want the engineering rules and a different working style. [`automate-me`
 
 [`setup-pstack`](plugins/pstack-codex/skills/setup-pstack/SKILL.md) handles supported model and panel preferences. Optional overrides live at `~/.codex/pstack-codex/preferences.json`, outside the installed package, so release updates and rollback preserve them. A cloud worker needs its own accessible preferences or a brief containing the relevant choices.
 
-The default arena and interrogate panels have three seats, matching upstream. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
+The default arena and interrogate panels have three seats, matching upstream. A profile that the personal manager wrote for v0.1.0 holds the old two-seat values; `setup-pstack` offers to remove them. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
 
 ## optional helpers and automations
 
-The Markdown workflows work without Python or Bun. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC, which its first run installs with `mise` unless you point `TLA2TOOLS` and `JAVA` at existing copies. Resolve the plugin's actual installed location, then run:
+The Markdown workflows work without Python or Bun. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
 
 ```sh
 python3 /actual/plugin/path/tools/runtime.py profile show

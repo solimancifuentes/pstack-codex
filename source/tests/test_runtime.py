@@ -121,6 +121,21 @@ else:
                 self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes", expected=1)
                 self.assertEqual(self.profile.read_bytes(), original)
 
+    def test_profile_set_null_removes_only_that_key(self):
+        self.write_json(self.profile, {"keep": True, "panels": {"architect": 2, "arena": 2, "interrogate": 2}})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"architect": None, "arena": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"keep": True, "panels": {"interrogate": 2}})
+        self.assertEqual(json.loads(self.profile.read_text()), saved["overrides"])
+
+    def test_profile_rejects_single_seat_arena(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": 1}})
+        result = self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--dry-run", expected=1)
+        self.assertIn("arena must be at least 2", result.stderr)
+        self.assertFalse(self.profile.exists())
+
     def test_profile_set_requires_explicit_action(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"model": "inherit-parent"})
