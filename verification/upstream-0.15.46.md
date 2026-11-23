@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-717e9b76fd6b` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-683e173ed390` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -678,6 +678,12 @@ The round 37 review led to these changes:
 - Babysit's `check` pass has one deadline covering every read.
 - `automate-me` uses the Git date only for a committed, unchanged `SKILL.md`
   and falls back when the lookup prints nothing.
+
+The round 38 review (Claude Opus 5.5 and GPT-6.2 Astra clean) led to one
+change: Babysit's pre-slice read includes the merge state and stops on
+`DIRTY` as a conflict. The watcher reads checks before mergeability, and
+GitHub runs no `pull_request` workflow on a conflicted head, so the watcher
+would otherwise wait until the deadline.
 
 ## Deferred forge edge cases
 
