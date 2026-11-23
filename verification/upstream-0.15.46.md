@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-4a80ff65f712` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-f8fc15af2324` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -461,6 +461,21 @@ The round 19 review led to these changes:
 - Autopilot-full owners send self-proof receipts without waiting for a
   forge-required approval, as Autopilot-stack owners already do.
 - `reflect` repairs every relative link that leaves a copied skill folder.
+
+The round 20 review led to these changes:
+
+- Shipping's landing and watching steps follow upstream again. Rounds 17 to
+  19 had added port rules there, and each round found new defects in them,
+  including a wrong rebase boundary for the third PR of a stack. What stays:
+  every merge and any armed auto-merge pins the verdict's head with
+  `--match-head-commit`, the watcher names the base repository and gets a
+  deadline, and on Origin the child's parent is left in place, as Origin's
+  stack reference documents. Arming auto-merge, which upstream allows on a
+  verified head, is allowed again.
+- Babysit's `drive` passes a watcher deadline, and its `check` mode reports
+  unregistered checks instead of waiting. Bugbot learnings go to the task's
+  decision trail, not the installed reference.
+- `reflect` points a copied skill's helper commands at the installed plugin.
 
 ## Known upstream defects
 
