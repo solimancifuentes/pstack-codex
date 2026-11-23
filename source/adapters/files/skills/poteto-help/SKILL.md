@@ -87,7 +87,8 @@ isolation.
 The optional helpers run through `tools/runtime.py` in this installed package,
 resolved from the current skill path. They require Python, and the watcher
 also needs explicit Bun setup. Core workflows do not require them or a separate
-`pstack-codex` executable. Defaults work without a personal profile. User
+`pstack-codex` executable, but on GitHub, Babysit's merge-ready verdict and
+the landings in Shipping and Autopilot need the prepared watcher. Defaults work without a personal profile. User
 overrides stay outside the package and apply only where supported.
 
 `deslop`, `skill-creator`, browser/app tools, and PTY drivers are discovered external capabilities. They are not fake Cursor built-ins bundled by copying files. Investigations use actual available connector schemas and scoped host history or supplied logs. Plain CLI does not require Desktop chat APIs or PR attachments. Summaries do not prove a full transcript audit.

@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-695f7acbfd3e` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-b37e52e93b34` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -633,6 +633,20 @@ a needed flag. That test is gone:
   user. Shipping stops and reports in the same case.
 - The paged thread query and first-comment reply rule stay for
   `threads-only` and that report.
+
+The round 34 review led to these changes:
+
+- Shipping decides each merge with Babysit's single-PR watcher, because the
+  queued watcher never reports `READY`, and uses the queued watcher only to
+  print progress.
+- The watcher's `READY` names no SHA, so Babysit reads the head before each
+  slice and after `READY` and discards a `READY` whose head moved. `check`
+  reports the status table and forge fields without a verdict, and `BEHIND`
+  stops `drive` as a stale base.
+- Autopilot owners merge only on Babysit's verdict; without one they report
+  to the root and stop, as Shipping does.
+- The README, compatibility notes, and help say that GitHub merge-ready
+  verdicts and landings need the prepared watcher.
 
 ## Known upstream defects
 
