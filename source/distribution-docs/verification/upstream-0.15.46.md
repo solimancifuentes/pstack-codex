@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-a4c396cdedd4` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-884af5bfb131` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -467,8 +467,8 @@ The round 20 review led to these changes:
 - Shipping's landing and watching steps follow upstream again. Rounds 17 to
   19 had added port rules there, and each round found new defects in them,
   including a wrong rebase boundary for the third PR of a stack. What stays:
-  every merge and any armed auto-merge pins the verdict's head with
-  `--match-head-commit`, the watcher names the base repository and gets a
+  every merge pins the verdict's head with `--match-head-commit`, and GitHub
+  auto-merge is armed with it, which GitHub checks only when arming, the watcher names the base repository and gets a
   deadline, and on Origin the child's parent is left in place, as Origin's
   stack reference documents. Arming auto-merge, which upstream allows on a
   verified head, is allowed again.
@@ -564,6 +564,19 @@ The round 28 review led to these changes:
   someone already armed, as Shipping does.
 - The README separates installed v0.1.0's two-seat panel defaults from the
   unpublished 0.2.0 defaults.
+
+The round 29 review led to these changes:
+
+- Babysit expects a check only from evidence about pull requests: matching
+  PR triggers and path filters, required checks, or recent PR heads. A check
+  seen only on trunk pushes no longer counts, which round 28 had made every
+  PR wait for. A user-named non-blocking check need not appear.
+- An `UNKNOWN` merge state on an unchanged head is reported as mergeability
+  not yet known, not as a head change.
+- `gh pr checks`'s `no checks reported` message is read as an empty list.
+- Shipping states that GitHub checks the auto-merge SHA only when arming, and
+  merges Origin PRs directly, because Origin documents no head guard for
+  merge-when-ready.
 
 ## Known upstream defects
 
