@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-23718061c764` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-e5748bc1b74a` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -598,11 +598,23 @@ The round 31 review led to these changes:
   workflows, and `pull_request_target` revisions. Babysit now trusts the
   check list once the head is a few minutes old and two reads agree, and a
   required check that never reports still shows as `BLOCKED`.
-- The direct check read uses `--json name,state,bucket,link`, so an
-  `ACTION_REQUIRED` approval is not mistaken for a failure.
+- The direct check read exposes raw check states, so an `ACTION_REQUIRED`
+  approval is not mistaken for a failure. (Round 32 changed the command.)
 - Shipping arms GitHub auto-merge only when no one, the arming agent
   included, will push before it lands, and turns it off before any later
   push.
+
+The round 32 review led to these changes:
+
+- Babysit's direct read takes checks from `gh pr view --json
+  statusCheckRollup`, which older packaged GitHub CLI versions support,
+  instead of `gh pr checks --json`, which needs 2.50.
+- It also lists the head's workflow runs, because GitHub Actions creates no
+  check for a run that waits for approval. Such a run, or one waiting for an
+  environment reviewer, is a review gate; a queued or running one is
+  pending.
+- The settle window starts when the PR opens or reopens or a new head
+  reaches it, not at the commit's date.
 
 ## Known upstream defects
 
