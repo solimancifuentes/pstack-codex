@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-b718805b8c02` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-027e1cfa3acc` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -487,6 +487,15 @@ The round 21 review led to these changes:
   blocking on `origin pr checks --watch`.
 - `reflect` edits an existing project or personal copy in place, and copies
   the installed folder only when no copy exists.
+
+The round 22 review led to these changes:
+
+- The Bugbot reference prepares replies, and posts them or resolves threads
+  only with authority to communicate on that review, as Babysit requires.
+- Babysit's Origin `drive` reads `--comments` too, and its direct GitHub read
+  includes `state`, so a merged or closed PR ends the drive.
+- `gh pr create` names the base repository, and a fork head is written
+  `<owner>:<branch>`.
 
 ## Known upstream defects
 
