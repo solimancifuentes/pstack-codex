@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-d93560c70c68` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-4a80ff65f712` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -434,9 +434,8 @@ The round 17 review led to these changes:
 
 The round 18 review led to these changes:
 
-- On Origin, Shipping restacks and pushes only the next PR in the run, with
-  `origin stack restack --only` and `origin stack push`. Nothing above the
-  ceiling is rewritten.
+- On Origin, Shipping restacks and pushes only the next PR in the run.
+  Nothing above the ceiling is rewritten. (Round 19 replaced the commands.)
 - Shipping does Babysit's forge read after every watcher `READY`, and merges
   only on the verified head with `CLEAN` or `HAS_HOOKS`. Its final status
   pass checks that every listed PR reads merged, because `--status-only`
@@ -445,6 +444,23 @@ The round 18 review led to these changes:
   prepared.
 - Opening a PR pushes and confirms the head SHA before either creation path,
   then checks that the PR's head matches it.
+
+The round 19 review led to these changes:
+
+- Shipping moves the next PR with `git rebase --onto` and pushes only that
+  branch with a pinned lease, on both forges. Origin's stack commands are no
+  longer used: a review reported that Origin's release notes and stack
+  reference disagree on what plain `origin stack push` pushes, and `git fetch
+  <trunk>:<trunk>` fails while trunk is checked out in another worktree.
+- Shipping reads the forge right before each merge. A head that no verdict
+  covers goes back to step 3 at once instead of waiting. Waits have a
+  deadline, and the final confirmation reads each PR directly, so it works
+  without the watcher.
+- Babysit accepts an empty check list as no CI only when the repository runs
+  no check for the PR, because GitHub can list none while checks register.
+- Autopilot-full owners send self-proof receipts without waiting for a
+  forge-required approval, as Autopilot-stack owners already do.
+- `reflect` repairs every relative link that leaves a copied skill folder.
 
 ## Known upstream defects
 
