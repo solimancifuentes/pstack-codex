@@ -119,13 +119,12 @@ exact missing coverage when the surface cannot be driven. `control-ui` and
 `skill-creator` skills when relevant; if absent, report a material prerequisite
 gap rather than fabricate its path.
 
-The optional Bun helpers keep bookkeeping and inspect GitHub state. They do not
+The optional helpers write decision-log rows and inspect GitHub state. They do not
 spawn agents, schedule work, wake a task, or provide an MCP server. No separate
 `pstack-codex` command is required. Using the resolved plugin root, invoke:
 
 ```text
 python3 <PLUGIN_ROOT>/tools/runtime.py tools-setup --yes
-python3 <PLUGIN_ROOT>/tools/runtime.py tool orch -- <args>
 python3 <PLUGIN_ROOT>/tools/runtime.py tool watch-pr -- <args>
 python3 <PLUGIN_ROOT>/tools/runtime.py tool log -- <logfile> <phase> <decision> <why> <evidence> <result>
 ```
@@ -137,8 +136,16 @@ live outside the immutable package. A missing helper is not a reason to stop
 ordinary planning, review, or logging; use its documented plain TSV/JSON format
 or available authenticated forge tools. Confirm a watcher's repository-specific
 review gates before accepting its readiness policy. The retained
-`worktree-audit.sh` and `check-plan.mjs` have original Cursor-specific assumptions
-and are source references, not portable acceptance gates.
+`worktree-audit.sh` has original Cursor-specific assumptions and is a source
+reference, not a portable acceptance gate.
+
+The `statechart` skill runs its own TypeScript launcher from the installed
+skill directory with an available Node, Bun, or Deno runtime. Its first run
+installs Java and TLC with `mise`, and rendering uses the `pele` npm package.
+Both are dependency setup that needs the same explicit authority. Setting
+`TLA2TOOLS` and `JAVA` to existing installations avoids the `mise` install.
+Statechart writes only to its output folder, a staging folder beside it, and
+system temporary files.
 
 ## Continuation and unsupported integrations
 
@@ -149,8 +156,8 @@ for an existing matching job before creating a requested one, preserve its
 cadence and notification intent, and verify the saved state. No bundled Markdown
 file guarantees wakeups, worker survival, indefinite compute, or VM durability.
 
-The original Claude/Grok panel mix, Cursor fast-mode controls, `/loop` command,
-Grok Bot APIs, secret cards, webhook runner, and custom UI mode have no native
+The original Claude, Fable, and Gemini panel mix, Cursor fast-mode controls,
+`/loop` command, Grok Bot APIs, secret cards, webhook runner, and custom UI mode have no native
 implementation in this package. `make-bot-ui` is diagnostic only. Do not request
 Grok sender keys or present a mock as a connected integration.
 

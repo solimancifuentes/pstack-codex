@@ -205,7 +205,7 @@ def validate_active(plugin, expected_names):
             continue
         text = path.read_text()
         for line_no, line in enumerate(text.splitlines(), 1):
-            if re.search(r"subagent_type\s*[:=]|environment:\s*[\"']cloud|~?/\.cursor/|grok-4\.7-|claude-opus-5-5-", line):
+            if re.search(r"subagent_type\s*[:=]|environment:\s*[\"']cloud|~?/\.cursor/|grok-4\.7-|claude-opus-5-5-|claude-fable-5-2-|gemini-4-neon-", line):
                 issues.append(f"Unadapted runtime instruction: {path.relative_to(plugin)}:{line_no}")
         for link in re.findall(r"\]\(([^\s)]+)\)", text):
             if re.match(r"[a-zA-Z][\w+.-]*:", link) or link.startswith(("#", "/")):
@@ -782,15 +782,15 @@ class Installation:
     def run_tool(self, name, args):
         runtime, scripts = self.runtime()
         verify_payload(self.root / "releases" / self.state()["active"])
-        if name in ("orch", "watch-pr"):
+        if name == "watch-pr":
             if not (runtime / "setup-receipt.json").is_file():
                 raise PortError("Helpers are not prepared. Run pstack-codex tools-setup --yes. No packages were installed.")
             self.verify_runtime(runtime, scripts)
-            command = ["bun", str(runtime / ("orch/orch.ts" if name == "orch" else "watch-pr/watch-pr"))]
+            command = ["bun", str(runtime / "watch-pr/watch-pr")]
         elif name == "log":
             command = ["bash", str(self.root / "releases" / self.state()["active"] / "plugin/skills/show-me-your-work/scripts/log.sh")]
         else:
-            raise PortError("Supported helpers: orch, watch-pr, log. Cursor check-plan/worktree-audit remain source-only.")
+            raise PortError("Supported helpers: watch-pr, log. The Cursor worktree-audit script remains source-only.")
         return subprocess.call(command + args)
 
 def parser():
@@ -826,8 +826,8 @@ def parser():
     recover.add_argument("--dry-run", action="store_true")
     tools = sub.add_parser("tools-setup", help="Explicitly install locked helper dependencies into mutable runtime", epilog="Example: pstack-codex tools-setup --yes")
     tools.add_argument("--yes", action="store_true")
-    tool = sub.add_parser("tool", help="Run an explicitly prepared helper", epilog="Example: pstack-codex tool orch -- --help")
-    tool.add_argument("name", choices=("orch", "watch-pr", "log"))
+    tool = sub.add_parser("tool", help="Run an explicitly prepared helper", epilog="Example: pstack-codex tool watch-pr -- --help")
+    tool.add_argument("name", choices=("watch-pr", "log"))
     tool.add_argument("args", nargs=argparse.REMAINDER)
     return root
 

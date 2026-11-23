@@ -13,7 +13,7 @@ title or an instruction to pretend to be a dot.
 | Ongoing follow-up | Session, explicitly requested goal, or supported schedule | Native follow-ups, saved schedules, supported events |
 | GitHub PR attachment | Desktop attachment tool when present; CLI URL otherwise | Actual available task/forge tools |
 | Private Cursor transcripts, Task APIs and Custom Modes | Unsupported | Unsupported |
-| Native Claude/Grok panels and Cursor fast suffixes | Unsupported | Unsupported |
+| Native Claude, Fable, and Gemini panels and Cursor fast suffixes | Unsupported | Unsupported |
 | Grok Bot cards and webhooks | Unsupported | Unsupported |
 | Benny Slack automation | Dormant reference source | Possible future integration, not configured |
 
@@ -23,15 +23,21 @@ task APIs and supported event sources must be observed before use. Connecting a
 plugin does not establish a schedule or authorize messages to other people.
 
 Optional helper commands require Python 3.11+, Bun, and POSIX support on
-macOS/Linux. Their absence does not prevent the Markdown workflows. The existing
+macOS/Linux. Their absence does not prevent the Markdown workflows. The
+`statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+,
+and Java with TLC.
+Installing Java and TLC through `mise`, or the Pele renderer through npm, is an
+explicitly authorized dependency setup. The existing
 advanced personal manager additionally has a fixed default Codex-home boundary.
 
 ## Prepared upstream update
 
-The development checkout prepares port 0.2.0 from upstream pstack 0.15.27. It
-contains 55 skills. The [update record](verification/upstream-0.15.27.md) records
-checks performed in the cloud container and their limits. The v0.1.0 evidence
-below remains the historical release baseline. No new release is published.
+The development checkout prepares port 0.2.0 from upstream pstack 0.15.46. It
+contains 58 skills and 22 playbooks. The [update record](verification/upstream-0.15.46.md)
+records the local checks and their limits. Native installation and discovery for
+this source have not been rerun; the [0.15.27 cloud validation](verification/cloud-validation-upstream-0.15.27.md)
+covers the earlier source only. The v0.1.0 evidence below remains the historical
+release baseline. No new release is published.
 
 ## Verification boundary
 

@@ -15,9 +15,9 @@ The installed plugin exposes `$poteto-mode` and the individual `$skill-name` ent
 
 Start a task with `$poteto-mode`, the goal, and an observable definition of done. The coordinator selects a playbook, keeps its steps in a task plan, and reads the needed sibling skills. A skipped step keeps its reason. Neither adapter registers a Cursor Custom Mode binding. Invoke the mode again for a new task, or follow the user's standing repository instructions to consider relevant pstack skills. Do not claim an always-on UI mode.
 
-`$setup-pstack` manages an optional local user profile through a concrete reviewed change. If the profile is absent, the shared package defaults work without setup or the separate manager command. Every role inherits the parent model and reasoning by default. A panel can run independent same-model passes. Actual supported and authorized model choices may differ from the parent, but native collaboration does not reproduce the original Claude/Grok provider mix. Slot limits include the coordinator and nested workers. Larger panels queue.
+`$setup-pstack` manages an optional local user profile through a concrete reviewed change. If the profile is absent, the shared package defaults work without setup or the separate manager command. Every role inherits the parent model and reasoning by default. A panel can run independent same-model passes. Actual supported and authorized model choices may differ from the parent, but native collaboration does not reproduce the original Claude, Fable, and Gemini panel mix. Slot limits include the coordinator and nested workers. Larger panels queue.
 
-The upstream explicit-only skills retain their invocation intent, with the package's documented `unslop` default and any user-specific invocation overrides preserved. Eligibility does not guarantee automatic selection. A composed workflow may read sibling skills intentionally. This does not mean all 55 skills run on every turn. `setup-pstack` remains discoverable for setup requests.
+The upstream explicit-only skills retain their invocation intent, with the package's documented `unslop` default and any user-specific invocation overrides preserved. Eligibility does not guarantee automatic selection. A composed workflow may read sibling skills intentionally. This does not mean all 58 skills run on every turn. `setup-pstack` remains discoverable for setup requests.
 
 ## Pick a skill
 
@@ -25,12 +25,13 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 |---|---|
 | Run a task through the complete workflow | [poteto-mode](../poteto-mode/SKILL.md) |
 | Confirm the goal and problem before work | [in-your-own-words](../in-your-own-words/SKILL.md) |
-| Improve task framing | [sharpen](../sharpen/SKILL.md) |
+| Rewrite a prompt deeper before sending it, without doing the task | [sharpen](../sharpen/SKILL.md) |
 | Explain current behavior or ownership | [how](../how/SKILL.md) |
 | Investigate rationale and history | [why](../why/SKILL.md) |
 | Teach a system or change plainly | [teach](../teach/SKILL.md) |
 | Reconstruct recent scoped work | [recall](../recall/SKILL.md) |
 | Catch up on this chat in plain words and small visuals, with every item waiting on the user listed and decidable from the reply alone | [ketchup](../ketchup/SKILL.md) |
+| Catch up like ketchup, in a short subtitled video of slides, with the waiting calls as text under it | [ketchup-video](../ketchup-video/SKILL.md) |
 | Trace breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Explore types and module shape before implementation | [architect](../architect/SKILL.md) |
 | Compare independent candidate artifacts, then synthesize | [arena](../arena/SKILL.md) |
@@ -45,6 +46,8 @@ The upstream explicit-only skills retain their invocation intent, with the packa
 | Create an app verification harness skill | [create-verification-skill](../create-verification-skill/SKILL.md) |
 | Audit the verification skill and every mapped feature | [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formally verify a race, invariant, or other property that tests rarely reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
+| Bring a formal verification back in line after the code it covers changed, and tell drift from a bug | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
+| Draw a TLA+-checked statechart with the shortest path to each state that breaks a rule | [statechart](../statechart/SKILL.md) |
 | Validate performance measurements | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | Design a rigorous bespoke run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Keep and audit a decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
@@ -58,14 +61,14 @@ The `principle-*` leaf skills steer decisions within a workflow. Read the full l
 
 ## Playbooks
 
-All 23 playbooks remain under [poteto-mode](../poteto-mode/SKILL.md). They are reference steps selected by the coordinator, not separately registered skills.
+All 22 playbooks remain under [poteto-mode](../poteto-mode/SKILL.md). They are reference steps selected by the coordinator, not separately registered skills.
 
 - Investigation, Bug fix, Perf issue, Hillclimb, Runtime forensics, and Trace forensics cover evidence-led diagnosis and changes.
 - Feature, Refactoring, Prototype, and Visual parity cover implementation and design exploration.
 - Authoring a skill and Eval cover skill creation and behavioral comparison.
 - Babysit, Shipping, and Opening a PR cover forge delivery. A status check is one pass. Babysitting stops at merge-ready. Shipping requires actual landing authority.
-- Autonomous run and Orchestrate cover one long task or a larger program. The Codex adapter uses observed collaboration tools and session limits. The Dots adapter can coordinate supported background agents or configured Codex tasks. Neither Markdown adapter provisions a durable cloud runner or event subscription.
-- Autopilot-full retains one owner per independent PR where merge authority is granted. Autopilot-stack delivers a chain for the operator to land.
+- Autonomous run covers one long task. Upstream removed the Orchestrate playbook; a program larger than one task routes to `figure-it-out`. The Codex adapter uses observed collaboration tools and session limits. The Dots adapter can coordinate supported background agents or configured Codex tasks. Neither Markdown adapter provisions a durable cloud runner or event subscription.
+- Autopilot-full retains one owner per independent PR where merge authority is granted. Autopilot-stack runs Autopilot-full without merging and hands the verified PRs to the operator.
 - Session pickup, Pause safely, Multi-phase plan, and Worktree cleanup cover continuity, planning, and ownership-aware cleanup.
 
 A plan-only request remains plan-only. A task needs a real execution mechanism to continue after the active session. Use the actual host adapter for continuation. Goals, saved schedules, heartbeats, and supported event subscriptions are created only when requested through available product tools. A scheduler poll is not an event webhook.

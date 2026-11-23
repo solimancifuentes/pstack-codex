@@ -8,9 +8,8 @@
   },
   "model": "inherit-parent",
   "panels": {
-    "architect": 2,
-    "arena": 2,
-    "interrogate": 2
+    "arena": 3,
+    "interrogate": 3
   },
   "prefer_existing_browser_and_cli_tools": true,
   "reasoning_effort": "inherit-parent",

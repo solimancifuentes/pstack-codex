@@ -13,8 +13,7 @@
   "external_messages": "only when explicitly authorized by the user",
   "roles": {},
   "panels": {
-    "arena": 2,
-    "architect": 2,
-    "interrogate": 2
+    "arena": 3,
+    "interrogate": 3
   }
 }

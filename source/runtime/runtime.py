@@ -122,7 +122,7 @@ def helper_sources():
     if manifest.get("schema_version") != 1 or not isinstance(manifest.get("files"), dict):
         raise RuntimeError("Invalid tools/helper-sources.json; rebuild the plugin package")
     expected = manifest["files"]
-    required = {f"{SCRIPTS}/package.json", f"{SCRIPTS}/bun.lock", f"{SCRIPTS}/bootstrap.ts", f"{SCRIPTS}/orch/orch.ts", f"{SCRIPTS}/watch-pr/watch-pr", LOG}
+    required = {f"{SCRIPTS}/package.json", f"{SCRIPTS}/bun.lock", f"{SCRIPTS}/bootstrap.ts", f"{SCRIPTS}/watch-pr/watch-pr", LOG}
     if not required.issubset(expected) or any(not (name.startswith(SCRIPTS + "/") or name == LOG) for name in expected):
         raise RuntimeError("Helper source manifest has missing or unsupported paths")
     actual = {f"{SCRIPTS}/{name}": value for name, value in files_under(within(PLUGIN, SCRIPTS)).items()}
@@ -285,8 +285,7 @@ def run_tool(state, name, arguments):
         bun = shutil.which("bun")
         if not bun:
             raise RuntimeError("Bun is not installed; no packages were installed")
-        entrypoint = "orch/orch.ts" if name == "orch" else "watch-pr/watch-pr"
-        command = [bun, str(within(runtime, entrypoint))]
+        command = [bun, str(within(runtime, "watch-pr/watch-pr"))]
     return subprocess.call(command + arguments)
 
 
@@ -306,9 +305,9 @@ def parser():
     choice.add_argument("--yes", action="store_true")
     setup = commands.add_parser("tools-setup", help="Explicitly prepare locked Bun dependencies outside the plugin", epilog="Example: runtime.py tools-setup --yes")
     setup.add_argument("--yes", action="store_true", required=True)
-    tool = commands.add_parser("tool", help="Run a verified helper; never installs packages", epilog="Examples: runtime.py tool orch -- --help; runtime.py tool log -- decisions.tsv plan choose reason evidence result")
+    tool = commands.add_parser("tool", help="Run a verified helper; never installs packages", epilog="Examples: runtime.py tool watch-pr -- --help; runtime.py tool log -- decisions.tsv plan choose reason evidence result")
     helpers = tool.add_subparsers(dest="name", required=True)
-    for name in ("orch", "watch-pr", "log"):
+    for name in ("watch-pr", "log"):
         example = "decisions.tsv plan choose reason evidence result" if name == "log" else "--help"
         helper = helpers.add_parser(name, help=f"Run the {name} helper", epilog=f"Example: runtime.py tool {name} -- {example}")
         helper.add_argument("arguments", nargs=argparse.REMAINDER)

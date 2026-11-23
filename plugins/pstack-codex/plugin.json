@@ -25,7 +25,7 @@
         "developerName": "Soliman Cifuentes",
         "displayName": "pstack",
         "logo": "./assets/pstack.png",
-        "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 55 skills, 24 engineering principles, and 23 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
+        "longDescription": "An independent MIT-licensed adaptation of Lauren Tan's pstack. Includes 58 skills, 24 engineering principles, and 22 playbooks for planning, architecture, implementation, code review, testing, technical writing, and verification. Workflows use the tools and permissions available in the current execution environment. Optional helpers have explicit dependency setup. Requires local execution. Supported environments and limitations are documented in the repository.",
         "privacyPolicyURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/PRIVACY.md",
         "shortDescription": "Plan, build, review, verify",
         "supportURL": "https://github.com/solimancifuentes/pstack-codex/blob/main/SUPPORT.md",
@@ -35,7 +35,7 @@
       "onboardingSkill": "./skills/setup-pstack/SKILL.md",
       "publication": {
         "countries": [],
-        "release_notes": "Prepares port 0.2.0 from upstream pstack 0.15.27. Adds the formal-verification workflow and updated engineering guidance while preserving Codex and Dots adapters, explicit invocation policies, external preferences, and MIT attribution. This development version is unpublished."
+        "release_notes": "Prepares port 0.2.0 from upstream pstack 0.15.46. Adds formal-verification maintenance, statechart, and ketchup-video skills, follows upstream's shorter skill texts, and removes the Orchestrate playbook and orch helper that upstream deleted, while preserving Codex and Dots adapters, explicit invocation policies, external preferences, and MIT attribution. This development version is unpublished."
       },
       "requires_local_executor": true,
       "review": {
