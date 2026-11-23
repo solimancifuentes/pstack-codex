@@ -42,6 +42,13 @@ variable containing the root, scan caches for a newer copy, or hard-code a
 user's installation path. If Python or filesystem access is unavailable, read
 the defaults and accessible profile directly. The core workflow still works.
 
+Workflows read these role keys under `roles`, using the upstream labels:
+`feature, refactoring`, `bug-fix`, `perf-issue`, `hillclimb`,
+`judgment and prose`, `swarm workers`, `arena runners`, `arena cross-judge pool`,
+and `interrogate reviewers`. Each value is one routing object that applies to
+every seat of its role; panel seat counts live separately under `panels`. A key
+outside this list steers nothing.
+
 Every role inherits the parent's model, reasoning, and speed by default.
 `inherit-parent` and `auto` mean omit overrides. Honor saved role choices only
 when supported and authorized by the current tool schema and instructions.

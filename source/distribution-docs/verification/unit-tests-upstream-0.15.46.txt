@@ -87,11 +87,12 @@ test_profile_removal_under_scalar_parent_keeps_the_value (test_runtime.RuntimeCL
 test_profile_set_null_removes_only_that_key (test_runtime.RuntimeCLITests.test_profile_set_null_removes_only_that_key) ... ok
 test_profile_set_null_under_absent_parent_stores_no_null (test_runtime.RuntimeCLITests.test_profile_set_null_under_absent_parent_stores_no_null) ... ok
 test_profile_set_requires_explicit_action (test_runtime.RuntimeCLITests.test_profile_set_requires_explicit_action) ... ok
+test_profile_set_stores_an_explicit_empty_object (test_runtime.RuntimeCLITests.test_profile_set_stores_an_explicit_empty_object) ... ok
 test_profile_symlink_write_rejected (test_runtime.RuntimeCLITests.test_profile_symlink_write_rejected) ... ok
 test_state_inside_plugin_and_symlink_escapes_rejected (test_runtime.RuntimeCLITests.test_state_inside_plugin_and_symlink_escapes_rejected) ... ok
 test_versioned_setup_and_return_to_old_source_preserve_profile (test_runtime.RuntimeCLITests.test_versioned_setup_and_return_to_old_source_preserve_profile) ... ok
 
 ----------------------------------------------------------------------
-Ran 92 tests in 75.108s
+Ran 93 tests in 70.646s
 
 OK

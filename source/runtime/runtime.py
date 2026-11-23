@@ -50,7 +50,8 @@ def merge(base, overrides):
 
 
 def only_removals(change):
-    return all(value is None or (isinstance(value, dict) and only_removals(value)) for value in change.values())
+    # An empty object is an explicit value to store, not a removal.
+    return bool(change) and all(value is None or (isinstance(value, dict) and only_removals(value)) for value in change.values())
 
 
 def apply_change(current, change):

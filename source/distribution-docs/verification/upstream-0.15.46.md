@@ -60,8 +60,10 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
   Babysit passes `--allow-draft` for such a PR and never marks it ready.
 - `reflect` edits pstack through its source overlays, never by copying an
   installed, already-normalized skill into the source tree.
-- The `orch` helper is removed from `tools/runtime.py`, the manager, the shared
-  contract, and the tests. `watch-pr` and `log` remain.
+- The packaged launcher `tools/runtime.py` and the shared contract no longer
+  offer `orch`; `watch-pr` and `log` remain. The personal manager still runs
+  `orch` only when the active release ships it, as v0.1.0 does after a
+  rollback.
 - The default arena and interrogate panels have three seats, matching
   upstream's panel size. The `architect` panel default is gone. Existing
   profile keys are preserved, and `setup-pstack` reports retired roles. A
@@ -76,9 +78,9 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-28e89fc9ae92` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-5a5e7dea3705` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
-- [All 92 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
+- [All 93 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
   slug lint. They cover
   reproducible builds and ZIP export, contained Markdown links, metadata and
@@ -113,7 +115,7 @@ guidance, and a stale repository `NOTICE`. Those are fixed too.
 
 A follow-up review loop then ran Claude Opus 5.5, GPT-6.2 Astra at xhigh, and
 GPT-6.2 Sol at max reasoning on the merged result, fixing each round's findings
-until a round came back clean. Round 1 led to these changes:
+before the next round. Round 1 led to these changes:
 
 - Shipping and Autopilot-full now mark a policy draft ready right before an
   authorized merge, read it back, and recheck merge gates that promotion can
@@ -139,6 +141,28 @@ until a round came back clean. Round 1 led to these changes:
   is written. `maintain-formal-verification-skill` makes its deliberate break
   in a disposable checkout. `figure-it-out` runs arena only when a decision
   needs independent candidates.
+
+Round 2 led to these changes:
+
+- Shipping and Autopilot-full merge with the verified head pinned
+  (`--match-head-commit`), wait for checks and reviews that promotion starts,
+  and need a fresh verdict when the head moved. Opening a PR passes `--base`,
+  using the parent branch for a stack child.
+- Autopilot-stack keeps a verdict after a restack only when the parent's change
+  cannot affect the PR; an unchanged patch ID alone no longer carries it.
+- The shared contract lists the role keys workflows read, including
+  `arena runners`, `arena cross-judge pool`, and `interrogate reviewers`.
+  `setup-pstack` writes only those keys and treats every value copied from the
+  v0.1.0 profile as an old default.
+- The arena judge prefers another provider among the models the user
+  authorized. Interrogate reports an incomplete review when no adversary
+  returns.
+- Eval starts candidates and the judge from a fresh context, and reports the
+  run as unblinded when the host cannot isolate history.
+- `profile set` stores an explicit empty object instead of dropping it.
+- Personal skill copies go to `~/.agents/skills/`, the location the manager
+  already uses, and the formal-verification handoffs use Codex skill names
+  instead of slash commands.
 
 ## Known upstream defects
 

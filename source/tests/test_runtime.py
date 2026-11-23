@@ -143,6 +143,13 @@ else:
         saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
         self.assertEqual(saved["overrides"], {"future_provider": "manual"})
 
+    def test_profile_set_stores_an_explicit_empty_object(self):
+        self.write_json(self.profile, {"future_driver": "auto"})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"future_driver": {}, "roles": {"feature, refactoring": {}}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"future_driver": {}, "roles": {"feature, refactoring": {}}})
+
     def test_legacy_single_seat_arena_still_allows_profile_work(self):
         self.write_json(self.profile, {"panels": {"arena": 1}})
         shown = json.loads(self.run_cli("profile", "show", "--profile", str(self.profile)).stdout)
