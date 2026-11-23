@@ -78,7 +78,7 @@ Upstream made 33 pstack commits in this range. The ones that affect the port:
 ## Verification
 
 - `python3 source/tests/verify_repository.py` rebuilds release
-  `7a583913eb1b-e5748bc1b74a` and matches the tracked plugin, `release.json`, the mirrored
+  `7a583913eb1b-695f7acbfd3e` and matches the tracked plugin, `release.json`, the mirrored
   documents, and the repository `NOTICE` and `LICENSE`.
 - [All 98 Python tests pass](unit-tests-upstream-0.15.46.txt), including new
   tests for `null` removal, including under an absent parent, the arena minimum, and the Fable, Gemini, and Opus
@@ -616,6 +616,24 @@ The round 32 review led to these changes:
 - The settle window starts when the PR opens or reopens or a new head
   reaches it, not at the commit's date.
 
+The round 33 review led to a simplification. Rounds 16 to 33 had built a
+port-specific merge-ready test that Babysit and Shipping applied whenever the
+watcher could not run. Every round found real GitHub cases it judged wrong:
+stale duplicate checks, workflow runs on other refs, startup failures,
+`ACTION_REQUIRED` from apps that want a fix rather than an approval, commit
+statuses without a conclusion, settle-window timing, and CLI versions without
+a needed flag. That test is gone:
+
+- Merge-ready on GitHub needs the upstream watcher's `READY` and the forge's
+  agreement at the same head: `CLEAN` or `HAS_HOOKS`, and no
+  `CHANGES_REQUESTED`.
+- Without a prepared watcher, or when the watcher cannot judge a PR, Babysit
+  reports the forge's merge state, review decision, checks, and unresolved
+  threads, says merge-readiness was not verified, and leaves that call to the
+  user. Shipping stops and reports in the same case.
+- The paged thread query and first-comment reply rule stay for
+  `threads-only` and that report.
+
 ## Known upstream defects
 
 The Astra review found these in upstream code that this port ships unchanged.
@@ -634,9 +652,9 @@ They are left for an upstream fix rather than a port fork:
   from the forge before it reports merge-ready.
 - `watch-pr` returns `checks-unavailable` for any PR with no checks, such as
   one on a repository without CI, and ends in a `status-query` blocker after
-  its retries, dropping the review-thread result. Babysit then reads
-  `mergeStateStatus` and the review threads from the forge, and Shipping uses
-  Babysit's direct read for its frontier PR.
+  its retries, dropping the review-thread result. Babysit then reports the
+  forge's state without a merge-ready verdict, and Shipping stops and
+  reports.
 - Relative `JAVA` and `TLA2TOOLS` paths resolve from statechart's private
   working directory. The overlay requires absolute paths.
 
