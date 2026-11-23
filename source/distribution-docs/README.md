@@ -2,7 +2,7 @@
 
 <img src="plugins/pstack-codex/assets/pstack.png" alt="pstack glass potato logo" width="160" height="160">
 
-[pstack](https://github.com/cursor/plugins/tree/0148b78c56c72a1b8412055913c79f767095b217/pstack) is [Lauren Tan's](https://x.com/poteto) engineering workflow. Lauren, [@poteto on X](https://x.com/poteto), created the original skills, principles, playbooks, and agent prompts. All credit for the original pstack belongs to her.
+[pstack](https://github.com/cursor/plugins/tree/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack) is [Lauren Tan's](https://x.com/poteto) engineering workflow. Lauren, [@poteto on X](https://x.com/poteto), created the original skills, principles, playbooks, and agent prompts. All credit for the original pstack belongs to her.
 
 This repository is an independent adaptation for Codex, maintained by Soliman Cifuentes. It keeps Lauren's approach and changes the parts that depend on Cursor's tools, model routing, and installation format.
 
@@ -10,13 +10,13 @@ An agent can write a plausible fix before it understands the bug. Then you spend
 
 That also gives parallel work a useful constraint. Each worker gets a scope and a check, and the coordinator has to assemble evidence before declaring the job done. More workers only help if you can tell what they did.
 
-The port contains **55 skills, 24 engineering principles, and 23 playbooks**. Codex supplies the models, execution tools, and permissions. pstack supplies the workflow.
+The port contains **58 skills, 24 engineering principles, and 22 playbooks**. Codex supplies the models, execution tools, and permissions. pstack supplies the workflow.
 
 ## install
 
 You can install from GitHub now. This repository is a custom Codex marketplace; pstack is not currently listed in OpenAI's public Plugins directory.
 
-This checkout prepares **port 0.2.0** from upstream pstack **0.15.27**. It is unpublished. `v0.1.0` remains the supported installation tag and contains 54 skills. Existing installations stay on that tag until a reviewed port release is published.
+This checkout prepares **port 0.2.0** from upstream pstack **0.15.46**. It is unpublished. `v0.1.0` remains the supported installation tag and contains 54 skills. Existing installations stay on that tag until a reviewed port release is published.
 
 With a recent [Codex CLI](https://learn.chatgpt.com/docs/codex/cli):
 
@@ -73,7 +73,7 @@ verifiable steps. Preserve behavior. Open a draft PR when the checks pass.
 The playbook follows your requested endpoint. Asking for an investigation does not authorize edits, and a workflow name does not authorize merges, deployment, messages, or changes to your settings. Long runs also depend on the session and tools actually available. Cursor's persistent Custom Modes and `/loop` command do not carry over to Codex.
 
 <details>
-<summary>the twenty-three playbooks</summary>
+<summary>the twenty-two playbooks</summary>
 
 | playbook | for |
 | --- | --- |
@@ -89,12 +89,11 @@ The playbook follows your requested endpoint. Asking for an investigation does n
 | [visual parity](plugins/pstack-codex/skills/poteto-mode/playbooks/visual-parity.md) | Compare two interfaces against the same visual target. |
 | [authoring a skill](plugins/pstack-codex/skills/poteto-mode/playbooks/authoring-a-skill.md) | Write or revise a skill. |
 | [eval](plugins/pstack-codex/skills/poteto-mode/playbooks/eval.md) | Compare prompt or skill changes through blinded evaluation. |
-| [babysit](plugins/pstack-codex/skills/poteto-mode/playbooks/babysit.md) | Resolve PR conflicts, review threads, and CI problems. |
+| [babysit](plugins/pstack-codex/skills/poteto-mode/playbooks/babysit.md) | Work review threads and CI, and report conflicts to the branch owner. |
 | [shipping](plugins/pstack-codex/skills/poteto-mode/playbooks/shipping.md) | Verify a stack before an authorized landing. |
 | [autonomous run](plugins/pstack-codex/skills/poteto-mode/playbooks/autonomous-run.md) | Carry a scoped long task through to its endpoint. |
-| [orchestrate](plugins/pstack-codex/skills/poteto-mode/playbooks/orchestrate.md) | Coordinate a project across phases and workers. |
 | [autopilot-full](plugins/pstack-codex/skills/poteto-mode/playbooks/autopilot-full.md) | Coordinate independent PRs through review and authorized merging. |
-| [autopilot-stack](plugins/pstack-codex/skills/poteto-mode/playbooks/autopilot-stack.md) | Build a linear stack for the operator to review and land. |
+| [autopilot-stack](plugins/pstack-codex/skills/poteto-mode/playbooks/autopilot-stack.md) | Run autopilot-full without merging, and hand the verified PRs to the operator. |
 | [session pickup](plugins/pstack-codex/skills/poteto-mode/playbooks/session-pickup.md) | Resume another session's work from its actual state. |
 | [pause safely](plugins/pstack-codex/skills/poteto-mode/playbooks/pause-safely.md) | Leave a checkpoint that another session can resume. |
 | [multi-phase plan](plugins/pstack-codex/skills/poteto-mode/playbooks/multi-phase-plan.md) | Break larger work into verifiable phases. |
@@ -124,16 +123,17 @@ tests miss, and keep the review read-only.
 | [poteto-mode](plugins/pstack-codex/skills/poteto-mode/SKILL.md) | You want the complete engineering workflow. |
 | [poteto-help](plugins/pstack-codex/skills/poteto-help/SKILL.md) | You need help choosing a skill or framing a task. |
 | [in-your-own-words](plugins/pstack-codex/skills/in-your-own-words/SKILL.md) | You want the agent to explain its understanding first. |
-| [sharpen](plugins/pstack-codex/skills/sharpen/SKILL.md) | The request needs a clearer problem or success condition. |
+| [sharpen](plugins/pstack-codex/skills/sharpen/SKILL.md) | A prompt needs a deeper rewrite before you send it. |
 | [how](plugins/pstack-codex/skills/how/SKILL.md) | You need to understand how a subsystem works. |
 | [why](plugins/pstack-codex/skills/why/SKILL.md) | You need the evidence behind a design or decision. |
 | [recall](plugins/pstack-codex/skills/recall/SKILL.md) | You need to rebuild context from scoped, accessible history. |
 | [ketchup](plugins/pstack-codex/skills/ketchup/SKILL.md) | You need a brief account of what changed while you were away. |
+| [ketchup-video](plugins/pstack-codex/skills/ketchup-video/SKILL.md) | You want that account as a short subtitled video of slides. |
 | [blast-radius](plugins/pstack-codex/skills/blast-radius/SKILL.md) | A small change may affect more than its immediate caller. |
 | [architect](plugins/pstack-codex/skills/architect/SKILL.md) | Types, callers, and module boundaries need design work. |
 | [arena](plugins/pstack-codex/skills/arena/SKILL.md) | You want competing attempts at the same problem. |
 | [swarm](plugins/pstack-codex/skills/swarm/SKILL.md) | Different parts of the work can proceed independently. |
-| [interrogate](plugins/pstack-codex/skills/interrogate/SKILL.md) | You want independent reviewers to challenge a diff. |
+| [interrogate](plugins/pstack-codex/skills/interrogate/SKILL.md) | You want adversaries to break a diff, keeping only findings a run proves. |
 | [automate-me](plugins/pstack-codex/skills/automate-me/SKILL.md) | You want a personal mode based on your working conventions. |
 | [make-bot-ui](plugins/pstack-codex/skills/make-bot-ui/SKILL.md) | You need an explanation of the unavailable original bot integration. Diagnostic only. |
 | [setup-pstack](plugins/pstack-codex/skills/setup-pstack/SKILL.md) | You want to inspect or change supported workflow preferences. |
@@ -151,6 +151,8 @@ tests miss, and keep the review read-only.
 | [create-verification-skill](plugins/pstack-codex/skills/create-verification-skill/SKILL.md) | A project needs a repeatable way to verify real behavior. |
 | [maintain-verification-skill](plugins/pstack-codex/skills/maintain-verification-skill/SKILL.md) | A verification workflow needs to keep up with the product. |
 | [create-formal-verification-skill](plugins/pstack-codex/skills/create-formal-verification-skill/SKILL.md) | A race or invariant needs verification beyond tests. |
+| [maintain-formal-verification-skill](plugins/pstack-codex/skills/maintain-formal-verification-skill/SKILL.md) | Code changed under a formal verification, and you need to know whether a failure is drift or a bug. |
+| [statechart](plugins/pstack-codex/skills/statechart/SKILL.md) | You want a TLA+-checked chart of a flow, with the shortest path to each broken rule. |
 | [show-me-your-work](plugins/pstack-codex/skills/show-me-your-work/SKILL.md) | You want a decision trail you can inspect later. |
 
 </details>
@@ -205,16 +207,16 @@ You may want the engineering rules and a different working style. [`automate-me`
 
 [`setup-pstack`](plugins/pstack-codex/skills/setup-pstack/SKILL.md) handles supported model and panel preferences. Optional overrides live at `~/.codex/pstack-codex/preferences.json`, outside the installed package, so release updates and rollback preserve them. A cloud worker needs its own accessible preferences or a brief containing the relevant choices.
 
-The default panels have two seats. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
+The default arena and interrogate panels have three seats, matching upstream. A profile that the personal manager wrote for v0.1.0 holds the old two-seat values; `setup-pstack` offers to remove them. Seats describe how much independent work to request; the available worker slots determine what can run simultaneously. Exact model and reasoning choices still depend on your host and account.
 
 ## optional helpers and automations
 
-The Markdown workflows work without Python or Bun. If you want the bundled orchestration and PR-watching helpers, their launcher needs Python 3.11+, Bun, and macOS/Linux support. Resolve the plugin's actual installed location, then run:
+The Markdown workflows work without Python or Bun. If you want the bundled PR-watching helper, its launcher needs Python 3.11+, Bun, and macOS/Linux support. The `statechart` skill needs Node 22.18+ (23.6+ on Node 23), Bun 1.1.5+, or Deno 2+, plus Java and TLC. It installs them with `mise` when they are missing, so that install needs your authorization, or point `TLA2TOOLS` and `JAVA` at existing copies by absolute path. Resolve the plugin's actual installed location, then run:
 
 ```sh
 python3 /actual/plugin/path/tools/runtime.py profile show
 python3 /actual/plugin/path/tools/runtime.py tools-setup --yes
-python3 /actual/plugin/path/tools/runtime.py tool orch -- --help
+python3 /actual/plugin/path/tools/runtime.py tool watch-pr -- --help
 ```
 
 Dependency setup is explicit, and mutable helper data stays outside the package. Read [COMPATIBILITY.md](COMPATIBILITY.md) before relying on a workflow tied to a particular host.
@@ -227,11 +229,11 @@ The same package includes a Dots adapter. Local workflows need a connected compu
 
 ## updates and source
 
-The port is based on Lauren's pstack at [`0148b78c56c72a1b8412055913c79f767095b217`](https://github.com/cursor/plugins/tree/0148b78c56c72a1b8412055913c79f767095b217/pstack). [`source/source.lock.json`](source/source.lock.json) records the exact upstream files included in the adaptation.
+The port is based on Lauren's pstack at [`7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9`](https://github.com/cursor/plugins/tree/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack). [`source/source.lock.json`](source/source.lock.json) records the exact upstream files included in the adaptation.
 
 `v0.1.0` is the first supported release, with no earlier public version to update from or roll back to. [UPDATES.md](UPDATES.md) explains how future releases will handle updates and rollback. Maintainer updates review upstream changes and publish tested port versions. Install those releases rather than copying unadapted Cursor instructions into Codex.
 
-The [0.15.27 update record](verification/upstream-0.15.27.md) describes the source comparison and checks. The reproducible maintainer source, upstream snapshot, adapters, and tests are in [`source/`](source/). Build with `python3 source/pstack.py build` and run checks with `python3 -m unittest discover -s source/tests -v`.
+The [0.15.46 update record](verification/upstream-0.15.46.md) describes the source comparison and checks. The reproducible maintainer source, upstream snapshot, adapters, and tests are in [`source/`](source/). Build with `python3 source/pstack.py build` and run checks with `python3 -m unittest discover -s source/tests -v`.
 
 ## license
 

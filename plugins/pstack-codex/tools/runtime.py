@@ -49,6 +49,20 @@ def merge(base, overrides):
     return result
 
 
+def apply_change(current, change):
+    """Merge a proposed change into stored overrides; a null value removes that key."""
+    result = dict(current)
+    for key, value in change.items():
+        if value is None:
+            result.pop(key, None)
+        elif isinstance(value, dict):
+            parent = result.get(key)
+            result[key] = apply_change(parent if isinstance(parent, dict) else {}, value)
+        else:
+            result[key] = value
+    return result
+
+
 def validate_profile(profile):
     def routing(value, label):
         if not isinstance(value, dict):
@@ -73,6 +87,8 @@ def validate_profile(profile):
     for name, seats in panels.items():
         if type(seats) is not int or seats < 1:
             raise RuntimeError(f"profile.panels.{name} must be a positive integer; actual concurrency remains host-limited")
+    if panels.get("arena", 2) < 2:
+        raise RuntimeError("profile.panels.arena must be at least 2; arena compares independent candidates")
     implicit = profile.get("implicit_invocation", {})
     if not isinstance(implicit, dict) or any(type(value) is not bool for value in implicit.values()):
         raise RuntimeError("profile.implicit_invocation must map skill names to booleans")
@@ -122,7 +138,7 @@ def helper_sources():
     if manifest.get("schema_version") != 1 or not isinstance(manifest.get("files"), dict):
         raise RuntimeError("Invalid tools/helper-sources.json; rebuild the plugin package")
     expected = manifest["files"]
-    required = {f"{SCRIPTS}/package.json", f"{SCRIPTS}/bun.lock", f"{SCRIPTS}/bootstrap.ts", f"{SCRIPTS}/orch/orch.ts", f"{SCRIPTS}/watch-pr/watch-pr", LOG}
+    required = {f"{SCRIPTS}/package.json", f"{SCRIPTS}/bun.lock", f"{SCRIPTS}/bootstrap.ts", f"{SCRIPTS}/watch-pr/watch-pr", LOG}
     if not required.issubset(expected) or any(not (name.startswith(SCRIPTS + "/") or name == LOG) for name in expected):
         raise RuntimeError("Helper source manifest has missing or unsupported paths")
     actual = {f"{SCRIPTS}/{name}": value for name, value in files_under(within(PLUGIN, SCRIPTS)).items()}
@@ -165,7 +181,9 @@ def profile_set(path, proposed, yes):
     proposed = read_json(proposed)
     defaults = read_json(within(PLUGIN, "defaults.json"))
     current = read_json(path) if path.exists() else {}
-    updated = merge(current, proposed)
+    if not isinstance(proposed, dict):
+        raise RuntimeError("The proposed change must be a JSON object")
+    updated = apply_change(current, proposed)
     effective = validate_profile(merge(defaults, updated))
     # Store only user overrides. Unknown keys are preserved for newer adapters.
     if yes:
@@ -285,8 +303,7 @@ def run_tool(state, name, arguments):
         bun = shutil.which("bun")
         if not bun:
             raise RuntimeError("Bun is not installed; no packages were installed")
-        entrypoint = "orch/orch.ts" if name == "orch" else "watch-pr/watch-pr"
-        command = [bun, str(within(runtime, entrypoint))]
+        command = [bun, str(within(runtime, "watch-pr/watch-pr"))]
     return subprocess.call(command + arguments)
 
 
@@ -298,7 +315,7 @@ def parser():
     operations = profiles.add_subparsers(dest="operation", required=True)
     show = operations.add_parser("show", help="Read effective defaults plus optional overrides without writing", epilog="Example: runtime.py profile show --profile ./preferences.json")
     show.add_argument("--profile", type=Path, default=default_profile())
-    update = operations.add_parser("set", help="Deep-merge proposed overrides while preserving unknown keys", epilog="Example: runtime.py profile set --file ./choices.json --dry-run")
+    update = operations.add_parser("set", help="Deep-merge proposed overrides while preserving unknown keys; a null value removes that key", epilog="Example: runtime.py profile set --file ./choices.json --dry-run")
     update.add_argument("--profile", type=Path, default=default_profile())
     update.add_argument("--file", type=Path, required=True)
     choice = update.add_mutually_exclusive_group(required=True)
@@ -306,9 +323,9 @@ def parser():
     choice.add_argument("--yes", action="store_true")
     setup = commands.add_parser("tools-setup", help="Explicitly prepare locked Bun dependencies outside the plugin", epilog="Example: runtime.py tools-setup --yes")
     setup.add_argument("--yes", action="store_true", required=True)
-    tool = commands.add_parser("tool", help="Run a verified helper; never installs packages", epilog="Examples: runtime.py tool orch -- --help; runtime.py tool log -- decisions.tsv plan choose reason evidence result")
+    tool = commands.add_parser("tool", help="Run a verified helper; never installs packages", epilog="Examples: runtime.py tool watch-pr -- --help; runtime.py tool log -- decisions.tsv plan choose reason evidence result")
     helpers = tool.add_subparsers(dest="name", required=True)
-    for name in ("orch", "watch-pr", "log"):
+    for name in ("watch-pr", "log"):
         example = "decisions.tsv plan choose reason evidence result" if name == "log" else "--help"
         helper = helpers.add_parser(name, help=f"Run the {name} helper", epilog=f"Example: runtime.py tool {name} -- {example}")
         helper.add_argument("arguments", nargs=argparse.REMAINDER)

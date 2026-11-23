@@ -23,8 +23,7 @@ class RuntimeCLITests(unittest.TestCase):
         self.scripts = self.package / "skills/poteto-mode/scripts"
         self.scripts.mkdir(parents=True)
         for name, text in {"package.json": '{"dependencies":{"commander":"14.0.0"}}', "bun.lock": 'fixture lock\n',
-                           "bootstrap.ts": "// Never installs implicitly\n", "orch/orch.ts": "console.log('fixture');\n",
-                           "watch-pr/watch-pr": "console.log('fixture');\n"}.items():
+                           "bootstrap.ts": "// Never installs implicitly\n", "watch-pr/watch-pr": "console.log('fixture');\n"}.items():
             path = self.scripts / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(text)
@@ -122,6 +121,28 @@ else:
                 self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes", expected=1)
                 self.assertEqual(self.profile.read_bytes(), original)
 
+    def test_profile_set_null_removes_only_that_key(self):
+        self.write_json(self.profile, {"keep": True, "panels": {"architect": 2, "arena": 2, "interrogate": 2}})
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"architect": None, "arena": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"keep": True, "panels": {"interrogate": 2}})
+        self.assertEqual(json.loads(self.profile.read_text()), saved["overrides"])
+
+    def test_profile_set_null_under_absent_parent_stores_no_null(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": None}, "future": {"setting": None}})
+        saved = json.loads(self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--yes").stdout)
+        self.assertEqual(saved["overrides"], {"panels": {}, "future": {}})
+        self.assertEqual(saved["effective"]["panels"], {"arena": 2})
+
+    def test_profile_rejects_single_seat_arena(self):
+        proposed = self.root / "proposal.json"
+        self.write_json(proposed, {"panels": {"arena": 1}})
+        result = self.run_cli("profile", "set", "--profile", str(self.profile), "--file", str(proposed), "--dry-run", expected=1)
+        self.assertIn("arena must be at least 2", result.stderr)
+        self.assertFalse(self.profile.exists())
+
     def test_profile_set_requires_explicit_action(self):
         proposed = self.root / "proposal.json"
         self.write_json(proposed, {"model": "inherit-parent"})
@@ -130,10 +151,10 @@ else:
 
     def test_all_help_and_unprepared_tool_never_install(self):
         for arguments in (("--help",), ("profile", "--help"), ("profile", "show", "--help"), ("profile", "set", "--help"),
-                          ("tools-setup", "--help"), ("tool", "--help"), ("tool", "orch", "--help")):
+                          ("tools-setup", "--help"), ("tool", "--help"), ("tool", "watch-pr", "--help")):
             with self.subTest(arguments=arguments):
                 self.run_cli(*arguments)
-        result = self.run_cli("tool", "orch", "--", "--help", expected=1)
+        result = self.run_cli("tool", "watch-pr", "--", "--help", expected=1)
         self.assertIn("No packages were installed", result.stderr)
         self.run_cli("tools-setup", expected=2)
         self.assertFalse(self.state.exists())
@@ -157,8 +178,8 @@ else:
     def test_prepared_dispatch_forwards_arguments_without_installing(self):
         self.run_cli("tools-setup", "--yes")
         before = len(self.call_records())
-        result = json.loads(self.run_cli("tool", "orch", "--", "--store", "my store", "--json", "status").stdout)
-        self.assertTrue(result["arguments"][0].endswith("orch/orch.ts"))
+        result = json.loads(self.run_cli("tool", "watch-pr", "--", "--store", "my store", "--json", "status").stdout)
+        self.assertTrue(result["arguments"][0].endswith("watch-pr/watch-pr"))
         self.assertEqual(result["arguments"][1:], ["--store", "my store", "--json", "status"])
         self.assertEqual(len(self.call_records()), before + 1)
         self.assertEqual(Path(result["cwd"]), Path.cwd())
@@ -174,13 +195,13 @@ else:
                 target = runtime / missing
                 shutil.rmtree(target) if target.is_dir() else target.unlink()
                 before = len(self.call_records())
-                self.assertIn("Prepared dependencies are missing", self.run_cli("tool", "orch", "--", "status", expected=1).stderr)
+                self.assertIn("Prepared dependencies are missing", self.run_cli("tool", "watch-pr", "--", "status", expected=1).stderr)
                 self.assertEqual(len(self.call_records()), before)
                 repaired = json.loads(self.run_cli("tools-setup", "--yes").stdout)
                 self.assertFalse(repaired["already_prepared"])
                 self.assertEqual([row["arguments"] for row in self.call_records()[before:]],
                                  [["install", "--frozen-lockfile", "--ignore-scripts"], ["--version"]])
-                self.run_cli("tool", "orch", "--", "status")
+                self.run_cli("tool", "watch-pr", "--", "status")
                 self.assertEqual(self.profile.read_bytes(), original_profile)
                 self.assertEqual(self.package_hashes(), original_package)
 
@@ -200,11 +221,11 @@ else:
     def test_packaged_source_mutation_and_extra_file_are_rejected(self):
         self.run_cli("tools-setup", "--yes")
         count = len(self.call_records())
-        original = (self.scripts / "orch/orch.ts").read_text()
-        (self.scripts / "orch/orch.ts").write_text("mutated source")
-        result = self.run_cli("tool", "orch", "--", "status", expected=1)
+        original = (self.scripts / "watch-pr/watch-pr").read_text()
+        (self.scripts / "watch-pr/watch-pr").write_text("mutated source")
+        result = self.run_cli("tool", "watch-pr", "--", "status", expected=1)
         self.assertIn("Packaged helper sources differ", result.stderr)
-        (self.scripts / "orch/orch.ts").write_text(original)
+        (self.scripts / "watch-pr/watch-pr").write_text(original)
         (self.scripts / "unexpected.ts").write_text("injected helper")
         self.run_cli("tools-setup", "--yes", expected=1)
         self.assertEqual(len(self.call_records()), count)
@@ -213,13 +234,13 @@ else:
         self.run_cli("tools-setup", "--yes")
         count = len(self.call_records())
         runtime = self.prepared_runtime()
-        script = runtime / "orch/orch.ts"
+        script = runtime / "watch-pr/watch-pr"
         original = script.read_bytes()
         script.write_text("changed")
-        self.assertIn("Prepared helper sources differ", self.run_cli("tool", "orch", "--", "status", expected=1).stderr)
+        self.assertIn("Prepared helper sources differ", self.run_cli("tool", "watch-pr", "--", "status", expected=1).stderr)
         script.write_bytes(original)
         self.write_json(runtime.parent / "setup-receipt.json", {"source_key": "unrelated"})
-        self.assertIn("receipt does not match", self.run_cli("tool", "orch", "--", "status", expected=1).stderr)
+        self.assertIn("receipt does not match", self.run_cli("tool", "watch-pr", "--", "status", expected=1).stderr)
         self.assertEqual(len(self.call_records()), count)
 
     def test_log_helper_requires_no_bun_setup(self):
@@ -236,7 +257,7 @@ else:
         outside.mkdir()
         (self.root / "linked-state").symlink_to(outside, target_is_directory=True)
         self.run_cli("tools-setup", "--yes", state=self.root / "linked-state", expected=1)
-        linked = self.scripts / "orch/orch.ts"
+        linked = self.scripts / "watch-pr/watch-pr"
         linked.unlink()
         linked.symlink_to(self.root / "outside-script")
         (self.root / "outside-script").write_text("unsafe")
@@ -257,7 +278,7 @@ else:
         self.write_json(self.profile, {"preserve": {"unknown": "value"}})
         original = self.profile.read_bytes()
         old = json.loads(self.run_cli("tools-setup", "--yes").stdout)
-        script = self.scripts / "orch/orch.ts"
+        script = self.scripts / "watch-pr/watch-pr"
         source = script.read_text()
         script.write_text(source + "// next published version\n")
         self.refresh_manifest()

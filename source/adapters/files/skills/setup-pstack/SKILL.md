@@ -33,10 +33,24 @@ unless the user requested a migration.
 
 Default every role to `inherit-parent`. Inspect current model and reasoning
 options only when a concrete model change is requested. Cursor's source
-Claude/Grok mix and fast-mode slugs are unavailable controls, not choices to
-translate into invented names. A panel count is total seats, queued within
-actual runtime capacity. Defaults are two arena candidates, two architect
-candidates, and two independent interrogate reviewers.
+Opus, Fable, and Gemini slugs, fast variants, and effort ceilings are
+unavailable controls, not choices to translate into invented names. A panel
+count is total seats, queued within actual runtime capacity. Defaults are three
+arena candidates and three independent interrogate adversaries.
+
+Upstream retired the `architect` panel and the `hardest tasks`,
+`architect runners`, `how explorer`, `how explainer`, `why investigators`,
+`why synthesizer`, `reflect tooling`, and `reflect judgment, divergent,
+synthesizer` roles. A profile entry for one of them no longer steers any
+workflow. Report each one you find. Remove it only as part of a change the
+user approves.
+
+A profile whose `panels` equal exactly `{architect: 2, arena: 2, interrogate:
+2}` is the v0.1.0 snapshot the personal manager copied from the old defaults,
+not a set of user choices. Propose removing those three keys so the current
+defaults apply, and tell the user which values change. Any other panel value is
+the user's choice and stays. To remove a key, set it to `null` in the change
+file; `profile set` deletes it and keeps every other key.
 
 ## 2. Show the concrete change
 
@@ -80,8 +94,10 @@ custom native agent, force automatic skill selection, or create a persistent
 UI mode. Existing workers retain their launch settings. User profile data stays
 outside plugin releases so package updates and rollback do not replace it.
 
-## Optional app verification
+## Optional verification skills
 
 When requested app verification lacks a project driver, use
-`create-verification-skill`. Building and proving a driver is a separate task
-from model configuration.
+`create-verification-skill`. When the user wants a property proved past what
+tests reach and the project has no formal verification skill, use
+`create-formal-verification-skill`. Building and proving either one is a
+separate task from model configuration. Offer each at most once.

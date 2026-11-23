@@ -123,7 +123,7 @@ class BuildTests(unittest.TestCase):
     def test_deterministic_build_and_full_coverage(self):
         second = port.build(PROJECT, output=Path(self.scratch.name))
         self.assertEqual(second["release"], self.build["release"])
-        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 55)
+        self.assertEqual(len(port.verify_payload(self.release)["skills"]), 58)
         manifest = port.read_json(self.release / "release.json")
         implicit = {row["name"] for row in manifest["skills"] if row["allow_implicit_invocation"]}
         self.assertEqual(implicit, {"setup-pstack", "unslop"})
@@ -201,6 +201,17 @@ class BuildTests(unittest.TestCase):
                 output.write('\nSpawn environment: "cloud" now.\n')
             with self.assertRaisesRegex(port.PortError, "Unadapted runtime instruction"):
                 port.build(project)
+
+    def test_upstream_model_slugs_rejected(self):
+        for slug in ("claude-fable-5-2-high", "gemini-4-neon-xhigh", "claude-opus-5-5-high-fast"):
+            with self.subTest(slug=slug), tempfile.TemporaryDirectory() as temp:
+                project = self.copy_project(temp)
+                spec = port.read_json(project / "adapters/spec.json")
+                row = next(row for row in spec["files"] if row["source"].endswith("SKILL.md"))
+                with (project / "adapters" / row["overlay"]).open("a") as output:
+                    output.write(f"\nRun the judge on `{slug}`.\n")
+                with self.assertRaisesRegex(port.PortError, "Unadapted runtime instruction"):
+                    port.build(project)
 
     def test_payload_tamper_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -303,7 +314,7 @@ class LifecycleTests(LifecycleFixture, unittest.TestCase):
         self.installation.install(self.release)
         before = port.tree(self.user_home)
         with self.assertRaisesRegex(port.PortError, "No packages were installed"):
-            self.installation.run_tool("orch", ["--help"])
+            self.installation.run_tool("watch-pr", ["--help"])
         self.assertEqual(port.tree(self.user_home), before)
 
     def test_changed_preference_is_not_overwritten(self):
@@ -552,9 +563,9 @@ class RecoveryTests(LifecycleFixture, unittest.TestCase):
 
     def test_changed_helper_code_is_rejected_by_execution_setup_and_verify(self):
         runtime, _ = self.prepare_runtime_fixture()
-        (runtime / "orch/orch.ts").write_text("modified helper")
+        (runtime / "watch-pr/watch-pr").write_text("modified helper")
         with mock.patch.object(port.subprocess, "call") as execute, mock.patch.object(port.subprocess, "run") as setup:
-            for operation in (lambda: self.installation.run_tool("orch", ["--help"]), self.installation.setup_tools, self.installation.verify):
+            for operation in (lambda: self.installation.run_tool("watch-pr", ["--help"]), self.installation.setup_tools, self.installation.verify):
                 with self.assertRaisesRegex(port.PortError, "Helper runtime source differs"):
                     operation()
             execute.assert_not_called()

@@ -14,16 +14,19 @@ a listing in OpenAI's public Plugins Directory.
 
 ## Prepared update to port 0.2.0
 
-The development checkout includes upstream pstack 0.15.27 and 55 skills. It adds
-`create-formal-verification-skill` and revised engineering guidance. The Codex
-and Dots runtime adapters, external preferences, and explicit invocation rules
-remain in place. See the [update record](verification/upstream-0.15.27.md).
+The development checkout includes upstream pstack 0.15.46 and 58 skills. It adds
+`create-formal-verification-skill`, `maintain-formal-verification-skill`,
+`statechart`, and `ketchup-video`, and follows upstream's shorter skill texts. It
+removes the Orchestrate playbook and the `orch` helper, which upstream deleted.
+The Codex and Dots runtime adapters, external preferences, and explicit
+invocation rules remain in place. See the [update record](verification/upstream-0.15.46.md).
 
 Port 0.2.0 is unpublished. The installation commands below still select v0.1.0.
 Do not use an uncreated version tag. [Cloud validation](verification/cloud-validation-upstream-0.15.27.md)
 verified native CLI installation, update, rollback, loader discovery, and
-representative workflows. Release metadata and installation instructions are
-finalized as part of a separately authorized publication.
+representative workflows for the earlier 0.15.27 source. Repeat that validation
+for 0.15.46 before publication. Release metadata and installation instructions
+are finalized as part of a separately authorized publication.
 
 ## Future updates
 
